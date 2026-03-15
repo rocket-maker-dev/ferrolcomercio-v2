@@ -1,0 +1,33 @@
+{
+  "sitio": {
+    "nombre": "CCA FERROL COMERCIO",
+    "descripcion": "Centro Comercial Aberto do Barrio de A Magdalena",
+    "url_original": "https://ferrolcomercio.es",
+    "idioma_principal": "gl-ES"
+  },
+  "branding": {
+    "color_principal": "#0663ac",
+    "logo_actual": "uploads/2025/11/cca-ferrol-comercio-color.png",
+    "logo_original": "uploads/2019/02/logo.png",
+    "imagenes_hero": [
+      "uploads/2026/02/header-ferrolcomercio.png",
+      "uploads/2026/02/header-ferrolcomercio-bolsa.png",
+      "uploads/2026/02/header-ferrolcomercio-shopping.png"
+    ],
+    "fuentes": {
+      "iconos": ["fontawesome", "fontello", "iconsmind", "simple-line-icons"],
+      "notas": "Las fuentes web están en assets/fonts/"
+    }
+  },
+  "mapa": {
+    "centro_lat": 43.485,
+    "centro_lng": -8.233,
+    "zoom_defecto": 15,
+    "ciudad": "Ferrol",
+    "provincia": "A Coruña",
+    "pais": "España"
+  },
+  "theme_origen": "Listeo (WordPress Theme)",
+  "exportado": "2026-02-18",
+  "generado": "2026-02-24"
+}

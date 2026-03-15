@@ -1,0 +1,392 @@
+[
+  {
+    "id": 234,
+    "slug": "agencia-de-viajes",
+    "nombre": {
+      "es": "Axencia de Viaxes",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "cultura-ocio"
+  },
+  {
+    "id": 235,
+    "slug": "alimentacion",
+    "nombre": {
+      "es": "Alimentación",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "alimentacion-agasallos"
+  },
+  {
+    "id": 266,
+    "slug": "artesania",
+    "nombre": {
+      "es": "Artesanía",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "fogar-deco"
+  },
+  {
+    "id": 247,
+    "slug": "bares",
+    "nombre": {
+      "es": "Bares",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "restauracion"
+  },
+  {
+    "id": 246,
+    "slug": "cafeterias",
+    "nombre": {
+      "es": "Cafetarías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "restauracion"
+  },
+  {
+    "id": 230,
+    "slug": "calzado",
+    "nombre": {
+      "es": "Calzado",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "moda-textil"
+  },
+  {
+    "id": 228,
+    "slug": "clinica-dental",
+    "nombre": {
+      "es": "Clínica Dental",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "saude-benestar"
+  },
+  {
+    "id": 260,
+    "slug": "confiterias",
+    "nombre": {
+      "es": "Confeitarías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "restauracion"
+  },
+  {
+    "id": 265,
+    "slug": "copisteria",
+    "nombre": {
+      "es": "Copistería",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "servizos"
+  },
+  {
+    "id": 239,
+    "slug": "deporte",
+    "nombre": {
+      "es": "Deporte",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "cultura-ocio"
+  },
+  {
+    "id": 231,
+    "slug": "electrodomesticos",
+    "nombre": {
+      "es": "Electrodomésticos",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "fogar-deco"
+  },
+  {
+    "id": 262,
+    "slug": "estilismo",
+    "nombre": {
+      "es": "Estilismo",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "beleza-estetica"
+  },
+  {
+    "id": 242,
+    "slug": "farmacias",
+    "nombre": {
+      "es": "Farmacias",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "saude-benestar"
+  },
+  {
+    "id": 261,
+    "slug": "fisioterapia",
+    "nombre": {
+      "es": "Fisioterapia",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "saude-benestar"
+  },
+  {
+    "id": 258,
+    "slug": "floristerias",
+    "nombre": {
+      "es": "Florarías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "alimentacion-agasallos"
+  },
+  {
+    "id": 254,
+    "slug": "formacion",
+    "nombre": {
+      "es": "Formación",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "cultura-ocio"
+  },
+  {
+    "id": 248,
+    "slug": "hospedaje",
+    "nombre": {
+      "es": "Hospedaxe",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "servizos"
+  },
+  {
+    "id": 263,
+    "slug": "iluminacion",
+    "nombre": {
+      "es": "Iluminación",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "fogar-deco"
+  },
+  {
+    "id": 259,
+    "slug": "imprentas",
+    "nombre": {
+      "es": "Imprentas",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "servizos"
+  },
+  {
+    "id": 243,
+    "slug": "joyerias",
+    "nombre": {
+      "es": "Xoierías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "alimentacion-agasallos"
+  },
+  {
+    "id": 237,
+    "slug": "lenceria",
+    "nombre": {
+      "es": "Lencería",
+      "gl": null
+    },
+    "parent": "textil",
+    "categoria_principal": "moda-textil"
+  },
+  {
+    "id": 251,
+    "slug": "librerias",
+    "nombre": {
+      "es": "Librarías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "cultura-ocio"
+  },
+  {
+    "id": 232,
+    "slug": "merceria",
+    "nombre": {
+      "es": "Mercería",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "alimentacion-agasallos"
+  },
+  {
+    "id": 250,
+    "slug": "moda",
+    "nombre": {
+      "es": "Moda",
+      "gl": null
+    },
+    "parent": "textil",
+    "categoria_principal": "moda-textil"
+  },
+  {
+    "id": 240,
+    "slug": "mueblerias",
+    "nombre": {
+      "es": "Moblarías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "fogar-deco"
+  },
+  {
+    "id": 238,
+    "slug": "musica",
+    "nombre": {
+      "es": "Música",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "cultura-ocio"
+  },
+  {
+    "id": 225,
+    "slug": "opticas",
+    "nombre": {
+      "es": "Ópticas",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "alimentacion-agasallos"
+  },
+  {
+    "id": 264,
+    "slug": "ortopedia",
+    "nombre": {
+      "es": "Ortopedia",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "saude-benestar"
+  },
+  {
+    "id": 255,
+    "slug": "papelerias",
+    "nombre": {
+      "es": "Papelarías",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "moda-textil"
+  },
+  {
+    "id": 241,
+    "slug": "peluquerias",
+    "nombre": {
+      "es": "Peiteados",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "beleza-estetica"
+  },
+  {
+    "id": 229,
+    "slug": "perfumeria",
+    "nombre": {
+      "es": "Perfumaría",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "beleza-estetica"
+  },
+  {
+    "id": 244,
+    "slug": "psicologo",
+    "nombre": {
+      "es": "Psicoloxía",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "saude-benestar"
+  },
+  {
+    "id": 253,
+    "slug": "regalos-y-decoracion",
+    "nombre": {
+      "es": "Agasallos e Decoración",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "fogar-deco"
+  },
+  {
+    "id": 245,
+    "slug": "resturantes",
+    "nombre": {
+      "es": "Restaurantes",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "restauracion"
+  },
+  {
+    "id": 249,
+    "slug": "ropa-interior",
+    "nombre": {
+      "es": "Roupa Interior",
+      "gl": null
+    },
+    "parent": "textil",
+    "categoria_principal": "moda-textil"
+  },
+  {
+    "id": 236,
+    "slug": "seguros",
+    "nombre": {
+      "es": "Seguros",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "servizos"
+  },
+  {
+    "id": 233,
+    "slug": "servicios",
+    "nombre": {
+      "es": "Servizos",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "servizos"
+  },
+  {
+    "id": 252,
+    "slug": "tatuajes",
+    "nombre": {
+      "es": "Tatuaxes",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "beleza-estetica"
+  },
+  {
+    "id": 226,
+    "slug": "textil",
+    "nombre": {
+      "es": "Téxtil",
+      "gl": null
+    },
+    "parent": null,
+    "categoria_principal": "moda-textil"
+  }
+]

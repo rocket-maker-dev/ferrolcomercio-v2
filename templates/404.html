@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block schema %}
+{% endblock %}
+
+{% block content %}
+
+<div class="section">
+  <div class="container">
+    <div class="empty-state">
+      <div class="empty-state-icon" aria-hidden="true" style="font-size:5rem; color:var(--color-primary); opacity:.2;">
+        <i class="fas fa-map-signs"></i>
+      </div>
+
+      <p style="font-size:4rem; font-weight:900; color:var(--color-primary); opacity:.3; line-height:1; margin-bottom:1rem;" aria-hidden="true">404</p>
+
+      <h1 class="empty-state-title" style="font-size:1.75rem;">
+        {% if lang == 'gl' %}
+          Páxina non atopada
+        {% else %}
+          Página no encontrada
+        {% endif %}
+      </h1>
+
+      <p class="empty-state-desc">
+        {% if lang == 'gl' %}
+          A páxina que buscas non existe ou foi movida. Podes volver ao inicio ou explorar os nosos comercios.
+        {% else %}
+          La página que buscas no existe o ha sido movida. Puedes volver al inicio o explorar nuestros comercios.
+        {% endif %}
+      </p>
+
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="{{ base_url }}/{{ lang }}/" class="btn btn--primary btn--lg">
+          <i class="fas fa-home" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Ir ao inicio{% else %}Ir al inicio{% endif %}
+        </a>
+        <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn btn--secondary btn--lg">
+          <i class="fas fa-store" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Ver comercios{% else %}Ver comercios{% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

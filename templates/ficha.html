@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{{ schema_json }}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{# BREADCRUMBS #}
+<nav class="breadcrumb" aria-label="{% if lang == 'gl' %}Ruta de navegación{% else %}Ruta de navegación{% endif %}">
+  <div class="container">
+    <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ base_url }}/{{ lang }}/" itemprop="item">
+          <span itemprop="name">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</span>
+        </a>
+        <meta itemprop="position" content="1">
+      </li>
+      {% if comercio.categorias %}
+      <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="{{ base_url }}/{{ lang }}/categoria/{{ comercio.categorias[0] }}/" itemprop="item">
+          <span itemprop="name">{{ cat_nombre }}</span>
+        </a>
+        <meta itemprop="position" content="2">
+      </li>
+      {% endif %}
+      <li class="breadcrumb-item" aria-current="page"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ comercio.nombre[lang] or comercio.nombre.es }}</span>
+        <meta itemprop="position" content="3">
+      </li>
+    </ol>
+  </div>
+</nav>
+
+{# HERO IMAGE #}
+<div class="ficha-hero" role="img" aria-label="{{ comercio.nombre[lang] or comercio.nombre.es }}">
+  {% if comercio.imagen_destacada %}
+  <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+       alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+       width="1200" height="400"
+       loading="eager"
+       fetchpriority="high"
+       onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+  {% else %}
+  <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+       alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+       width="1200" height="400"
+       loading="eager"
+       fetchpriority="high">
+  {% endif %}
+  <div class="ficha-hero-overlay" aria-hidden="true"></div>
+</div>
+
+{# FICHA HEADER #}
+<header class="ficha-header">
+  <div class="container">
+    <div class="ficha-header-content">
+      <div style="display:flex; gap:1rem; align-items:flex-start; flex:1;">
+        {% if comercio.logo %}
+        <img src="{{ img_base_url }}/{{ comercio.logo }}"
+             alt="{{ comercio.nombre[lang] or comercio.nombre.es }} — logo"
+             class="ficha-logo"
+             width="80" height="80"
+             loading="lazy">
+        {% endif %}
+        <div class="ficha-title-group">
+          {% if comercio.categorias %}
+          <a href="{{ base_url }}/{{ lang }}/categoria/{{ comercio.categorias[0] }}/"
+             class="ficha-category-link">{{ cat_nombre }}</a>
+          {% endif %}
+          <h1 class="ficha-title">{{ comercio.nombre[lang] or comercio.nombre.es }}</h1>
+          {% if comercio.direccion %}
+          <p class="ficha-address">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            {{ comercio.direccion }}
+          </p>
+          {% endif %}
+          {% if comercio.rating %}
+          <div class="rating" style="margin-top:.75rem;"
+               aria-label="{% if lang == 'gl' %}Valoración{% else %}Valoración{% endif %} {{ comercio.rating }} de 5">
+            <span class="rating-stars" aria-hidden="true">
+              {% for i in range(5) %}{% if i < comercio.rating | int %}★{% else %}☆{% endif %}{% endfor %}
+            </span>
+            <span>{{ comercio.rating }}</span>
+            {% if comercio.num_reviews %}
+            <span class="rating-count">({{ comercio.num_reviews }} {% if lang == 'gl' %}reseñas{% else %}reseñas{% endif %})</span>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div style="display:flex; gap:.75rem; flex-wrap:wrap; align-items:flex-start;">
+        {% if comercio.coordenadas and comercio.coordenadas.lat %}
+        <a href="https://www.google.com/maps/search/?api=1&query={{ comercio.coordenadas.lat }},{{ comercio.coordenadas.lng }}"
+           class="btn btn--maps"
+           rel="noopener" target="_blank"
+           aria-label="{% if lang == 'gl' %}Ver en Google Maps{% else %}Ver en Google Maps{% endif %}">
+          <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Ver en Google Maps{% else %}Ver en Google Maps{% endif %}
+        </a>
+        {% endif %}
+        {% if comercio.telefono %}
+        <a href="tel:{{ comercio.telefono }}" class="btn btn--secondary">
+          <i class="fas fa-phone" aria-hidden="true"></i>
+          {{ comercio.telefono }}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</header>
+
+{# CUERPO FICHA #}
+<div class="section">
+  <div class="container">
+
+    {% if lang_notice %}
+    <div class="lang-notice" role="note">
+      <i class="fas fa-info-circle" aria-hidden="true"></i>
+      {{ lang_notice }}
+    </div>
+    {% endif %}
+
+    <div class="layout-with-sidebar">
+
+      {# CONTENIDO PRINCIPAL #}
+      <div>
+        {% set desc = comercio.descripcion[lang] or comercio.descripcion.es or comercio.descripcion.gl %}
+        {% if desc %}
+        <section aria-labelledby="desc-title">
+          <h2 id="desc-title" style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; margin-bottom:1rem;">
+            {% if lang == 'gl' %}Sobre este comercio{% else %}Sobre este comercio{% endif %}
+          </h2>
+          <div class="ficha-description">{{ desc }}</div>
+        </section>
+        {% endif %}
+
+        {# Galería #}
+        {% if comercio.imagenes and comercio.imagenes | length > 1 %}
+        <section aria-labelledby="gallery-title" style="margin-top:2.5rem;">
+          <h2 id="gallery-title" style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; margin-bottom:1rem;">
+            {% if lang == 'gl' %}Galería de imaxes{% else %}Galería de imágenes{% endif %}
+          </h2>
+          <div class="gallery-grid">
+            {% for img in comercio.imagenes %}
+            <div class="gallery-item">
+              <img src="{{ img_base_url }}/{{ img }}"
+                   alt="{{ comercio.nombre[lang] or comercio.nombre.es }} — {% if lang == 'gl' %}imaxe{% else %}imagen{% endif %} {{ loop.index }}"
+                   width="300" height="300"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.parentElement.style.display='none';">
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
+        {# Reseñas de Google #}
+        {% if comercio.google_place_id %}
+        <section class="reviews-section" data-place-id="{{ comercio.google_place_id }}" style="margin-top:2.5rem;">
+          <div class="reviews-header">
+            <h2 id="reviews-title" style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700;">
+              {% if lang == 'gl' %}Reseñas de Google{% else %}Reseñas de Google{% endif %}
+            </h2>
+            <div class="reviews-summary">
+              <span class="reviews-rating-big" id="rating-value">—</span>
+              <div class="reviews-stars" id="rating-stars"></div>
+              <span class="reviews-count" id="rating-count"></span>
+            </div>
+          </div>
+          <div class="reviews-list" id="reviews-list">
+            <div class="reviews-loading">{% if lang == 'gl' %}Cargando reseñas...{% else %}Cargando reseñas...{% endif %}</div>
+          </div>
+          <a href="https://search.google.com/local/writereview?placeid={{ comercio.google_place_id }}" 
+             target="_blank" rel="noopener" class="btn btn--primary btn--sm" style="margin-top:1rem;">
+            ✍️ {% if lang == 'gl' %}Escribir reseña en Google{% else %}Escribir reseña en Google{% endif %}
+          </a>
+        </section>
+        {% endif %}
+      </div>
+
+      {# SIDEBAR #}
+      <aside class="ficha-sidebar" aria-label="{% if lang == 'gl' %}Información de contacto{% else %}Información de contacto{% endif %}">
+
+        {# Rating card #}
+        {% if comercio.rating %}
+        <div class="sidebar-card">
+          <div class="sidebar-card-body" style="text-align:center; padding:1.5rem;">
+            <div style="font-size:2.5rem; font-weight:800; color:var(--color-primary); font-family:var(--font-heading);">{{ comercio.rating }}</div>
+            <div class="rating" style="justify-content:center; margin:.5rem 0;">
+              <span class="rating-stars" aria-hidden="true" style="font-size:1.25rem;">
+                {% for i in range(5) %}{% if i < comercio.rating | int %}★{% else %}☆{% endif %}{% endfor %}
+              </span>
+            </div>
+            {% if comercio.num_reviews %}
+            <p style="font-size:var(--text-sm); color:var(--color-text-muted);">{{ comercio.num_reviews }} {% if lang == 'gl' %}reseñas{% else %}reseñas{% endif %}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# Contacto #}
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-title">{% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}</h3>
+          <div class="sidebar-card-body">
+            <ul class="contact-list">
+              {% if comercio.direccion %}
+              <li class="contact-item">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>{{ comercio.direccion }}</span>
+              </li>
+              {% endif %}
+              {% if comercio.telefono %}
+              <li class="contact-item">
+                <i class="fas fa-phone" aria-hidden="true"></i>
+                <a href="tel:{{ comercio.telefono }}">{{ comercio.telefono }}</a>
+              </li>
+              {% endif %}
+              {% if comercio.email %}
+              <li class="contact-item">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:{{ comercio.email }}">{{ comercio.email }}</a>
+              </li>
+              {% endif %}
+              {% if comercio.web %}
+              <li class="contact-item">
+                <i class="fas fa-globe" aria-hidden="true"></i>
+                <a href="{{ comercio.web }}" rel="noopener noreferrer" target="_blank">{{ comercio.web | urlshort }}</a>
+              </li>
+              {% endif %}
+            </ul>
+
+            {% if comercio.redes_sociales %}
+            <div style="margin-top:1.25rem; border-top:1px solid var(--color-border); padding-top:1.25rem;">
+              <p style="font-family:var(--font-heading); font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--color-text-muted); margin-bottom:.75rem;">
+                {% if lang == 'gl' %}Redes sociais{% else %}Redes sociales{% endif %}
+              </p>
+              <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
+                {% if comercio.redes_sociales.facebook %}
+                <a href="{{ comercio.redes_sociales.facebook }}" rel="noopener noreferrer" target="_blank"
+                   aria-label="Facebook" class="btn btn--sm btn--secondary" style="padding:.375rem .75rem;">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                {% if comercio.redes_sociales.instagram %}
+                <a href="{{ comercio.redes_sociales.instagram }}" rel="noopener noreferrer" target="_blank"
+                   aria-label="Instagram" class="btn btn--sm btn--secondary" style="padding:.375rem .75rem;">
+                  <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+                {% if comercio.redes_sociales.twitter %}
+                <a href="{{ comercio.redes_sociales.twitter }}" rel="noopener noreferrer" target="_blank"
+                   aria-label="Twitter/X" class="btn btn--sm btn--secondary" style="padding:.375rem .75rem;">
+                  <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {# Horarios #}
+        {% if comercio.horarios %}
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-title">{% if lang == 'gl' %}Horarios{% else %}Horarios{% endif %}</h3>
+          <div class="sidebar-card-body">
+            <table class="horarios-table" aria-label="{% if lang == 'gl' %}Horario de apertura{% else %}Horario de apertura{% endif %}">
+              <tbody>
+                {% set dias_es = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'] %}
+                {% set dias_gl = ['luns','martes','mércores','xoves','venres','sábado','domingo'] %}
+                {% for dia in dias_es %}
+                {% if comercio.horarios.get(dia) %}
+                <tr {% if dia == dia_hoy %}class="today"{% endif %}>
+                  <td>{% if lang == 'gl' %}{{ dias_gl[loop.index0] }}{% else %}{{ dia }}{% endif %}</td>
+                  <td>{{ comercio.horarios[dia] | join(', ') }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Mapa mini #}
+        {% if comercio.coordenadas and comercio.coordenadas.lat %}
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-title">{% if lang == 'gl' %}Localización{% else %}Localización{% endif %}</h3>
+          <div class="map-container"
+               id="map-ficha"
+               data-map="auto"
+               data-lat="{{ comercio.coordenadas.lat }}"
+               data-lng="{{ comercio.coordenadas.lng }}"
+               data-zoom="16"
+               role="application"
+               aria-label="Mapa de {{ comercio.nombre[lang] or comercio.nombre.es }}">
+            <noscript>
+              <div class="map-placeholder">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <p>{{ comercio.direccion }}</p>
+              </div>
+            </noscript>
+          </div>
+          <div class="sidebar-card-body" style="padding-top:.75rem;">
+            <a href="https://www.google.com/maps/search/?api=1&query={{ comercio.coordenadas.lat }},{{ comercio.coordenadas.lng }}"
+               class="btn btn--maps btn--sm"
+               style="width:100%;"
+               rel="noopener" target="_blank">
+              <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+              {% if lang == 'gl' %}Abrir en Google Maps{% else %}Abrir en Google Maps{% endif %}
+            </a>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Compartir #}
+        <div class="sidebar-card">
+          <h3 class="sidebar-card-title">{% if lang == 'gl' %}Compartir{% else %}Compartir{% endif %}</h3>
+          <div class="sidebar-card-body">
+            <div class="share-buttons">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ canonical_url }}"
+                 class="share-btn share-btn--facebook"
+                 rel="noopener" target="_blank"
+                 aria-label="{% if lang == 'gl' %}Compartir en Facebook{% else %}Compartir en Facebook{% endif %}">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+              </a>
+              <a href="https://api.whatsapp.com/send?text={{ (comercio.nombre[lang] or comercio.nombre.es) | striptags }} {{ canonical_url }}"
+                 class="share-btn share-btn--whatsapp"
+                 rel="noopener" target="_blank"
+                 aria-label="{% if lang == 'gl' %}Compartir por WhatsApp{% else %}Compartir por WhatsApp{% endif %}">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              </a>
+              <button class="share-btn share-btn--copy"
+                      data-copy="{{ canonical_url }}"
+                      aria-label="{% if lang == 'gl' %}Copiar enlace{% else %}Copiar enlace{% endif %}">
+                <i class="fas fa-link" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+{# Copy link script #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('[data-copy]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var url = this.dataset.copy;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+          btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i>';
+          setTimeout(function() { btn.innerHTML = '<i class="fas fa-link" aria-hidden="true"></i>'; }, 2000);
+        });
+      }
+    });
+  });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{
+  "total": 97,
+  "publicados": 97,
+  "con_telefono": 84,
+  "con_email": 0,
+  "con_web": 61,
+  "con_coordenadas": 91,
+  "con_horarios": 82,
+  "con_galeria": 84,
+  "con_imagen_destacada": 84,
+  "categorias": 39,
+  "features": 16,
+  "datos_faltantes": {
+    "sin_telefono": 13,
+    "sin_email": 97,
+    "sin_web": 36,
+    "sin_coordenadas": 6,
+    "sin_horarios": 15,
+    "sin_imagenes": 13
+  }
+}

@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ meta_title }}",
+  "description": "{{ meta_description }}",
+  "url": "{{ canonical_url }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "CCA Ferrol Comercio",
+    "url": "{{ base_url }}/{{ lang }}/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Eventos e Campañas{% else %}Eventos y Campañas{% endif %}"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{# ── HERO ────────────────────────────────────────────────────── #}
+<section class="inst-hero inst-hero--compact" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80')">
+  <div class="inst-hero__overlay"></div>
+  <div class="container inst-hero__content">
+    <h1 class="inst-hero__title">
+      {% if lang == 'gl' %}Eventos e Campañas{% else %}Eventos y Campañas{% endif %}
+    </h1>
+    <p class="inst-hero__subtitle">
+      {% if lang == 'gl' %}Todo o que pasa no barrio da Magdalena{% else %}Todo lo que pasa en el barrio de A Magdalena{% endif %}
+    </p>
+  </div>
+</section>
+
+{# ── PRÓXIMOS EVENTOS ────────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container">
+    <h2 class="inst-section__title" style="text-align:center;">
+      {% if lang == 'gl' %}Próximos eventos{% else %}Próximos eventos{% endif %}
+    </h2>
+    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);">
+      {% if lang == 'gl' %}Actividades e eventos programados no barrio{% else %}Actividades y eventos programados en el barrio{% endif %}
+    </p>
+    <div class="inst-events-grid">
+      {# Evento ejemplo 1 #}
+      <div class="inst-event-card">
+        <div class="inst-event-card__image" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80')">
+          <div class="inst-event-card__date">
+            <span class="inst-event-card__day">15</span>
+            <span class="inst-event-card__month">{% if lang == 'gl' %}MAR{% else %}MAR{% endif %}</span>
+          </div>
+        </div>
+        <div class="inst-event-card__body">
+          <h3>{% if lang == 'gl' %}Semana do Comercio Local{% else %}Semana del Comercio Local{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Unha semana de descontos, actividades e sorpresas en todas as tendas do barrio.{% else %}Una semana de descuentos, actividades y sorpresas en todas las tiendas del barrio.{% endif %}</p>
+          <span class="inst-event-card__tag">{% if lang == 'gl' %}Campaña{% else %}Campaña{% endif %}</span>
+        </div>
+      </div>
+      {# Evento ejemplo 2 #}
+      <div class="inst-event-card">
+        <div class="inst-event-card__image" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80')">
+          <div class="inst-event-card__date">
+            <span class="inst-event-card__day">21</span>
+            <span class="inst-event-card__month">{% if lang == 'gl' %}MAR{% else %}MAR{% endif %}</span>
+          </div>
+        </div>
+        <div class="inst-event-card__body">
+          <h3>{% if lang == 'gl' %}Mercado de Primavera{% else %}Mercado de Primavera{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Os comercios saen á rúa con postos ao aire libre, música e gastronomía local.{% else %}Los comercios salen a la calle con puestos al aire libre, música y gastronomía local.{% endif %}</p>
+          <span class="inst-event-card__tag">{% if lang == 'gl' %}Evento{% else %}Evento{% endif %}</span>
+        </div>
+      </div>
+      {# Evento ejemplo 3 #}
+      <div class="inst-event-card">
+        <div class="inst-event-card__image" style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&q=80')">
+          <div class="inst-event-card__date">
+            <span class="inst-event-card__day">10</span>
+            <span class="inst-event-card__month">{% if lang == 'gl' %}ABR{% else %}ABR{% endif %}</span>
+          </div>
+        </div>
+        <div class="inst-event-card__body">
+          <h3>{% if lang == 'gl' %}Obradoiro de Escaparatismo{% else %}Taller de Escaparatismo{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Formación gratuíta para socios sobre deseño de escaparates con tendencias actuais.{% else %}Formación gratuita para socios sobre diseño de escaparates con tendencias actuales.{% endif %}</p>
+          <span class="inst-event-card__tag">{% if lang == 'gl' %}Formación{% else %}Formación{% endif %}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── CAMPAÑAS ANUAIS ─────────────────────────────────────────── #}
+<section class="inst-section inst-section--alt">
+  <div class="container">
+    <h2 class="inst-section__title" style="text-align:center;">
+      {% if lang == 'gl' %}Campañas anuais{% else %}Campañas anuales{% endif %}
+    </h2>
+    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);">
+      {% if lang == 'gl' %}As campañas que dinamizan o barrio ao longo de todo o ano{% else %}Las campañas que dinamizan el barrio a lo largo de todo el año{% endif %}
+    </p>
+    <div class="inst-campaigns">
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-music" aria-hidden="true"></i></div>
+        <h3>Fashion Night</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Xuño{% else %}Junio{% endif %}</span>
+        <p>{% if lang == 'gl' %}Noite de moda, desfiles ao aire libre e descontos especiais nas tendas do barrio.{% else %}Noche de moda, desfiles al aire libre y descuentos especiales en las tiendas del barrio.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+        <h3>{% if lang == 'gl' %}Nadal{% else %}Navidad{% endif %}</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Decembro{% else %}Diciembre{% endif %}</span>
+        <p>{% if lang == 'gl' %}Iluminación, decoración, sorteos e o espírito navideño máis auténtico.{% else %}Iluminación, decoración, sorteos y el espíritu navideño más auténtico.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+        <h3>San Valentín</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Febreiro{% else %}Febrero{% endif %}</span>
+        <p>{% if lang == 'gl' %}Ofertas románticas, agasallos especiais e sorpresas para namorados.{% else %}Ofertas románticas, regalos especiales y sorpresas para enamorados.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+        <h3>{% if lang == 'gl' %}Día do Libro{% else %}Día del Libro{% endif %}</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Abril{% else %}Abril{% endif %}</span>
+        <p>{% if lang == 'gl' %}Celebración cultural con librerías, asinatura de autores e desconto en libros.{% else %}Celebración cultural con librerías, firma de autores y descuento en libros.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-gift" aria-hidden="true"></i></div>
+        <h3>{% if lang == 'gl' %}Día das Nais{% else %}Día de las Madres{% endif %}</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Maio{% else %}Mayo{% endif %}</span>
+        <p>{% if lang == 'gl' %}Agasallos, ofertas e homenaxe ás nais nas tendas do barrio.{% else %}Regalos, ofertas y homenaje a las madres en las tiendas del barrio.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-tag" aria-hidden="true"></i></div>
+        <h3>Black Friday</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Novembro{% else %}Noviembre{% endif %}</span>
+        <p>{% if lang == 'gl' %}Descontos exclusivos no comercio local. Comprar preto e aforrar máis.{% else %}Descuentos exclusivos en el comercio local. Comprar cerca y ahorrar más.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-church" aria-hidden="true"></i></div>
+        <h3>{% if lang == 'gl' %}Semana Santa{% else %}Semana Santa{% endif %}</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Marzo-Abril{% else %}Marzo-Abril{% endif %}</span>
+        <p>{% if lang == 'gl' %}Actividades especiais e ofertas durante a Semana Santa ferrolá.{% else %}Actividades especiales y ofertas durante la Semana Santa ferrolana.{% endif %}</p>
+      </div>
+      <div class="inst-campaign-card">
+        <div class="inst-campaign-card__icon"><i class="fas fa-store" aria-hidden="true"></i></div>
+        <h3>{% if lang == 'gl' %}Día do Comercio Local{% else %}Día del Comercio Local{% endif %}</h3>
+        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Outubro{% else %}Octubre{% endif %}</span>
+        <p>{% if lang == 'gl' %}Celebración do comercio de proximidade con actividades abertas a todos.{% else %}Celebración del comercio de proximidad con actividades abiertas a todos.{% endif %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── INSTAGRAM / REDES ──────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container" style="text-align:center;">
+    <h2 class="inst-section__title">
+      {% if lang == 'gl' %}Síguenos en redes{% else %}Síguenos en redes{% endif %}
+    </h2>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--sp-8);max-width:600px;margin-left:auto;margin-right:auto;">
+      {% if lang == 'gl' %}Síguenos para ver todas as novidades do barrio, campañas e eventos en directo{% else %}Síguenos para ver todas las novedades del barrio, campañas y eventos en directo{% endif %}
+    </p>
+    <div class="inst-social-links">
+      <a href="https://www.instagram.com/ferrolcomercio/" target="_blank" rel="noopener noreferrer" class="inst-social-card">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+        <span>Instagram</span>
+        <small>@ferrolcomercio</small>
+      </a>
+      <a href="https://www.facebook.com/ferrolcomercio" target="_blank" rel="noopener noreferrer" class="inst-social-card">
+        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        <span>Facebook</span>
+        <small>ferrolcomercio</small>
+      </a>
+      <a href="#" class="inst-social-card">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+        <span>Twitter / X</span>
+        <small>@ferrolcomercio</small>
+      </a>
+      <a href="#" class="inst-social-card">
+        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+        <span>LinkedIn</span>
+        <small>CCA Ferrol</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ── CTA ─────────────────────────────────────────────────────── #}
+<section class="inst-cta">
+  <div class="container" style="text-align:center;">
+    <h2>{% if lang == 'gl' %}Queres participar nos eventos?{% else %}¿Quieres participar en los eventos?{% endif %}</h2>
+    <p>{% if lang == 'gl' %}Fai parte do CCA e o teu negocio estará en todas as campañas{% else %}Forma parte del CCA y tu negocio estará en todas las campañas{% endif %}</p>
+    <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn btn--white">
+      {% if lang == 'gl' %}Únete ao CCA{% else %}Únete al CCA{% endif %}
+    </a>
+  </div>
+</section>
+
+{% endblock %}

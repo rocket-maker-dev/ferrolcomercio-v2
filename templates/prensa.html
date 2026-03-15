@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ meta_title }}",
+  "description": "{{ meta_description }}",
+  "url": "{{ canonical_url }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "CCA Ferrol Comercio",
+    "url": "{{ base_url }}/{{ lang }}/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Sala de Prensa{% else %}Sala de Prensa{% endif %}"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{# ── HERO ────────────────────────────────────────────────────── #}
+<section class="inst-hero inst-hero--compact" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=1600&q=80')">
+  <div class="inst-hero__overlay" style="background:rgba(0,0,0,0.6)"></div>
+  <div class="container inst-hero__content">
+    <h1 class="inst-hero__title">
+      {% if lang == 'gl' %}Sala de Prensa{% else %}Sala de Prensa{% endif %}
+    </h1>
+    <p class="inst-hero__subtitle">
+      {% if lang == 'gl' %}Información para medios e notas de prensa{% else %}Información para medios y notas de prensa{% endif %}
+    </p>
+  </div>
+</section>
+
+{# ── KIT DE PRENSA ───────────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container">
+    <h2 class="inst-section__title" style="text-align:center;">
+      {% if lang == 'gl' %}Kit de prensa{% else %}Kit de prensa{% endif %}
+    </h2>
+    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);max-width:600px;margin-left:auto;margin-right:auto;">
+      {% if lang == 'gl' %}Recursos gráficos e información institucional para medios de comunicación{% else %}Recursos gráficos e información institucional para medios de comunicación{% endif %}
+    </p>
+    <div class="inst-press-grid">
+      <div class="inst-press-card">
+        <div class="inst-press-card__icon">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </div>
+        <h3>{% if lang == 'gl' %}Logo en cor{% else %}Logo en color{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Logo oficial da CCA Ferrol A Magdalena en formato PNG con fondo transparente.{% else %}Logo oficial de la CCA Ferrol A Magdalena en formato PNG con fondo transparente.{% endif %}</p>
+        <a href="{{ base_url }}/assets/images/cca-logo-color.png" download class="btn btn--outline btn--sm">
+          <i class="fas fa-download" aria-hidden="true"></i> {% if lang == 'gl' %}Descargar{% else %}Descargar{% endif %}
+        </a>
+      </div>
+      <div class="inst-press-card">
+        <div class="inst-press-card__icon">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </div>
+        <h3>{% if lang == 'gl' %}Logo en branco{% else %}Logo en blanco{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Versión en branco para uso sobre fondos escuros ou imaxes.{% else %}Versión en blanco para uso sobre fondos oscuros o imágenes.{% endif %}</p>
+        <a href="{{ base_url }}/assets/images/cca-logo-blanco.png" download class="btn btn--outline btn--sm">
+          <i class="fas fa-download" aria-hidden="true"></i> {% if lang == 'gl' %}Descargar{% else %}Descargar{% endif %}
+        </a>
+      </div>
+      <div class="inst-press-card">
+        <div class="inst-press-card__icon">
+          <i class="fas fa-file-alt" aria-hidden="true"></i>
+        </div>
+        <h3>{% if lang == 'gl' %}Dossier CCA{% else %}Dossier CCA{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Información institucional, datos da asociación, historia e cifras clave.{% else %}Información institucional, datos de la asociación, historia y cifras clave.{% endif %}</p>
+        <span class="inst-press-card__badge">{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── DATOS RÁPIDOS ───────────────────────────────────────────── #}
+<section class="inst-stats">
+  <div class="container">
+    <div class="inst-stats__grid">
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">150+</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Comercios asociados{% else %}Comercios asociados{% endif %}</span>
+      </div>
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">1990</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Ano de fundación{% else %}Año de fundación{% endif %}</span>
+      </div>
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">8+</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Campañas anuais{% else %}Campañas anuales{% endif %}</span>
+      </div>
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">1</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Barrio histórico{% else %}Barrio histórico{% endif %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── QUIÉN ES LA CCA (para periodistas) ──────────────────────── #}
+<section class="inst-section inst-section--alt">
+  <div class="container" style="max-width:800px;">
+    <h2 class="inst-section__title" style="text-align:center;">
+      {% if lang == 'gl' %}Sobre a CCA Ferrol A Magdalena{% else %}Sobre la CCA Ferrol A Magdalena{% endif %}
+    </h2>
+    <div class="inst-press-about">
+      <p>
+        {% if lang == 'gl' %}
+          O <strong>Centro Comercial Aberto (CCA) Ferrol A Magdalena</strong> é unha asociación sen ánimo de lucro fundada en 1990 que agrupa a máis de 150 comercios do barrio histórico de A Magdalena en Ferrol (A Coruña).
+        {% else %}
+          El <strong>Centro Comercial Abierto (CCA) Ferrol A Magdalena</strong> es una asociación sin ánimo de lucro fundada en 1990 que agrupa a más de 150 comercios del barrio histórico de A Magdalena en Ferrol (A Coruña).
+        {% endif %}
+      </p>
+      <p>
+        {% if lang == 'gl' %}
+          A Magdalena é considerada o maior centro comercial ao aire libre de Galicia, nun entorno ilustrado único. A CCA traballa pola dinamización do comercio de proximidade, organizando campañas comerciais, representando aos comerciantes ante as administracións e promovendo o barrio como destino de compras.
+        {% else %}
+          A Magdalena es considerada el mayor centro comercial al aire libre de Galicia, en un entorno ilustrado único. La CCA trabaja por la dinamización del comercio de proximidad, organizando campañas comerciales, representando a los comerciantes ante las administraciones y promoviendo el barrio como destino de compras.
+        {% endif %}
+      </p>
+      <div class="inst-press-contact-info">
+        <div>
+          <strong>{% if lang == 'gl' %}Dirección:{% else %}Dirección:{% endif %}</strong>
+          <span>C/ Sol 143-145, 1º Izq., 15401 Ferrol (A Coruña)</span>
+        </div>
+        <div>
+          <strong>{% if lang == 'gl' %}Teléfono:{% else %}Teléfono:{% endif %}</strong>
+          <a href="tel:+34981364036">981 36 40 36</a>
+        </div>
+        <div>
+          <strong>Email:</strong>
+          <a href="mailto:cca@ferrolcomercio.es">cca@ferrolcomercio.es</a>
+        </div>
+        <div>
+          <strong>Web:</strong>
+          <a href="https://ferrolcomercio.es" target="_blank" rel="noopener">ferrolcomercio.es</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── NOTAS DE PRENSA ─────────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <h2 class="inst-section__title">
+      {% if lang == 'gl' %}Notas de prensa{% else %}Notas de prensa{% endif %}
+    </h2>
+    <div class="inst-empty-state">
+      <i class="fas fa-newspaper" aria-hidden="true"></i>
+      <h3>{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</h3>
+      <p>{% if lang == 'gl' %}Estamos preparando a nosa sección de notas de prensa. Para solicitar información de prensa, contacta connosco.{% else %}Estamos preparando nuestra sección de notas de prensa. Para solicitar información de prensa, contacta con nosotros.{% endif %}</p>
+    </div>
+  </div>
+</section>
+
+{# ── APARICIONES EN MEDIOS ───────────────────────────────────── #}
+<section class="inst-section inst-section--alt">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <h2 class="inst-section__title">
+      {% if lang == 'gl' %}Aparicións en medios{% else %}Apariciones en medios{% endif %}
+    </h2>
+    <div class="inst-empty-state">
+      <i class="fas fa-tv" aria-hidden="true"></i>
+      <h3>{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</h3>
+      <p>{% if lang == 'gl' %}Recopilando as nosas aparicións en prensa, radio e televisión.{% else %}Recopilando nuestras apariciones en prensa, radio y televisión.{% endif %}</p>
+    </div>
+  </div>
+</section>
+
+{# ── CTA ─────────────────────────────────────────────────────── #}
+<section class="inst-cta">
+  <div class="container" style="text-align:center;">
+    <h2>{% if lang == 'gl' %}Contacto de prensa{% else %}Contacto de prensa{% endif %}</h2>
+    <p>{% if lang == 'gl' %}Para solicitar información, entrevistas ou material gráfico{% else %}Para solicitar información, entrevistas o material gráfico{% endif %}</p>
+    <div style="display:flex;gap:var(--sp-4);justify-content:center;flex-wrap:wrap;margin-top:var(--sp-6);">
+      <a href="mailto:cca@ferrolcomercio.es" class="btn btn--white">
+        <i class="fas fa-envelope" aria-hidden="true"></i> cca@ferrolcomercio.es
+      </a>
+      <a href="tel:+34981364036" class="btn btn--white">
+        <i class="fas fa-phone" aria-hidden="true"></i> 981 36 40 36
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

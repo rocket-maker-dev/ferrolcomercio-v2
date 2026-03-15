@@ -1,0 +1,82 @@
+[
+  {
+    "id": 44,
+    "slug": "personal-training",
+    "nombre": "Adestramento persoal"
+  },
+  {
+    "id": 24,
+    "slug": "pet-friendly",
+    "nombre": "Admite mascotas"
+  },
+  {
+    "id": 20,
+    "slug": "air-conditioning",
+    "nombre": "Aire acondicionado"
+  },
+  {
+    "id": 21,
+    "slug": "alcohol",
+    "nombre": "Alcohol"
+  },
+  {
+    "id": 22,
+    "slug": "free-parking",
+    "nombre": "Aparcamento gratuíto"
+  },
+  {
+    "id": 30,
+    "slug": "elevator-in-building",
+    "nombre": "Ascensor no edificio"
+  },
+  {
+    "id": 31,
+    "slug": "room-darkening-shades",
+    "nombre": "Cortinas opacas"
+  },
+  {
+    "id": 36,
+    "slug": "friendly-workspace",
+    "nombre": "Espazo de traballo amigable"
+  },
+  {
+    "id": 27,
+    "slug": "wireless-internet",
+    "nombre": "Internet sen fíos"
+  },
+  {
+    "id": 43,
+    "slug": "dumbbells",
+    "nombre": "Mancuernas"
+  },
+  {
+    "id": 42,
+    "slug": "cardio-machines",
+    "nombre": "Máquinas de cardio"
+  },
+  {
+    "id": 46,
+    "slug": "weight-machines",
+    "nombre": "Máquinas de pesas"
+  },
+  {
+    "id": 25,
+    "slug": "smoking-allowed",
+    "nombre": "Permitido fumar"
+  },
+  {
+    "id": 23,
+    "slug": "instant-book",
+    "nombre": "Reserva instantánea"
+  },
+  {
+    "id": 26,
+    "slug": "vegan",
+    "nombre": "Vexano"
+  },
+  {
+    "id": 45,
+    "slug": "stretching-areas",
+    "nombre": "Zonas de estiramento"
+  }
+]

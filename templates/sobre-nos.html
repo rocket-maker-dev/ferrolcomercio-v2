@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "{{ base_url }}/{{ lang }}/sobre-nos/#organization",
+  "name": "CCA Ferrol A Magdalena",
+  "alternateName": "Centro Comercial Aberto Ferrol Comercio",
+  "url": "https://ferrolcomercio.es",
+  "logo": "{{ base_url }}/assets/images/cca-logo-color.png",
+  "foundingDate": "1990",
+  "description": "{{ meta_description }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "C/ Sol 143-145, 1º Izq.",
+    "addressLocality": "Ferrol",
+    "postalCode": "15401",
+    "addressRegion": "A Coruña",
+    "addressCountry": "ES"
+  },
+  "telephone": "+34981364036",
+  "email": "cca@ferrolcomercio.es",
+  "sameAs": [
+    "https://www.instagram.com/ferrolcomercio/",
+    "https://www.facebook.com/ferrolcomercio"
+  ],
+  "areaServed": {
+    "@type": "Place",
+    "name": "Barrio de A Magdalena, Ferrol"
+  },
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": "150+"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{# ── HERO ────────────────────────────────────────────────────── #}
+<section class="inst-hero" style="background-image:url('https://images.unsplash.com/photo-1583318432730-a19c89692612?w=1600&q=80')">
+  <div class="inst-hero__overlay"></div>
+  <div class="container inst-hero__content">
+    <h1 class="inst-hero__title">
+      {% if lang == 'gl' %}O corazón comercial de Ferrol dende 1990{% else %}El corazón comercial de Ferrol desde 1990{% endif %}
+    </h1>
+    <p class="inst-hero__subtitle">
+      {% if lang == 'gl' %}CCA Ferrol A Magdalena: a asociación que une o comercio local{% else %}CCA Ferrol A Magdalena: la asociación que une el comercio local{% endif %}
+    </p>
+  </div>
+</section>
+
+{# ── MISIÓN ──────────────────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <h2 class="inst-section__title">
+      {% if lang == 'gl' %}A nosa misión{% else %}Nuestra misión{% endif %}
+    </h2>
+    <p class="inst-text--lead">
+      {% if lang == 'gl' %}
+        Somos unha asociación sen ánimo de lucro que defende e promove o comercio de proximidade no barrio histórico de A Magdalena, o maior centro comercial ao aire libre de Galicia nun entorno ilustrado único.
+      {% else %}
+        Somos una asociación sin ánimo de lucro que defiende y promueve el comercio de proximidad en el barrio histórico de A Magdalena, el mayor centro comercial al aire libre de Galicia en un entorno ilustrado único.
+      {% endif %}
+    </p>
+  </div>
+</section>
+
+{# ── STATS BAR ───────────────────────────────────────────────── #}
+<section class="inst-stats">
+  <div class="container">
+    <div class="inst-stats__grid">
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">150+</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</span>
+      </div>
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">30+</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Anos{% else %}Años{% endif %}</span>
+      </div>
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">{{ total_comercios }}</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Comercios{% else %}Comercios{% endif %}</span>
+      </div>
+      <div class="inst-stats__item">
+        <span class="inst-stats__number">1</span>
+        <span class="inst-stats__label">{% if lang == 'gl' %}Barrio{% else %}Barrio{% endif %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── VALORES ─────────────────────────────────────────────────── #}
+<section class="inst-section inst-section--alt">
+  <div class="container">
+    <h2 class="inst-section__title" style="text-align:center;">
+      {% if lang == 'gl' %}Os nosos valores{% else %}Nuestros valores{% endif %}
+    </h2>
+    <div class="inst-values">
+      <div class="inst-values__card">
+        <div class="inst-values__icon">🤝</div>
+        <h3>{% if lang == 'gl' %}Proximidade{% else %}Proximidad{% endif %}</h3>
+        <p>{% if lang == 'gl' %}O comercio de barrio crea vínculos. Coñecemos polo nome aos nosos clientes e coidamos cada detalle.{% else %}El comercio de barrio crea vínculos. Conocemos por su nombre a nuestros clientes y cuidamos cada detalle.{% endif %}</p>
+      </div>
+      <div class="inst-values__card">
+        <div class="inst-values__icon">🌿</div>
+        <h3>{% if lang == 'gl' %}Sostibilidade{% else %}Sostenibilidad{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Comprar no barrio é comprar responsable. Menos transporte, menos impacto ambiental, máis economía local.{% else %}Comprar en el barrio es comprar responsable. Menos transporte, menos impacto ambiental, más economía local.{% endif %}</p>
+      </div>
+      <div class="inst-values__card">
+        <div class="inst-values__icon">❤️</div>
+        <h3>{% if lang == 'gl' %}Comunidade{% else %}Comunidad{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Non somos só tendas. Somos o tecido social dun barrio histórico que vibra con cada evento e campaña.{% else %}No somos solo tiendas. Somos el tejido social de un barrio histórico que vibra con cada evento y campaña.{% endif %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── HISTORIA / TIMELINE ────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container" style="max-width:800px;">
+    <h2 class="inst-section__title" style="text-align:center;">
+      {% if lang == 'gl' %}A nosa historia{% else %}Nuestra historia{% endif %}
+    </h2>
+    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);">
+      {% if lang == 'gl' %}
+        Máis de tres décadas traballando pola dinamización comercial do barrio de A Magdalena en Ferrol.
+      {% else %}
+        Más de tres décadas trabajando por la dinamización comercial del barrio de A Magdalena en Ferrol.
+      {% endif %}
+    </p>
+    <div class="inst-timeline">
+      <div class="inst-timeline__item">
+        <div class="inst-timeline__year">1990</div>
+        <div class="inst-timeline__content">
+          <h3>{% if lang == 'gl' %}Fundación{% else %}Fundación{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Nace a CCA Ferrol A Magdalena como asociación de comerciantes para defender e promover o comercio local do barrio.{% else %}Nace la CCA Ferrol A Magdalena como asociación de comerciantes para defender y promover el comercio local del barrio.{% endif %}</p>
+        </div>
+      </div>
+      <div class="inst-timeline__item">
+        <div class="inst-timeline__year">2005</div>
+        <div class="inst-timeline__content">
+          <h3>{% if lang == 'gl' %}Primeiras campañas{% else %}Primeras campañas{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Lanzamos as nosas primeiras grandes campañas comerciais: Nadal, San Valentín, e a icónica Fashion Night.{% else %}Lanzamos nuestras primeras grandes campañas comerciales: Navidad, San Valentín, y la icónica Fashion Night.{% endif %}</p>
+        </div>
+      </div>
+      <div class="inst-timeline__item">
+        <div class="inst-timeline__year">2010</div>
+        <div class="inst-timeline__content">
+          <h3>{% if lang == 'gl' %}Presenza web{% else %}Presencia web{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Lanzamento de ferrolcomercio.es, levando o barrio ao mundo dixital e conectando cos clientes en liña.{% else %}Lanzamiento de ferrolcomercio.es, llevando el barrio al mundo digital y conectando con los clientes en línea.{% endif %}</p>
+        </div>
+      </div>
+      <div class="inst-timeline__item">
+        <div class="inst-timeline__year">2020</div>
+        <div class="inst-timeline__content">
+          <h3>{% if lang == 'gl' %}Resiliencia{% else %}Resiliencia{% endif %}</h3>
+          <p>{% if lang == 'gl' %}A pandemia reforzou o noso compromiso. Adaptámonos e demostramos que o comercio local é esencial.{% else %}La pandemia reforzó nuestro compromiso. Nos adaptamos y demostramos que el comercio local es esencial.{% endif %}</p>
+        </div>
+      </div>
+      <div class="inst-timeline__item">
+        <div class="inst-timeline__year">2025</div>
+        <div class="inst-timeline__content">
+          <h3>{% if lang == 'gl' %}Directorio dixital{% else %}Directorio digital{% endif %}</h3>
+          <p>{% if lang == 'gl' %}Nova web con directorio completo, fichas de comercios, buscador intelixente e ferramentas para o socio.{% else %}Nueva web con directorio completo, fichas de comercios, buscador inteligente y herramientas para el socio.{% endif %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── O BARRIO DA MAGDALENA ───────────────────────────────────── #}
+<section class="inst-section inst-section--alt">
+  <div class="container">
+    <div class="inst-barrio">
+      <div class="inst-barrio__text">
+        <h2 class="inst-section__title">
+          {% if lang == 'gl' %}O Barrio da Magdalena{% else %}El Barrio de A Magdalena{% endif %}
+        </h2>
+        <p>
+          {% if lang == 'gl' %}
+            A Magdalena é moito máis que un barrio: é o centro neurálxico de Ferrol, onde a historia e o comercio se entrelazan en rúas con séculos de vida. As súas fachadas ilustradas, as prazas con encanto e a variedade comercial converten a cada visita nunha experiencia única.
+          {% else %}
+            A Magdalena es mucho más que un barrio: es el centro neurálgico de Ferrol, donde la historia y el comercio se entrelazan en calles con siglos de vida. Sus fachadas ilustradas, las plazas con encanto y la variedad comercial convierten cada visita en una experiencia única.
+          {% endif %}
+        </p>
+        <p>
+          {% if lang == 'gl' %}
+            Patrimonio arquitectónico e comercial único en Galicia. Pasear pola Magdalena é descubrir tendas con personalidade, restaurantes con alma e servizos de confianza, todo nun entorno que combina a tradición co dinamismo.
+          {% else %}
+            Patrimonio arquitectónico y comercial único en Galicia. Pasear por la Magdalena es descubrir tiendas con personalidad, restaurantes con alma y servicios de confianza, todo en un entorno que combina la tradición con el dinamismo.
+          {% endif %}
+        </p>
+        <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn btn--primary" style="margin-top:var(--sp-6);">
+          {% if lang == 'gl' %}Explorar comercios{% else %}Explorar comercios{% endif %}
+        </a>
+      </div>
+      <div class="inst-barrio__image">
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=800x500&location=A+Magdalena,+Ferrol,+Galicia,+Spain&fov=90&heading=45&pitch=0&key=AIzaSyAr_HTQJMRqnhdAF7VHj-KmM9nqy53eAAc" alt="{% if lang == 'gl' %}Rúas do barrio da Magdalena, Ferrol{% else %}Calles del barrio de A Magdalena, Ferrol{% endif %}" loading="lazy" style="width:100%;height:400px;object-fit:cover;border-radius:12px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── DIRECTIVA ───────────────────────────────────────────────── #}
+<section class="inst-section">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <h2 class="inst-section__title">
+      {% if lang == 'gl' %}A nosa directiva{% else %}Nuestra directiva{% endif %}
+    </h2>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--sp-8);">
+      {% if lang == 'gl' %}
+        Un equipo de comerciantes comprometidos co barrio que traballa voluntariamente para que A Magdalena siga sendo referente en Ferrol.
+      {% else %}
+        Un equipo de comerciantes comprometidos con el barrio que trabaja voluntariamente para que A Magdalena siga siendo referente en Ferrol.
+      {% endif %}
+    </p>
+    <div class="inst-team">
+      <div class="inst-team__card">
+        <div class="inst-team__avatar"><i class="fas fa-user-tie"></i></div>
+        <h3>{% if lang == 'gl' %}Presidencia{% else %}Presidencia{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Dirección estratéxica da asociación{% else %}Dirección estratégica de la asociación{% endif %}</p>
+      </div>
+      <div class="inst-team__card">
+        <div class="inst-team__avatar"><i class="fas fa-briefcase"></i></div>
+        <h3>{% if lang == 'gl' %}Secretaría{% else %}Secretaría{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Coordinación e administración{% else %}Coordinación y administración{% endif %}</p>
+      </div>
+      <div class="inst-team__card">
+        <div class="inst-team__avatar"><i class="fas fa-chart-line"></i></div>
+        <h3>{% if lang == 'gl' %}Tesouraría{% else %}Tesorería{% endif %}</h3>
+        <p>{% if lang == 'gl' %}Xestión económica e financeira{% else %}Gestión económica y financiera{% endif %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ── CTA ─────────────────────────────────────────────────────── #}
+<section class="inst-cta">
+  <div class="container" style="text-align:center;">
+    <h2>{% if lang == 'gl' %}Queres formar parte?{% else %}¿Quieres formar parte?{% endif %}</h2>
+    <p>{% if lang == 'gl' %}Únete aos 150+ comercios que xa confían na CCA Ferrol A Magdalena{% else %}Únete a los 150+ comercios que ya confían en la CCA Ferrol A Magdalena{% endif %}</p>
+    <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn btn--white">
+      {% if lang == 'gl' %}Únete ao CCA{% else %}Únete al CCA{% endif %}
+    </a>
+  </div>
+</section>
+
+{% endblock %}

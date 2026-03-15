@@ -1,0 +1,25 @@
+# Generated site (no subir dist/ al repo — se regenera con build.py)
+dist/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Cache de la API
+api/cache/
+*.cache
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Fotos de Google Business (se regeneran con scripts/import_google_photos.py)
+assets/images/comercios/
+
+# Secretos (no subir nunca)
+CREDENTIALS.md
+.env
+*.env

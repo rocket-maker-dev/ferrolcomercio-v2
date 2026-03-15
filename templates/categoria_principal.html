@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}",
+      "item": "{{ base_url }}/{{ lang }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ cat_principal.nombre[lang] or cat_principal.nombre.es }}"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{# BREADCRUMBS #}
+<nav class="breadcrumb" aria-label="{% if lang == 'gl' %}Ruta de navegación{% else %}Ruta de navegación{% endif %}">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      <li class="breadcrumb-item">
+        <a href="{{ base_url }}/{{ lang }}/">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</a>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        {{ cat_principal.nombre[lang] or cat_principal.nombre.es }}
+      </li>
+    </ol>
+  </div>
+</nav>
+
+{# PAGE HEADER #}
+<div class="page-header page-header--cat-principal">
+  <div class="container">
+    <span class="cat-principal-icono"><i class="{{ cat_principal.icono }}" aria-hidden="true"></i></span>
+    <h1>{{ cat_principal.nombre[lang] or cat_principal.nombre.es }}</h1>
+    <p>
+      {% if lang == 'gl' %}
+        {{ comercios | length }} comercio{{ 's' if comercios | length != 1 else '' }} nesta categoría
+      {% else %}
+        {{ comercios | length }} comercio{{ 's' if comercios | length != 1 else '' }} en esta categoría
+      {% endif %}
+    </p>
+  </div>
+</div>
+
+{# SUBCATEGORY CHIPS #}
+{% if subcategorias_activas %}
+<div class="section" style="padding-top:1.5rem; padding-bottom:0;">
+  <div class="container">
+    <div class="subcat-chips" role="list">
+      <button class="subcat-chip active" data-filter="all" role="listitem">
+        {% if lang == 'gl' %}Todos{% else %}Todos{% endif %}
+        <span class="subcat-chip-count">{{ comercios | length }}</span>
+      </button>
+      {% for sub in subcategorias_activas %}
+      <button class="subcat-chip" data-filter="{{ sub.slug }}" role="listitem">
+        {{ sub.nombre[lang] or sub.nombre.es }}
+        <span class="subcat-chip-count">{{ sub.count }}</span>
+      </button>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{# CONTENIDO #}
+<div class="section">
+  <div class="container">
+    <div class="layout-with-sidebar">
+
+      {# LISTA DE COMERCIOS #}
+      <div>
+        {% if comercios %}
+        <div class="card-grid" role="list" id="comercios-grid">
+          {% for comercio in comercios %}
+          <article class="comercio-card" role="listitem" 
+                   aria-labelledby="cat-card-{{ comercio.id }}"
+                   data-subcategoria="{{ comercio.categorias | join(' ') }}">
+            <div class="comercio-card-image">
+              <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/" tabindex="-1" aria-hidden="true">
+                {% if comercio.imagen_destacada %}
+                <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+                     alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+                     width="400" height="300"
+                     loading="lazy"
+                     onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+                {% else %}
+                <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+                     alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+                     width="400" height="300"
+                     loading="lazy">
+                {% endif %}
+              </a>
+              {% if comercio.featured %}
+              <span class="comercio-card-badge comercio-card-badge--featured">
+                <i class="fas fa-star" aria-hidden="true"></i>
+                {% if lang == 'gl' %}Destacado{% else %}Destacado{% endif %}
+              </span>
+              {% elif comercio.categorias %}
+              <span class="comercio-card-badge">{{ comercio.categorias[0] | cat_nombre(categorias, lang) }}</span>
+              {% endif %}
+            </div>
+            <div class="comercio-card-body">
+              {% if comercio.categorias %}
+              <p class="comercio-card-category">
+                {{ comercio.categorias[0] | cat_nombre(categorias, lang) }}
+              </p>
+              {% endif %}
+              <h2 class="comercio-card-title" id="cat-card-{{ comercio.id }}">
+                <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/">
+                  {{ comercio.nombre[lang] or comercio.nombre.es }}
+                </a>
+              </h2>
+              {% set desc = comercio.descripcion[lang] or comercio.descripcion.es or comercio.descripcion.gl %}
+              {% if desc %}
+              <p class="comercio-card-description">{{ desc | striptags | truncate(100) }}</p>
+              {% endif %}
+            </div>
+            <footer class="comercio-card-footer">
+              {% if comercio.rating %}
+              <div class="rating" aria-label="{% if lang == 'gl' %}Valoración{% else %}Valoración{% endif %} {{ comercio.rating }} de 5">
+                <span class="rating-stars" aria-hidden="true">★</span>
+                <span>{{ comercio.rating }}</span>
+                {% if comercio.num_reviews %}
+                <span class="rating-count">({{ comercio.num_reviews }})</span>
+                {% endif %}
+              </div>
+              {% endif %}
+              {% if comercio.direccion %}
+              <div class="comercio-address">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span>{{ comercio.direccion | truncate(35) }}</span>
+              </div>
+              {% endif %}
+              {% if comercio.telefono %}
+              <a href="tel:{{ comercio.telefono }}" class="comercio-phone">
+                <i class="fas fa-phone" aria-hidden="true"></i> {{ comercio.telefono }}
+              </a>
+              {% endif %}
+            </footer>
+          </article>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state">
+          <div class="empty-state-icon" aria-hidden="true"><i class="fas fa-store-slash"></i></div>
+          <h2 class="empty-state-title">
+            {% if lang == 'gl' %}Sen resultados{% else %}Sin resultados{% endif %}
+          </h2>
+          <p class="empty-state-desc">
+            {% if lang == 'gl' %}Non hai comercios nesta categoría de momento.{% else %}No hay comercios en esta categoría de momento.{% endif %}
+          </p>
+          <a href="{{ base_url }}/{{ lang }}/" class="btn btn--primary">
+            {% if lang == 'gl' %}Volver ao inicio{% else %}Volver al inicio{% endif %}
+          </a>
+        </div>
+        {% endif %}
+      </div>
+
+      {# SIDEBAR #}
+      <aside class="filters-sidebar" aria-label="{% if lang == 'gl' %}Filtros e mapa{% else %}Filtros y mapa{% endif %}">
+
+        {# Subcategorías #}
+        <div class="filter-group">
+          <h2 class="filter-group-title">{% if lang == 'gl' %}Subcategorías{% else %}Subcategorías{% endif %}</h2>
+          <div class="filter-group-body">
+            {% for sub in subcategorias_activas %}
+            <a href="{{ base_url }}/{{ lang }}/categoria/{{ sub.slug }}/"
+               style="display:flex; justify-content:space-between; align-items:center; font-size:.875rem; color:var(--color-text); padding:.25rem 0; text-decoration:none;">
+              {{ sub.nombre[lang] or sub.nombre.es }}
+              <span class="badge badge--primary" style="font-size:.6875rem;">{{ sub.count }}</span>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+
+        {# Mapa #}
+        {% if comercios_geo and comercios_geo | length > 0 %}
+        <div class="filter-group" style="overflow:hidden;">
+          <h2 class="filter-group-title">{% if lang == 'gl' %}Mapa{% else %}Mapa{% endif %}</h2>
+          <div id="map-categoria"
+               data-map="auto"
+               data-lat="{{ comercios_geo[0].lat }}"
+               data-lng="{{ comercios_geo[0].lng }}"
+               data-zoom="14"
+               data-marker="false"
+               role="application"
+               aria-label="Mapa de comercios de {{ cat_principal.nombre[lang] or cat_principal.nombre.es }}"
+               style="height:250px; background:var(--color-border);">
+            <noscript>
+              <div class="map-placeholder" style="height:250px;">
+                <i class="fas fa-map" aria-hidden="true"></i>
+                <p>{% if lang == 'gl' %}Mapa da categoría{% else %}Mapa de la categoría{% endif %}</p>
+              </div>
+            </noscript>
+          </div>
+        </div>
+        {% endif %}
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+{# Subcategory filter JS #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var chips = document.querySelectorAll('.subcat-chip');
+  var cards = document.querySelectorAll('#comercios-grid .comercio-card');
+  if (!chips.length) return;
+  chips.forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      chips.forEach(function(c) { c.classList.remove('active'); });
+      this.classList.add('active');
+      var filter = this.dataset.filter;
+      cards.forEach(function(card) {
+        if (filter === 'all' || card.dataset.subcategoria.indexOf(filter) !== -1) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+
+{% endblock %}
+
+{% block map_markers %}
+{% if comercios_geo and comercios_geo | length > 0 %}
+var mapCat = L.map('map-categoria').setView([{{ comercios_geo[0].lat }}, {{ comercios_geo[0].lng }}], 14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  maxZoom: 19
+}).addTo(mapCat);
+var catComerciosData = {{ comercios_geo | tojson }};
+catComerciosData.forEach(function(c) {
+  var popup = '<strong><a href="{{ base_url }}/{{ lang }}/comercio/' + c.slug + '/">' + c.nombre + '</a></strong>';
+  if (c.direccion) popup += '<br><small>' + c.direccion + '</small>';
+  L.marker([c.lat, c.lng]).addTo(mapCat).bindPopup(popup);
+});
+{% endif %}
+{% endblock %}
