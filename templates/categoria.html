@@ -75,7 +75,7 @@
                    aria-labelledby="cat-card-{{ comercio.id }}">
             <div class="ac-comercio-card-image">
               {% if comercio.imagen_destacada %}
-              <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+              <img src="{{ '/assets/images/' + comercio.imagen_destacada if comercio.imagen_destacada and comercio.imagen_destacada.startswith('images/') else 'https://ferrolcomercio.es/wp-content/' + comercio.imagen_destacada }}"
                    alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
                    width="400" height="200"
                    loading="lazy"

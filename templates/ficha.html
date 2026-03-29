@@ -38,7 +38,7 @@
 {# HERO IMAGE — estilo Aceternity con overlay #}
 <div class="ficha-hero-ac" role="img" aria-label="{{ comercio.nombre[lang] or comercio.nombre.es }}">
   {% if comercio.imagen_destacada %}
-  <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+  <img src="{{ '/assets/images/' + comercio.imagen_destacada if comercio.imagen_destacada and comercio.imagen_destacada.startswith('images/') else 'https://ferrolcomercio.es/wp-content/' + comercio.imagen_destacada }}"
        alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
        width="1200" height="400"
        loading="eager"
@@ -60,7 +60,7 @@
     <div class="ficha-header-content">
       <div style="display:flex; gap:1rem; align-items:flex-start; flex:1;">
         {% if comercio.logo %}
-        <img src="/{{ comercio.logo }}"
+        <img src="{{ '/assets/images/' + comercio.logo if comercio.logo.startswith('images') else 'https://ferrolcomercio.es/wp-content/' + comercio.logo }}"
              alt="{{ comercio.nombre[lang] or comercio.nombre.es }} — logo"
              class="ficha-logo"
              width="80" height="80"
@@ -148,7 +148,7 @@
           <div class="gallery-grid">
             {% for img in comercio.imagenes %}
             <div class="gallery-item">
-              <img src="/{{ img }}"
+              <img src="{{ '/assets/images/' + img if img.startswith('images') else 'https://ferrolcomercio.es/wp-content/' + img }}"
                    alt="{{ comercio.nombre[lang] or comercio.nombre.es }} — {% if lang == 'gl' %}imaxe{% else %}imagen{% endif %} {{ loop.index }}"
                    width="300" height="300"
                    loading="lazy"
