@@ -62,6 +62,10 @@
   <link rel="preload" href="{{ base_url }}/assets/css/institucional.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="{{ base_url }}/assets/css/institucional.css"></noscript>
 
+  {# CSS Aceternity — efectos visuales Fase 3 #}
+  <link rel="preload" href="{{ base_url }}/assets/css/aceternity.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ base_url }}/assets/css/aceternity.css"></noscript>
+
   {# Google Fonts: Raleway + Open Sans + Dancing Script #}
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@600&display=swap"></noscript>
@@ -150,8 +154,8 @@
     {% block content %}{% endblock %}
   </main>
 
-  {# FOOTER #}
-  <footer class="site-footer" role="contentinfo">
+  {# FOOTER — Aceternity dark gradient #}
+  <footer class="site-footer ac-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
 
@@ -262,6 +266,23 @@
   {% endif %}
 
   {# Buscador: ahora gestionado por ferrol-ai.js con IA #}
+
+  {# Aceternity JS — efectos Fase 3 #}
+  <script defer src="{{ base_url }}/assets/js/aceternity.js"></script>
+
+  {# Scroll progress bar (ficha) #}
+  {% if page_type == 'ficha' %}
+  <style>
+  .scroll-progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0;
+    background: linear-gradient(90deg, #0663ac, #0984e3, #74b9ff);
+    z-index: 9999; border-radius: 0 2px 2px 0;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+  </style>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+  {% endif %}
 
   {# AI Chat Widget + Search Enhancement #}
   <style>

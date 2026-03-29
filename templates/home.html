@@ -27,101 +27,188 @@
 
 {% block content %}
 
-{# HERO #}
-<section class="site-hero" style="background-image: url('{{ base_url }}/assets/images/header-ferrolcomercio.png');"
-         aria-labelledby="hero-title">
-  <div class="container">
+{# ================================================================== #}
+{# HERO AURORA                                                         #}
+{# ================================================================== #}
+<section class="hero-aurora" aria-labelledby="hero-title">
 
-    <h1 class="hero-title" id="hero-title">
-      {% if lang == 'gl' %}
-        Que necesitas? <span class="hero-typing" data-words="Roupa,Restaurantes,Calzado,Beleza,Ocio,Formación,Agasallos,Servizos" aria-hidden="true"></span><noscript>Comercios</noscript>
-      {% else %}
-        ¿Qué necesitas? <span class="hero-typing" data-words="Ropa,Restaurantes,Calzado,Belleza,Ocio,Formación,Regalos,Servicios" aria-hidden="true"></span><noscript>Comercios</noscript>
-      {% endif %}
-    </h1>
+  {# Capas aurora (JS las anima) #}
+  <div class="hero-aurora-bg" aria-hidden="true">
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+  </div>
 
-    <p class="hero-subtitle">{% if lang == 'gl' %}Atopa tendas, servizos, restaurantes e moito máis.{% else %}Encuentra tiendas, servicios, restaurantes y mucho más.{% endif %}</p>
+  {# Partículas sparkle #}
+  <div class="sparkle-container" data-sparkle-count="24" aria-hidden="true"></div>
 
-    <div class="hero-search" role="search">
-      <form class="hero-search-form" id="search-form" action="{{ base_url }}/{{ lang }}/comercios/" method="get">
-        <label for="hero-q" class="sr-only">
-          {% if lang == 'gl' %}Buscar comercios{% else %}Buscar comercios{% endif %}
-        </label>
-        <input
-          type="search"
-          id="hero-q"
-          name="q"
-          class="hero-search-input"
-          placeholder="{% if lang == 'gl' %}Buscar comercios, categorías...{% else %}Buscar comercios, categorías...{% endif %}"
-          autocomplete="off">
-        <button type="submit" class="hero-search-btn">
-          <i class="fas fa-search" aria-hidden="true"></i>
-          {% if lang == 'gl' %}Buscar{% else %}Buscar{% endif %}
-        </button>
-      </form>
+  {# Degradado inferior #}
+  <div class="hero-aurora-bottom-fade" aria-hidden="true"></div>
+
+  {# Contenido #}
+  <div class="hero-aurora-content">
+    <div class="container" style="padding-top:6rem; padding-bottom:5rem;">
+
+      {# Label superior #}
+      <div class="ac-reveal">
+        <span class="ac-section-label" style="color:rgba(116,185,255,0.9); background:rgba(116,185,255,0.12); border-color:rgba(116,185,255,0.25);">
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Centro Comercial Aberto · A Magdalena, Ferrol{% else %}Centro Comercial Abierto · A Magdalena, Ferrol{% endif %}
+        </span>
+      </div>
+
+      {# Título con typewriter #}
+      <h1 class="ac-section-title" id="hero-title"
+          style="color:#fff; font-size:clamp(2rem,6vw,3.75rem); margin-top:1.25rem; margin-bottom:0;"
+          aria-label="{% if lang == 'gl' %}Que necesitas?{% else %}¿Qué necesitas?{% endif %}">
+        <span class="ac-reveal ac-reveal--delay-1">
+          {% if lang == 'gl' %}Que necesitas?{% else %}¿Qué necesitas?{% endif %}
+        </span>
+        <br>
+        <span class="text-gradient-light hero-typing hero-typing-cursor"
+              data-words="{% if lang == 'gl' %}Roupa,Restaurantes,Calzado,Beleza,Ocio,Agasallos,Servizos,Formación{% else %}Ropa,Restaurantes,Calzado,Belleza,Ocio,Regalos,Servicios,Formación{% endif %}"
+              aria-hidden="true"></span>
+        <noscript><span class="text-gradient-light">{% if lang == 'gl' %}Comercios{% else %}Comercios{% endif %}</span></noscript>
+      </h1>
+
+      {# Subtítulo #}
+      <p class="ac-reveal ac-reveal--delay-2"
+         style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-top:1.25rem; max-width:520px; line-height:1.7;">
+        {% if lang == 'gl' %}
+          Descobre os mellores comercios do barrio de A Magdalena. Moda, gastronomía, beleza e moito máis.
+        {% else %}
+          Descubre los mejores comercios del barrio de A Magdalena. Moda, gastronomía, belleza y mucho más.
+        {% endif %}
+      </p>
+
+      {# Búsqueda Aceternity #}
+      <div class="ac-reveal ac-reveal--delay-3">
+        <form class="ac-search-wrap" id="search-form" role="search"
+              action="{{ base_url }}/{{ lang }}/comercios/" method="get">
+          <label for="hero-q" class="sr-only">
+            {% if lang == 'gl' %}Buscar comercios{% else %}Buscar comercios{% endif %}
+          </label>
+          <i class="fas fa-search ac-search-icon" aria-hidden="true"></i>
+          <input
+            type="search"
+            id="hero-q"
+            name="q"
+            class="ac-search-input"
+            placeholder="{% if lang == 'gl' %}Buscar comercios, categorías...{% else %}Buscar comercios, categorías...{% endif %}"
+            autocomplete="off">
+          <button type="submit" class="ac-search-btn">
+            {% if lang == 'gl' %}Buscar{% else %}Buscar{% endif %}
+          </button>
+        </form>
+      </div>
+
+      {# Chips de categorías populares #}
+      <div class="hero-chips-ac ac-reveal ac-reveal--delay-4">
+        {% for cat in categorias[:8] %}
+        <a href="{{ base_url }}/{{ lang }}/categoria/{{ cat.slug }}/" class="hero-chip-ac">
+          <i class="{{ cat.icon | default('fas fa-store') }}" aria-hidden="true"></i>
+          {{ cat.nombre[lang] or cat.nombre.es }}
+        </a>
+        {% endfor %}
+      </div>
+
+      {# Stats bar #}
+      <div class="ac-reveal ac-reveal--delay-5">
+        <div class="hero-stats-ac">
+          <span>
+            <strong data-counter="{{ total_comercios }}">{{ total_comercios }}</strong>
+            {% if lang == 'gl' %}comercios{% else %}comercios{% endif %}
+          </span>
+          <div class="hero-stats-ac-sep" aria-hidden="true"></div>
+          <span>
+            <strong data-counter="{{ total_categorias }}">{{ total_categorias }}</strong>
+            {% if lang == 'gl' %}categorías{% else %}categorías{% endif %}
+          </span>
+          <div class="hero-stats-ac-sep" aria-hidden="true"></div>
+          <span>
+            <i class="fas fa-map-marker-alt" aria-hidden="true" style="color:#74b9ff;"></i>
+            A Magdalena, Ferrol
+          </span>
+        </div>
+      </div>
+
     </div>
-
-    {# Chips de categorías populares #}
-    <div class="hero-chips">
-      {% for cat in categorias[:8] %}
-      <a href="{{ base_url }}/{{ lang }}/categoria/{{ cat.slug }}/" class="hero-chip">
-        <i class="{{ cat.icon | default('fas fa-store') }}" aria-hidden="true"></i>
-        {{ cat.nombre[lang] or cat.nombre.es }}
-      </a>
-      {% endfor %}
-    </div>
-
-    <p class="hero-stats">
-      {% if lang == 'gl' %}
-        <strong>{{ total_comercios }}</strong> comercios · <strong>{{ total_categorias }}</strong> categorías
-      {% else %}
-        <strong>{{ total_comercios }}</strong> comercios · <strong>{{ total_categorias }}</strong> categorías
-      {% endif %}
-    </p>
   </div>
 </section>
 
-{# CATEGORÍAS #}
-<section class="section section--alt" aria-labelledby="categories-title">
+{# ================================================================== #}
+{# SECCIÓN: CATEGORÍAS BENTO GRID                                      #}
+{# ================================================================== #}
+<section class="ac-section ac-section--alt" aria-labelledby="categories-title">
   <div class="container">
-    <header class="section-header">
-      <span class="section-label" aria-hidden="true">{% if lang == 'gl' %}Explorar{% else %}Explorar{% endif %}</span>
-      <h2 class="section-title" id="categories-title">
-        {% if lang == 'gl' %}Categorías{% else %}Categorías{% endif %}
-      </h2>
-      <p class="section-desc">
+
+    <header style="text-align:center; margin-bottom:2.5rem;">
+      <div class="ac-reveal">
+        <span class="ac-section-label">
+          <i class="fas fa-th-large" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Explorar{% else %}Explorar{% endif %}
+        </span>
+      </div>
+      <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" id="categories-title">
         {% if lang == 'gl' %}
-          Encontra os comercios polo tipo de produto ou servizo
+          <span>Categorías</span> de comercio
         {% else %}
-          Encuentra los comercios por tipo de producto o servicio
+          <span>Categorías</span> de comercio
+        {% endif %}
+      </h2>
+      <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto;">
+        {% if lang == 'gl' %}
+          Atopa o que buscas polo tipo de produto ou servizo
+        {% else %}
+          Encuentra lo que buscas por tipo de producto o servicio
         {% endif %}
       </p>
     </header>
 
-    <div class="category-grid category-grid--principal" role="list">
+    {# Bento Grid de categorías #}
+    <div class="bento-grid ac-reveal ac-reveal--delay-3" role="list">
+      {% set bento_sizes = ['--wide --1', '--tall --big --2', '--med --3', '--sm --4', '--sm --5', '--wide --6', '--med --7', '--sm --8'] %}
       {% for cat in categorias_principales %}
+      {% set size_class = bento_sizes[loop.index0 % 8] %}
       <a href="{{ base_url }}/{{ lang }}/categoria/{{ cat.slug }}/"
-         class="category-card category-card--principal"
+         class="bento-cell bento-cell{{ size_class | replace('--big', '') }}"
          role="listitem"
          aria-label="{{ cat.nombre[lang] or cat.nombre.es }} — {{ cat.count }} {% if lang == 'gl' %}comercios{% else %}comercios{% endif %}">
-        <span class="category-card-icon" aria-hidden="true"><i class="{{ cat.icono }}"></i></span>
-        <span class="category-card-name">{{ cat.nombre[lang] or cat.nombre.es }}</span>
-        <span class="category-card-count">{{ cat.count }} comercios</span>
+        <div class="bento-cell-body">
+          <span class="bento-cell-icon"><i class="{{ cat.icono }}" aria-hidden="true"></i></span>
+          <span class="bento-cell-name">{{ cat.nombre[lang] or cat.nombre.es }}</span>
+          <span class="bento-cell-count">{{ cat.count }} {% if lang == 'gl' %}comercios{% else %}comercios{% endif %}</span>
+        </div>
       </a>
       {% endfor %}
     </div>
+
+    <div class="ac-divider" style="margin:3rem 0 0;"></div>
   </div>
 </section>
 
-{# COMERCIOS DESTACADOS #}
-<section class="section" aria-labelledby="featured-title">
+{# ================================================================== #}
+{# SECCIÓN: INFINITE MARQUEE — Comercios                               #}
+{# ================================================================== #}
+<section class="ac-section" style="padding:4rem 0;" aria-labelledby="featured-title">
   <div class="container">
-    <header class="section-header">
-      <span class="section-label" aria-hidden="true">{% if lang == 'gl' %}Destacados{% else %}Destacados{% endif %}</span>
-      <h2 class="section-title" id="featured-title">
-        {% if lang == 'gl' %}Comercios do CCA{% else %}Comercios del CCA{% endif %}
+    <header style="text-align:center; margin-bottom:2.5rem;">
+      <div class="ac-reveal">
+        <span class="ac-section-label">
+          <i class="fas fa-star" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}
+        </span>
+      </div>
+      <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" id="featured-title">
+        {% if lang == 'gl' %}
+          Comercios do <span>CCA Ferrol</span>
+        {% else %}
+          Comercios del <span>CCA Ferrol</span>
+        {% endif %}
       </h2>
-      <p class="section-desc">
+      <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto;">
         {% if lang == 'gl' %}
           Os nosos comercios asociados no barrio de A Magdalena
         {% else %}
@@ -129,80 +216,152 @@
         {% endif %}
       </p>
     </header>
+  </div>
 
-    <div class="card-grid" role="list">
+  {# Marquee: fila 1 — normal #}
+  <div class="marquee-section ac-reveal ac-reveal--delay-3" aria-hidden="true">
+    <div class="marquee-track">
       {% for comercio in comercios_destacados %}
-      <article class="comercio-card" role="listitem" aria-labelledby="card-title-{{ comercio.id }}">
-        <div class="comercio-card-image">
-          <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/" tabindex="-1" aria-hidden="true">
-            {% if comercio.imagen_destacada %}
-            <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
-                 alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
-                 width="400" height="300"
-                 loading="lazy"
-                 onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
-            {% else %}
-            <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
-                 alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
-                 width="400" height="300"
-                 loading="lazy">
-            {% endif %}
-          </a>
+      <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/"
+         class="marquee-card"
+         tabindex="-1">
+        {% if comercio.imagen_destacada %}
+        <img class="marquee-card-img"
+             src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+             alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+             width="240" height="140"
+             loading="lazy"
+             onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+        {% else %}
+        <img class="marquee-card-img"
+             src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+             alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+             width="240" height="140"
+             loading="lazy">
+        {% endif %}
+        <div class="marquee-card-body">
+          {% if comercio.categorias %}
+          <p class="marquee-card-cat">{{ comercio.categorias[0] | cat_nombre(categorias, lang) }}</p>
+          {% endif %}
+          <p class="marquee-card-name">{{ comercio.nombre[lang] or comercio.nombre.es }}</p>
+          {% if comercio.direccion %}
+          <p class="marquee-card-addr">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            {{ comercio.direccion | truncate(30) }}
+          </p>
+          {% endif %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# Grid accesible para no-JS y lectores de pantalla #}
+  <div class="container" style="margin-top:2.5rem;">
+    <div class="ac-card-grid" role="list">
+      {% for comercio in comercios_destacados[:6] %}
+      <article class="ac-comercio-card spotlight-card spotlight-card--border"
+               role="listitem"
+               aria-labelledby="ac-card-{{ comercio.id }}">
+        <div class="ac-comercio-card-image">
+          {% if comercio.imagen_destacada %}
+          <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+               alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+               width="400" height="200"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+          {% else %}
+          <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+               alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+               width="400" height="200"
+               loading="lazy">
+          {% endif %}
           {% if comercio.featured %}
-          <span class="comercio-card-badge comercio-card-badge--featured">
+          <span class="ac-card-badge ac-card-badge--featured">
             <i class="fas fa-star" aria-hidden="true"></i>
             {% if lang == 'gl' %}Destacado{% else %}Destacado{% endif %}
           </span>
           {% elif comercio.categorias %}
-          <span class="comercio-card-badge">{{ comercio.categorias[0] | cat_nombre(categorias, lang) }}</span>
+          <span class="ac-card-badge">{{ comercio.categorias[0] | cat_nombre(categorias, lang) }}</span>
           {% endif %}
         </div>
-        <div class="comercio-card-body">
+        <div class="ac-comercio-card-body">
           {% if comercio.categorias %}
-          <p class="comercio-card-category">
-            {{ comercio.categorias[0] | cat_nombre(categorias, lang) }}
-          </p>
+          <p class="ac-comercio-card-cat">{{ comercio.categorias[0] | cat_nombre(categorias, lang) }}</p>
           {% endif %}
-          <h3 class="comercio-card-title" id="card-title-{{ comercio.id }}">
-            <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/">
+          <h3 class="ac-comercio-card-title" id="ac-card-{{ comercio.id }}">
+            <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/"
+               style="color:inherit; text-decoration:none;">
               {{ comercio.nombre[lang] or comercio.nombre.es }}
             </a>
           </h3>
           {% set desc = comercio.descripcion[lang] or comercio.descripcion.es or comercio.descripcion.gl %}
           {% if desc %}
-          <p class="comercio-card-description">{{ desc | striptags | truncate(100) }}</p>
+          <p class="ac-comercio-card-desc">{{ desc | striptags | truncate(100) }}</p>
           {% endif %}
         </div>
-        <footer class="comercio-card-footer">
+        <footer class="ac-comercio-card-footer">
           {% if comercio.rating %}
-          <div class="rating" aria-label="{% if lang == 'gl' %}Valoración{% else %}Valoración{% endif %}: {{ comercio.rating }} de 5">
-            <span class="rating-stars" aria-hidden="true">★</span>
-            <span>{{ comercio.rating }}</span>
+          <div class="ac-rating" aria-label="{% if lang == 'gl' %}Valoración{% else %}Valoración{% endif %}: {{ comercio.rating }}">
+            <span class="ac-rating-stars" aria-hidden="true">★</span>
+            <span class="ac-rating-value">{{ comercio.rating }}</span>
             {% if comercio.num_reviews %}
-            <span class="rating-count">({{ comercio.num_reviews }})</span>
+            <span class="ac-rating-count">({{ comercio.num_reviews }})</span>
             {% endif %}
           </div>
           {% endif %}
           {% if comercio.direccion %}
-          <div class="comercio-address">
+          <span style="font-size:0.75rem; color:var(--color-text-muted);">
             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            <span>{{ comercio.direccion | truncate(35) }}</span>
-          </div>
-          {% endif %}
-          {% if comercio.telefono %}
-          <a href="tel:{{ comercio.telefono }}" class="comercio-phone">
-            <i class="fas fa-phone" aria-hidden="true"></i> {{ comercio.telefono }}
-          </a>
+            {{ comercio.direccion | truncate(28) }}
+          </span>
           {% endif %}
         </footer>
       </article>
       {% endfor %}
     </div>
 
-    <div style="text-align:center; margin-top:var(--sp-10);">
-      <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn btn--secondary btn--lg">
+    <div style="text-align:center; margin-top:3rem;" class="ac-reveal">
+      <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn-ac">
         {% if lang == 'gl' %}Ver todos os comercios{% else %}Ver todos los comercios{% endif %}
         <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+{# ================================================================== #}
+{# CTA — ÚNETE AL CCA                                                  #}
+{# ================================================================== #}
+<section class="ac-section ac-section--dark" aria-labelledby="cta-title">
+  <div class="container" style="text-align:center; position:relative; z-index:1;">
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-handshake" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Únete{% else %}Únete{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" id="cta-title" style="color:#fff;">
+      {% if lang == 'gl' %}
+        Forma parte do <span>CCA Ferrol</span>
+      {% else %}
+        Forma parte del <span>CCA Ferrol</span>
+      {% endif %}
+    </h2>
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
+      {% if lang == 'gl' %}
+        Únete á nosa asociación e dá visibilidade ao teu comercio. Máis de 97 comercios xa confían en nós.
+      {% else %}
+        Únete a nuestra asociación y da visibilidad a tu comercio. Más de 97 comercios ya confían en nosotros.
+      {% endif %}
+    </p>
+    <div class="ac-reveal ac-reveal--delay-3" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn-ac">
+        {% if lang == 'gl' %}Quero asociarme{% else %}Quiero asociarme{% endif %}
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+      <a href="{{ base_url }}/{{ lang }}/sobre-nos/" class="btn-ac btn-ac--outline">
+        {% if lang == 'gl' %}Saber máis{% else %}Saber más{% endif %}
       </a>
     </div>
   </div>

@@ -38,11 +38,19 @@
   </div>
 </nav>
 
-{# PAGE HEADER #}
-<div class="page-header">
+{# PAGE HEADER — Aceternity gradient #}
+<div class="page-header" style="background:linear-gradient(135deg, #020b18 0%, #0a1628 60%, #0663ac 100%); color:#fff; padding:3rem 0;">
   <div class="container">
-    <h1>{{ categoria.nombre[lang] or categoria.nombre.es }}</h1>
-    <p>
+    <div class="ac-reveal">
+      <span class="ac-section-label" style="color:rgba(116,185,255,0.9); background:rgba(116,185,255,0.12); border-color:rgba(116,185,255,0.25); margin-bottom:0.75rem;">
+        <i class="{{ categoria.icono | default('fas fa-store') }}" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Categoría{% else %}Categoría{% endif %}
+      </span>
+    </div>
+    <h1 class="ac-section-title ac-reveal ac-reveal--delay-1" style="color:#fff; margin-bottom:0.5rem;">
+      {{ categoria.nombre[lang] or categoria.nombre.es }}
+    </h1>
+    <p class="ac-reveal ac-reveal--delay-2" style="color:rgba(255,255,255,0.65); font-size:1rem;">
       {% if lang == 'gl' %}
         {{ comercios | length }} comercio{{ 's' if comercios | length != 1 else '' }} nesta categoría
       {% else %}
@@ -57,63 +65,64 @@
   <div class="container">
     <div class="layout-with-sidebar">
 
-      {# LISTA DE COMERCIOS #}
+      {# LISTA DE COMERCIOS — Aceternity cards #}
       <div>
         {% if comercios %}
-        <div class="card-grid" role="list">
+        <div class="ac-card-grid" role="list">
           {% for comercio in comercios %}
-          <article class="comercio-card" role="listitem" aria-labelledby="cat-card-{{ comercio.id }}">
-            <div class="comercio-card-image">
-              <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/" tabindex="-1" aria-hidden="true">
-                {% if comercio.imagen_destacada %}
-                <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
-                     alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
-                     width="400" height="300"
-                     loading="lazy"
-                     onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
-                {% else %}
-                <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
-                     alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
-                     width="400" height="300"
-                     loading="lazy">
-                {% endif %}
-              </a>
+          <article class="ac-comercio-card spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-{{ [1,2,3,4,5,6][loop.index0 % 6] }}"
+                   role="listitem"
+                   aria-labelledby="cat-card-{{ comercio.id }}">
+            <div class="ac-comercio-card-image">
+              {% if comercio.imagen_destacada %}
+              <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
+                   alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+                   width="400" height="200"
+                   loading="lazy"
+                   onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+              {% else %}
+              <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+                   alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
+                   width="400" height="200"
+                   loading="lazy">
+              {% endif %}
               {% if comercio.featured %}
-              <span class="comercio-card-badge comercio-card-badge--featured">
+              <span class="ac-card-badge ac-card-badge--featured">
                 <i class="fas fa-star" aria-hidden="true"></i>
                 {% if lang == 'gl' %}Destacado{% else %}Destacado{% endif %}
               </span>
               {% endif %}
             </div>
-            <div class="comercio-card-body">
-              <h2 class="comercio-card-title" id="cat-card-{{ comercio.id }}">
-                <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/">
+            <div class="ac-comercio-card-body">
+              <h2 class="ac-comercio-card-title" id="cat-card-{{ comercio.id }}">
+                <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/"
+                   style="color:inherit; text-decoration:none;">
                   {{ comercio.nombre[lang] or comercio.nombre.es }}
                 </a>
               </h2>
               {% set desc = comercio.descripcion[lang] or comercio.descripcion.es or comercio.descripcion.gl %}
               {% if desc %}
-              <p class="comercio-card-description">{{ desc | striptags | truncate(100) }}</p>
+              <p class="ac-comercio-card-desc">{{ desc | striptags | truncate(100) }}</p>
               {% endif %}
             </div>
-            <footer class="comercio-card-footer">
+            <footer class="ac-comercio-card-footer">
               {% if comercio.rating %}
-              <div class="rating" aria-label="{% if lang == 'gl' %}Valoración{% else %}Valoración{% endif %} {{ comercio.rating }} de 5">
-                <span class="rating-stars" aria-hidden="true">★</span>
-                <span>{{ comercio.rating }}</span>
+              <div class="ac-rating" aria-label="{% if lang == 'gl' %}Valoración{% else %}Valoración{% endif %} {{ comercio.rating }} de 5">
+                <span class="ac-rating-stars" aria-hidden="true">★</span>
+                <span class="ac-rating-value">{{ comercio.rating }}</span>
                 {% if comercio.num_reviews %}
-                <span class="rating-count">({{ comercio.num_reviews }})</span>
+                <span class="ac-rating-count">({{ comercio.num_reviews }})</span>
                 {% endif %}
               </div>
               {% endif %}
               {% if comercio.direccion %}
-              <div class="comercio-address">
+              <span style="font-size:0.75rem; color:var(--color-text-muted);">
                 <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                <span>{{ comercio.direccion | truncate(35) }}</span>
-              </div>
+                {{ comercio.direccion | truncate(28) }}
+              </span>
               {% endif %}
               {% if comercio.telefono %}
-              <a href="tel:{{ comercio.telefono }}" class="comercio-phone">
+              <a href="tel:{{ comercio.telefono }}" style="font-size:0.75rem; color:var(--color-primary);">
                 <i class="fas fa-phone" aria-hidden="true"></i> {{ comercio.telefono }}
               </a>
               {% endif %}

@@ -35,8 +35,8 @@
   </div>
 </nav>
 
-{# HERO IMAGE #}
-<div class="ficha-hero" role="img" aria-label="{{ comercio.nombre[lang] or comercio.nombre.es }}">
+{# HERO IMAGE — estilo Aceternity con overlay #}
+<div class="ficha-hero-ac" role="img" aria-label="{{ comercio.nombre[lang] or comercio.nombre.es }}">
   {% if comercio.imagen_destacada %}
   <img src="{{ assets_url if comercio.imagen_destacada and comercio.imagen_destacada[:6] == 'images' else img_base_url }}/{{ comercio.imagen_destacada }}"
        alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
@@ -51,7 +51,7 @@
        loading="eager"
        fetchpriority="high">
   {% endif %}
-  <div class="ficha-hero-overlay" aria-hidden="true"></div>
+  <div class="ficha-hero-ac-overlay" aria-hidden="true"></div>
 </div>
 
 {# FICHA HEADER #}
@@ -114,8 +114,8 @@
   </div>
 </header>
 
-{# CUERPO FICHA #}
-<div class="section">
+{# CUERPO FICHA — Aceternity #}
+<div class="section ac-reveal">
   <div class="container">
 
     {% if lang_notice %}
@@ -186,9 +186,9 @@
       {# SIDEBAR #}
       <aside class="ficha-sidebar" aria-label="{% if lang == 'gl' %}Información de contacto{% else %}Información de contacto{% endif %}">
 
-        {# Rating card #}
+        {# Rating card — Aceternity spotlight #}
         {% if comercio.rating %}
-        <div class="sidebar-card">
+        <div class="sidebar-card spotlight-card spotlight-card--border">
           <div class="sidebar-card-body" style="text-align:center; padding:1.5rem;">
             <div style="font-size:2.5rem; font-weight:800; color:var(--color-primary); font-family:var(--font-heading);">{{ comercio.rating }}</div>
             <div class="rating" style="justify-content:center; margin:.5rem 0;">
@@ -203,8 +203,8 @@
         </div>
         {% endif %}
 
-        {# Contacto #}
-        <div class="sidebar-card">
+        {# Contacto — Aceternity spotlight #}
+        <div class="sidebar-card spotlight-card spotlight-card--border">
           <h3 class="sidebar-card-title">{% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}</h3>
           <div class="sidebar-card-body">
             <ul class="contact-list">
