@@ -2,12 +2,25 @@
  * aceternity.js — CCA Ferrol Comercio v2 · Efectos Aceternity-style
  * HTML/CSS/JS puro · Sin dependencias externas
  * Autor: Halo (rocket-maker-dev)
+ * Enhanced by: Alonova (premium polish)
  */
 (function () {
   'use strict';
 
   /* ------------------------------------------------------------------ */
-  /* 0. Reducción de movimiento                                          */
+  /* 0. PREVENT FOUC — Add loaded class when ready                       */
+  /* ------------------------------------------------------------------ */
+  document.documentElement.classList.add('js-loading');
+
+  window.addEventListener('DOMContentLoaded', function() {
+    requestAnimationFrame(function() {
+      document.documentElement.classList.remove('js-loading');
+      document.documentElement.classList.add('js-loaded');
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* 0.5. Reducción de movimiento                                        */
   /* ------------------------------------------------------------------ */
   var prefersReducedMotion =
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -454,5 +467,208 @@
       bar.style.width = Math.min(progress, 100) + '%';
     }, { passive: true });
   })();
+
+  /* ------------------------------------------------------------------ */
+  /* 16. AURORA PARALLAX — Scroll parallax effect                        */
+  /* ------------------------------------------------------------------ */
+  (function initAuroraParallax() {
+    if (prefersReducedMotion) return;
+
+    var heroAurora = document.querySelector('.hero-aurora');
+    if (!heroAurora) return;
+
+    var auroraLayers = heroAurora.querySelectorAll('.aurora-layer');
+    if (!auroraLayers.length) return;
+
+    var ticking = false;
+
+    function updateParallax() {
+      var scrolled = window.scrollY;
+      var heroHeight = heroAurora.offsetHeight;
+
+      // Only apply parallax when hero is in view
+      if (scrolled < heroHeight) {
+        auroraLayers.forEach(function(layer, index) {
+          var speed = (index + 1) * 0.15; // Different speeds for depth
+          var yPos = scrolled * speed;
+          layer.style.transform = 'translateY(' + yPos + 'px)';
+        });
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 17. SMOOTH SCROLL TO ANCHOR LINKS                                   */
+  /* ------------------------------------------------------------------ */
+  (function initSmoothScroll() {
+    if (prefersReducedMotion) return;
+
+    document.addEventListener('click', function(e) {
+      var target = e.target.closest('a[href^="#"]');
+      if (!target) return;
+
+      var href = target.getAttribute('href');
+      if (!href || href === '#') return;
+
+      var targetEl = document.querySelector(href);
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      var offsetTop = targetEl.getBoundingClientRect().top + window.scrollY;
+      var headerHeight = document.querySelector('.site-header')?.offsetHeight || 0;
+
+      window.scrollTo({
+        top: offsetTop - headerHeight - 20,
+        behavior: 'smooth'
+      });
+    });
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 18. LAZY LOAD IMAGES — Fade in when loaded                         */
+  /* ------------------------------------------------------------------ */
+  (function initImageLazyLoad() {
+    var images = document.querySelectorAll('img[loading="lazy"]');
+    if (!images.length) return;
+
+    images.forEach(function(img) {
+      if (img.complete) {
+        img.style.opacity = '1';
+      } else {
+        img.style.opacity = '0';
+        img.style.transition = 'opacity 0.4s ease';
+
+        img.addEventListener('load', function() {
+          img.style.opacity = '1';
+        });
+
+        img.addEventListener('error', function() {
+          img.style.opacity = '1';
+        });
+      }
+    });
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 19. VIEWPORT HEIGHT FIX — Mobile browsers                           */
+  /* ------------------------------------------------------------------ */
+  (function initViewportFix() {
+    function setVH() {
+      var vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', vh + 'px');
+    }
+
+    setVH();
+    window.addEventListener('resize', setVH, { passive: true });
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 20. ENHANCED SCROLL REVEAL — Staggered animations                   */
+  /* ------------------------------------------------------------------ */
+  (function enhanceScrollReveal() {
+    if (prefersReducedMotion) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    // Target elements with stagger
+    var staggerGroups = document.querySelectorAll('.ac-card-grid, .bento-grid, .hero-chips-ac');
+
+    staggerGroups.forEach(function(group) {
+      var children = Array.from(group.children);
+      children.forEach(function(child, index) {
+        if (!child.classList.contains('ac-reveal')) {
+          child.classList.add('ac-reveal');
+          child.style.transitionDelay = (index * 0.05) + 's';
+        }
+      });
+    });
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 21. PERFORMANCE MONITORING — Log load time                          */
+  /* ------------------------------------------------------------------ */
+  (function logPerformance() {
+    if (!window.performance) return;
+
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var perfData = window.performance.timing;
+        var loadTime = perfData.loadEventEnd - perfData.navigationStart;
+
+        if (loadTime > 0 && loadTime < 60000) {
+          console.log('✨ CCA Ferrol v2 loaded in ' + (loadTime / 1000).toFixed(2) + 's');
+        }
+      }, 0);
+    });
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 22. GRADIENT ANIMATION — Animated gradient text                     */
+  /* ------------------------------------------------------------------ */
+  (function initGradientAnimation() {
+    if (prefersReducedMotion) return;
+
+    var gradientTexts = document.querySelectorAll('.text-gradient, .text-gradient-light');
+    if (!gradientTexts.length) return;
+
+    gradientTexts.forEach(function(el) {
+      el.style.backgroundSize = '200% 200%';
+      el.style.animation = 'gradient-shift 8s ease infinite';
+    });
+
+    // Add keyframes if not exists
+    var styleEl = document.createElement('style');
+    styleEl.textContent = `
+      @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+    `;
+    document.head.appendChild(styleEl);
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 23. PRELOAD CRITICAL IMAGES — Faster LCP                            */
+  /* ------------------------------------------------------------------ */
+  (function preloadCriticalImages() {
+    var heroImage = document.querySelector('.ficha-hero-ac img, .hero-aurora img');
+    if (heroImage && heroImage.getAttribute('loading') === 'eager') {
+      var link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = heroImage.src;
+      document.head.appendChild(link);
+    }
+  })();
+
+  /* ------------------------------------------------------------------ */
+  /* 24. REDUCED MOTION DETECTION — Update UI                            */
+  /* ------------------------------------------------------------------ */
+  (function handleMotionPreference() {
+    var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function handleChange(e) {
+      if (e.matches) {
+        document.documentElement.classList.add('reduce-motion');
+      } else {
+        document.documentElement.classList.remove('reduce-motion');
+      }
+    }
+
+    handleChange(motionQuery);
+    motionQuery.addEventListener('change', handleChange);
+  })();
+
+  console.log('🎨 Aceternity effects initialized — CCA Ferrol Comercio v2');
 
 })();

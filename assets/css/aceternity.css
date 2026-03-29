@@ -40,6 +40,43 @@
   --dur-base:      250ms;
   --dur-slow:      400ms;
   --dur-slower:    600ms;
+
+  /* Typography Scale */
+  --font-xs:       0.75rem;    /* 12px */
+  --font-sm:       0.875rem;   /* 14px */
+  --font-base:     1rem;       /* 16px */
+  --font-lg:       1.125rem;   /* 18px */
+  --font-xl:       1.25rem;    /* 20px */
+  --font-2xl:      1.5rem;     /* 24px */
+  --font-3xl:      1.875rem;   /* 30px */
+  --font-4xl:      2.25rem;    /* 36px */
+  --font-5xl:      3rem;       /* 48px */
+
+  /* Spacing Scale */
+  --space-xs:      0.25rem;    /* 4px */
+  --space-sm:      0.5rem;     /* 8px */
+  --space-md:      1rem;       /* 16px */
+  --space-lg:      1.5rem;     /* 24px */
+  --space-xl:      2rem;       /* 32px */
+  --space-2xl:     3rem;       /* 48px */
+  --space-3xl:     4rem;       /* 64px */
+
+  /* Radius Scale */
+  --radius-sm:     0.375rem;   /* 6px */
+  --radius-md:     0.5rem;     /* 8px */
+  --radius-lg:     0.75rem;    /* 12px */
+  --radius-xl:     1rem;       /* 16px */
+  --radius-2xl:    1.5rem;     /* 24px */
+  --radius-full:   9999px;
+
+  /* Z-index Scale */
+  --z-dropdown:    1000;
+  --z-sticky:      1020;
+  --z-fixed:       1030;
+  --z-modal-backdrop: 1040;
+  --z-modal:       1050;
+  --z-popover:     1060;
+  --z-tooltip:     1070;
 }
 
 /* ------------------------------------------------------------------
@@ -1218,5 +1255,383 @@
 
   .tilt-card-inner {
     transition: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   24. PREMIUM POLISH — Custom scrollbar, selection, focus states
+   ------------------------------------------------------------------ */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020b18;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--aurora-1), var(--aurora-2));
+  border-radius: 5px;
+  border: 2px solid #020b18;
+  transition: background var(--dur-base) ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--aurora-2), var(--aurora-3));
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--aurora-1) #020b18;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Text selection color */
+::selection {
+  background: var(--ac-primary-glow);
+  color: #fff;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--ac-primary-glow);
+  color: #fff;
+  text-shadow: none;
+}
+
+/* Focus visible states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--ac-blue-light);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default focus outline but keep focus-visible */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ------------------------------------------------------------------
+   25. AURORA PARALLAX — Enhanced aurora with subtle parallax
+   ------------------------------------------------------------------ */
+.hero-aurora-bg {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.aurora-layer {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Different parallax depths for aurora layers */
+.aurora-layer:nth-child(1) {
+  transform: translateZ(0px);
+}
+
+.aurora-layer:nth-child(2) {
+  transform: translateZ(-20px) scale(1.02);
+}
+
+.aurora-layer:nth-child(3) {
+  transform: translateZ(-40px) scale(1.04);
+}
+
+.aurora-layer:nth-child(4) {
+  transform: translateZ(-60px) scale(1.06);
+}
+
+.aurora-layer:nth-child(5) {
+  transform: translateZ(-80px) scale(1.08);
+}
+
+/* ------------------------------------------------------------------
+   26. ENHANCED TYPOGRAPHY — Crystal clear hierarchy
+   ------------------------------------------------------------------ */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.015em;
+}
+
+/* ------------------------------------------------------------------
+   27. GLOW EFFECTS — Refined hover glow animations
+   ------------------------------------------------------------------ */
+.btn-ac,
+.ac-search-btn,
+.hero-chip-ac {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ac::after,
+.ac-search-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn-ac:hover::after,
+.ac-search-btn:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* ------------------------------------------------------------------
+   28. MICRO-ANIMATIONS — Perfect easing curves
+   ------------------------------------------------------------------ */
+.bento-cell,
+.ac-comercio-card,
+.marquee-card,
+.spotlight-card {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s ease;
+}
+
+/* Refined hover with subtle scale and lift */
+.bento-cell:hover,
+.ac-comercio-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.marquee-card:hover {
+  transform: translateY(-6px) scale(1.03);
+}
+
+/* ------------------------------------------------------------------
+   29. GRADIENT ORBS — Animated gradient backgrounds
+   ------------------------------------------------------------------ */
+.hero-aurora-content {
+  position: relative;
+}
+
+.hero-aurora-content::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(116, 185, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float-orb 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-aurora-content::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(9, 132, 227, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float-orb 10s ease-in-out infinite alternate-reverse;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes float-orb {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(20px, -15px) scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-10px, 10px) scale(0.95);
+    opacity: 0.7;
+  }
+}
+
+/* ------------------------------------------------------------------
+   30. REFINED CARD SHADOWS — Depth and dimension
+   ------------------------------------------------------------------ */
+.ac-comercio-card {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.ac-comercio-card:hover {
+  box-shadow:
+    0 20px 48px rgba(6, 99, 172, 0.14),
+    0 12px 24px rgba(6, 99, 172, 0.08),
+    0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.spotlight-card {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.spotlight-card:hover {
+  box-shadow:
+    0 24px 56px rgba(6, 99, 172, 0.18),
+    0 16px 32px rgba(6, 99, 172, 0.1),
+    0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ------------------------------------------------------------------
+   31. LOADING STATES — Prevent FOUC
+   ------------------------------------------------------------------ */
+.js-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.js-loaded {
+  opacity: 1;
+}
+
+/* Skeleton loading for images */
+.ac-comercio-card-image,
+.marquee-card-img,
+.ficha-hero-ac {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-light) 0%,
+    rgba(116, 185, 255, 0.1) 50%,
+    var(--color-primary-light) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+.ac-comercio-card-image img,
+.marquee-card-img,
+.ficha-hero-ac img {
+  animation: fade-in 0.4s ease;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------------------------
+   32. REFINED NOISE TEXTURE — Enhanced visual texture
+   ------------------------------------------------------------------ */
+.hero-aurora-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity: 0.45;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ------------------------------------------------------------------
+   33. SMOOTH TRANSITIONS — All elements
+   ------------------------------------------------------------------ */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a, button, input, textarea, select {
+  transition-duration: 0.2s;
+}
+
+/* ------------------------------------------------------------------
+   34. RESPONSIVE ENHANCEMENTS — Better mobile experience
+   ------------------------------------------------------------------ */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .aurora-layer {
+    filter: blur(60px);
+  }
+
+  .hero-aurora-content::before,
+  .hero-aurora-content::after {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   35. PRINT STYLES — Clean print output
+   ------------------------------------------------------------------ */
+@media print {
+  .hero-aurora-bg,
+  .sparkle-container,
+  .site-header,
+  .site-footer,
+  .mobile-nav,
+  .ai-chat-btn,
+  .ai-chat-panel,
+  .scroll-progress-bar {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
   }
 }
