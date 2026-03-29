@@ -11,7 +11,7 @@
   "isPartOf": {
     "@type": "WebSite",
     "name": "CCA Ferrol Comercio",
-    "url": "{{ base_url }}/{{ lang }}/"
+    "url": "/{{ lang }}/"
   }
 }
 </script>
@@ -20,7 +20,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "/{{ lang }}/"},
     {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Eventos e Campañas{% else %}Eventos y Campañas{% endif %}"}
   ]
 }
@@ -29,69 +29,89 @@
 
 {% block content %}
 
-{# ── HERO ────────────────────────────────────────────────────── #}
-<section class="inst-hero inst-hero--compact" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80')">
-  <div class="inst-hero__overlay"></div>
-  <div class="container inst-hero__content">
-    <h1 class="inst-hero__title">
-      {% if lang == 'gl' %}Eventos e Campañas{% else %}Eventos y Campañas{% endif %}
-    </h1>
-    <p class="inst-hero__subtitle">
-      {% if lang == 'gl' %}Todo o que pasa no barrio da Magdalena{% else %}Todo lo que pasa en el barrio de A Magdalena{% endif %}
-    </p>
+{# ── HERO AURORA ──────────────────────────────────────────────── #}
+<section class="hero-aurora" style="min-height:70vh;" aria-labelledby="eventos-hero-title">
+  <div class="hero-aurora-bg" aria-hidden="true">
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+  </div>
+  <div class="sparkle-container" data-sparkle-count="16" aria-hidden="true"></div>
+  <div class="hero-aurora-bottom-fade" aria-hidden="true"></div>
+  <div class="hero-aurora-content">
+    <div class="container" style="padding-top:4rem; padding-bottom:4rem; text-align:center;">
+      <div class="ac-reveal">
+        <span class="ac-section-label" style="color:rgba(116,185,255,0.9); background:rgba(116,185,255,0.12); border-color:rgba(116,185,255,0.25);">
+          <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}
+        </span>
+      </div>
+      <h1 class="ac-section-title ac-reveal ac-reveal--delay-1" id="eventos-hero-title" style="color:#fff; margin-top:1rem;">
+        {% if lang == 'gl' %}Todo o que pasa no <span class="text-gradient-light">barrio da Magdalena</span>{% else %}Todo lo que pasa en el <span class="text-gradient-light">barrio de A Magdalena</span>{% endif %}
+      </h1>
+      <p class="ac-reveal ac-reveal--delay-2" style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-top:1.25rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        {% if lang == 'gl' %}Eventos, campañas e actividades que dinamizan o comercio local{% else %}Eventos, campañas y actividades que dinamizan el comercio local{% endif %}
+      </p>
+    </div>
   </div>
 </section>
 
 {# ── PRÓXIMOS EVENTOS ────────────────────────────────────────── #}
-<section class="inst-section">
+<section class="ac-section">
   <div class="container">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Próximos eventos{% else %}Próximos eventos{% endif %}
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Próximos <span>eventos</span>{% else %}Próximos <span>eventos</span>{% endif %}
     </h2>
-    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 3rem;">
       {% if lang == 'gl' %}Actividades e eventos programados no barrio{% else %}Actividades y eventos programados en el barrio{% endif %}
     </p>
-    <div class="inst-events-grid">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
       {# Evento ejemplo 1 #}
-      <div class="inst-event-card">
-        <div class="inst-event-card__image" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80')">
-          <div class="inst-event-card__date">
-            <span class="inst-event-card__day">15</span>
-            <span class="inst-event-card__month">{% if lang == 'gl' %}MAR{% else %}MAR{% endif %}</span>
+      <div class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-3" style="border-radius:16px; overflow:hidden;">
+        <div style="position:relative; height:200px; background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80'); background-size:cover; background-position:center;">
+          <div style="position:absolute; top:1rem; right:1rem; background:var(--ac-primary); color:#fff; padding:0.5rem 0.875rem; border-radius:12px; text-align:center; backdrop-filter:blur(8px);">
+            <span style="display:block; font-size:1.75rem; font-weight:900; line-height:1;">15</span>
+            <span style="display:block; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-top:0.125rem;">{% if lang == 'gl' %}MAR{% else %}MAR{% endif %}</span>
           </div>
         </div>
-        <div class="inst-event-card__body">
-          <h3>{% if lang == 'gl' %}Semana do Comercio Local{% else %}Semana del Comercio Local{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Unha semana de descontos, actividades e sorpresas en todas as tendas do barrio.{% else %}Una semana de descuentos, actividades y sorpresas en todas las tiendas del barrio.{% endif %}</p>
-          <span class="inst-event-card__tag">{% if lang == 'gl' %}Campaña{% else %}Campaña{% endif %}</span>
+        <div style="padding:1.5rem;">
+          <span style="display:inline-block; padding:0.25rem 0.625rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">{% if lang == 'gl' %}Campaña{% else %}Campaña{% endif %}</span>
+          <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Semana do Comercio Local{% else %}Semana del Comercio Local{% endif %}</h3>
+          <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Unha semana de descontos, actividades e sorpresas en todas as tendas do barrio.{% else %}Una semana de descuentos, actividades y sorpresas en todas las tiendas del barrio.{% endif %}</p>
         </div>
       </div>
       {# Evento ejemplo 2 #}
-      <div class="inst-event-card">
-        <div class="inst-event-card__image" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80')">
-          <div class="inst-event-card__date">
-            <span class="inst-event-card__day">21</span>
-            <span class="inst-event-card__month">{% if lang == 'gl' %}MAR{% else %}MAR{% endif %}</span>
+      <div class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-4" style="border-radius:16px; overflow:hidden;">
+        <div style="position:relative; height:200px; background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80'); background-size:cover; background-position:center;">
+          <div style="position:absolute; top:1rem; right:1rem; background:var(--ac-primary); color:#fff; padding:0.5rem 0.875rem; border-radius:12px; text-align:center; backdrop-filter:blur(8px);">
+            <span style="display:block; font-size:1.75rem; font-weight:900; line-height:1;">21</span>
+            <span style="display:block; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-top:0.125rem;">{% if lang == 'gl' %}MAR{% else %}MAR{% endif %}</span>
           </div>
         </div>
-        <div class="inst-event-card__body">
-          <h3>{% if lang == 'gl' %}Mercado de Primavera{% else %}Mercado de Primavera{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Os comercios saen á rúa con postos ao aire libre, música e gastronomía local.{% else %}Los comercios salen a la calle con puestos al aire libre, música y gastronomía local.{% endif %}</p>
-          <span class="inst-event-card__tag">{% if lang == 'gl' %}Evento{% else %}Evento{% endif %}</span>
+        <div style="padding:1.5rem;">
+          <span style="display:inline-block; padding:0.25rem 0.625rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">{% if lang == 'gl' %}Evento{% else %}Evento{% endif %}</span>
+          <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Mercado de Primavera{% else %}Mercado de Primavera{% endif %}</h3>
+          <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Os comercios saen á rúa con postos ao aire libre, música e gastronomía local.{% else %}Los comercios salen a la calle con puestos al aire libre, música y gastronomía local.{% endif %}</p>
         </div>
       </div>
       {# Evento ejemplo 3 #}
-      <div class="inst-event-card">
-        <div class="inst-event-card__image" style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&q=80')">
-          <div class="inst-event-card__date">
-            <span class="inst-event-card__day">10</span>
-            <span class="inst-event-card__month">{% if lang == 'gl' %}ABR{% else %}ABR{% endif %}</span>
+      <div class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-5" style="border-radius:16px; overflow:hidden;">
+        <div style="position:relative; height:200px; background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&q=80'); background-size:cover; background-position:center;">
+          <div style="position:absolute; top:1rem; right:1rem; background:var(--ac-primary); color:#fff; padding:0.5rem 0.875rem; border-radius:12px; text-align:center; backdrop-filter:blur(8px);">
+            <span style="display:block; font-size:1.75rem; font-weight:900; line-height:1;">10</span>
+            <span style="display:block; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-top:0.125rem;">{% if lang == 'gl' %}ABR{% else %}ABR{% endif %}</span>
           </div>
         </div>
-        <div class="inst-event-card__body">
-          <h3>{% if lang == 'gl' %}Obradoiro de Escaparatismo{% else %}Taller de Escaparatismo{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Formación gratuíta para socios sobre deseño de escaparates con tendencias actuais.{% else %}Formación gratuita para socios sobre diseño de escaparates con tendencias actuales.{% endif %}</p>
-          <span class="inst-event-card__tag">{% if lang == 'gl' %}Formación{% else %}Formación{% endif %}</span>
+        <div style="padding:1.5rem;">
+          <span style="display:inline-block; padding:0.25rem 0.625rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.75rem;">{% if lang == 'gl' %}Formación{% else %}Formación{% endif %}</span>
+          <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Obradoiro de Escaparatismo{% else %}Taller de Escaparatismo{% endif %}</h3>
+          <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Formación gratuíta para socios sobre deseño de escaparates con tendencias actuais.{% else %}Formación gratuita para socios sobre diseño de escaparates con tendencias actuales.{% endif %}</p>
         </div>
       </div>
     </div>
@@ -99,109 +119,134 @@
 </section>
 
 {# ── CAMPAÑAS ANUAIS ─────────────────────────────────────────── #}
-<section class="inst-section inst-section--alt">
+<section class="ac-section ac-section--alt">
   <div class="container">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Campañas anuais{% else %}Campañas anuales{% endif %}
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Campañas{% else %}Campañas{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Campañas <span>anuais</span>{% else %}Campañas <span>anuales</span>{% endif %}
     </h2>
-    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 3rem;">
       {% if lang == 'gl' %}As campañas que dinamizan o barrio ao longo de todo o ano{% else %}Las campañas que dinamizan el barrio a lo largo de todo el año{% endif %}
     </p>
-    <div class="inst-campaigns">
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-music" aria-hidden="true"></i></div>
-        <h3>Fashion Night</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Xuño{% else %}Junio{% endif %}</span>
-        <p>{% if lang == 'gl' %}Noite de moda, desfiles ao aire libre e descontos especiais nas tendas do barrio.{% else %}Noche de moda, desfiles al aire libre y descuentos especiales en las tiendas del barrio.{% endif %}</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem;">
+      <div class="ac-glass ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-primary), var(--ac-blue-mid)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-music" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">Fashion Night</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Xuño{% else %}Junio{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Noite de moda, desfiles ao aire libre e descontos especiais nas tendas do barrio.{% else %}Noche de moda, desfiles al aire libre y descuentos especiales en las tiendas del barrio.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-star" aria-hidden="true"></i></div>
-        <h3>{% if lang == 'gl' %}Nadal{% else %}Navidad{% endif %}</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Decembro{% else %}Diciembre{% endif %}</span>
-        <p>{% if lang == 'gl' %}Iluminación, decoración, sorteos e o espírito navideño máis auténtico.{% else %}Iluminación, decoración, sorteos y el espíritu navideño más auténtico.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-blue-mid), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-star" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Nadal{% else %}Navidad{% endif %}</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Decembro{% else %}Diciembre{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Iluminación, decoración, sorteos e o espírito navideño máis auténtico.{% else %}Iluminación, decoración, sorteos y el espíritu navideño más auténtico.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
-        <h3>San Valentín</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Febreiro{% else %}Febrero{% endif %}</span>
-        <p>{% if lang == 'gl' %}Ofertas románticas, agasallos especiais e sorpresas para namorados.{% else %}Ofertas románticas, regalos especiales y sorpresas para enamorados.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-5" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-indigo), var(--ac-sky)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-heart" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">San Valentín</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Febreiro{% else %}Febrero{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Ofertas románticas, agasallos especiais e sorpresas para namorados.{% else %}Ofertas románticas, regalos especiales y sorpresas para enamorados.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-book-open" aria-hidden="true"></i></div>
-        <h3>{% if lang == 'gl' %}Día do Libro{% else %}Día del Libro{% endif %}</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Abril{% else %}Abril{% endif %}</span>
-        <p>{% if lang == 'gl' %}Celebración cultural con librerías, asinatura de autores e desconto en libros.{% else %}Celebración cultural con librerías, firma de autores y descuento en libros.{% endif %}</p>
+      <div class="ac-glass ac-reveal" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-sky), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-book-open" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Día do Libro{% else %}Día del Libro{% endif %}</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Abril{% else %}Abril{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Celebración cultural con librerías, asinatura de autores e desconto en libros.{% else %}Celebración cultural con librerías, firma de autores y descuento en libros.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-gift" aria-hidden="true"></i></div>
-        <h3>{% if lang == 'gl' %}Día das Nais{% else %}Día de las Madres{% endif %}</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Maio{% else %}Mayo{% endif %}</span>
-        <p>{% if lang == 'gl' %}Agasallos, ofertas e homenaxe ás nais nas tendas do barrio.{% else %}Regalos, ofertas y homenaje a las madres en las tiendas del barrio.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-1" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-primary), var(--ac-indigo)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-gift" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Día das Nais{% else %}Día de las Madres{% endif %}</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Maio{% else %}Mayo{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Agasallos, ofertas e homenaxe ás nais nas tendas do barrio.{% else %}Regalos, ofertas y homenaje a las madres en las tiendas del barrio.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-tag" aria-hidden="true"></i></div>
-        <h3>Black Friday</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Novembro{% else %}Noviembre{% endif %}</span>
-        <p>{% if lang == 'gl' %}Descontos exclusivos no comercio local. Comprar preto e aforrar máis.{% else %}Descuentos exclusivos en el comercio local. Comprar cerca y ahorrar más.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-2" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-blue-mid), var(--ac-indigo)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-tag" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">Black Friday</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Novembro{% else %}Noviembre{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Descontos exclusivos no comercio local. Comprar preto e aforrar máis.{% else %}Descuentos exclusivos en el comercio local. Comprar cerca y ahorrar más.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-church" aria-hidden="true"></i></div>
-        <h3>{% if lang == 'gl' %}Semana Santa{% else %}Semana Santa{% endif %}</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Marzo-Abril{% else %}Marzo-Abril{% endif %}</span>
-        <p>{% if lang == 'gl' %}Actividades especiais e ofertas durante a Semana Santa ferrolá.{% else %}Actividades especiales y ofertas durante la Semana Santa ferrolana.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-indigo), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-church" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Semana Santa{% else %}Semana Santa{% endif %}</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Marzo-Abril{% else %}Marzo-Abril{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Actividades especiais e ofertas durante a Semana Santa ferrolá.{% else %}Actividades especiales y ofertas durante la Semana Santa ferrolana.{% endif %}</p>
       </div>
-      <div class="inst-campaign-card">
-        <div class="inst-campaign-card__icon"><i class="fas fa-store" aria-hidden="true"></i></div>
-        <h3>{% if lang == 'gl' %}Día do Comercio Local{% else %}Día del Comercio Local{% endif %}</h3>
-        <span class="inst-campaign-card__month">{% if lang == 'gl' %}Outubro{% else %}Octubre{% endif %}</span>
-        <p>{% if lang == 'gl' %}Celebración do comercio de proximidade con actividades abertas a todos.{% else %}Celebración del comercio de proximidad con actividades abiertas a todos.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-sky), var(--ac-primary)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-store" aria-hidden="true"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Día do Comercio Local{% else %}Día del Comercio Local{% endif %}</h3>
+        <span style="display:inline-block; padding:0.25rem 0.75rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.7rem; font-weight:700; text-transform:uppercase; margin-bottom:0.75rem;">{% if lang == 'gl' %}Outubro{% else %}Octubre{% endif %}</span>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Celebración do comercio de proximidade con actividades abertas a todos.{% else %}Celebración del comercio de proximidad con actividades abiertas a todos.{% endif %}</p>
       </div>
     </div>
   </div>
 </section>
 
 {# ── INSTAGRAM / REDES ──────────────────────────────────────── #}
-<section class="inst-section">
+<section class="ac-section">
   <div class="container" style="text-align:center;">
-    <h2 class="inst-section__title">
-      {% if lang == 'gl' %}Síguenos en redes{% else %}Síguenos en redes{% endif %}
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-hashtag" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Redes sociais{% else %}Redes sociales{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1">
+      {% if lang == 'gl' %}Síguenos en <span>redes</span>{% else %}Síguenos en <span>redes</span>{% endif %}
     </h2>
-    <p style="color:var(--color-text-muted);margin-bottom:var(--sp-8);max-width:600px;margin-left:auto;margin-right:auto;">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
       {% if lang == 'gl' %}Síguenos para ver todas as novidades do barrio, campañas e eventos en directo{% else %}Síguenos para ver todas las novedades del barrio, campañas y eventos en directo{% endif %}
     </p>
-    <div class="inst-social-links">
-      <a href="https://www.instagram.com/ferrolcomercio/" target="_blank" rel="noopener noreferrer" class="inst-social-card">
-        <i class="fab fa-instagram" aria-hidden="true"></i>
-        <span>Instagram</span>
-        <small>@ferrolcomercio</small>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.25rem; max-width:900px; margin:0 auto;">
+      <a href="https://www.instagram.com/ferrolcomercio/" target="_blank" rel="noopener noreferrer" class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:56px; height:56px; background:linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fab fa-instagram" aria-hidden="true"></i></div>
+        <span style="font-weight:700; font-size:1.125rem; color:var(--ac-primary);">Instagram</span>
+        <small style="color:var(--color-text-muted); font-size:0.875rem;">@ferrolcomercio</small>
       </a>
-      <a href="https://www.facebook.com/ferrolcomercio" target="_blank" rel="noopener noreferrer" class="inst-social-card">
-        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-        <span>Facebook</span>
-        <small>ferrolcomercio</small>
+      <a href="https://www.facebook.com/ferrolcomercio" target="_blank" rel="noopener noreferrer" class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:56px; height:56px; background:linear-gradient(135deg, #1877f2, #0d5fc5); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fab fa-facebook-f" aria-hidden="true"></i></div>
+        <span style="font-weight:700; font-size:1.125rem; color:var(--ac-primary);">Facebook</span>
+        <small style="color:var(--color-text-muted); font-size:0.875rem;">ferrolcomercio</small>
       </a>
-      <a href="#" class="inst-social-card">
-        <i class="fab fa-twitter" aria-hidden="true"></i>
-        <span>Twitter / X</span>
-        <small>@ferrolcomercio</small>
+      <a href="#" class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-5" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:56px; height:56px; background:linear-gradient(135deg, #1da1f2, #0c85d0); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fab fa-twitter" aria-hidden="true"></i></div>
+        <span style="font-weight:700; font-size:1.125rem; color:var(--ac-primary);">Twitter / X</span>
+        <small style="color:var(--color-text-muted); font-size:0.875rem;">@ferrolcomercio</small>
       </a>
-      <a href="#" class="inst-social-card">
-        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-        <span>LinkedIn</span>
-        <small>CCA Ferrol</small>
+      <a href="#" class="spotlight-card spotlight-card--border ac-reveal" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:56px; height:56px; background:linear-gradient(135deg, #0077b5, #005582); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fab fa-linkedin-in" aria-hidden="true"></i></div>
+        <span style="font-weight:700; font-size:1.125rem; color:var(--ac-primary);">LinkedIn</span>
+        <small style="color:var(--color-text-muted); font-size:0.875rem;">CCA Ferrol</small>
       </a>
     </div>
   </div>
 </section>
 
 {# ── CTA ─────────────────────────────────────────────────────── #}
-<section class="inst-cta">
+<section class="ac-section ac-section--dark">
   <div class="container" style="text-align:center;">
-    <h2>{% if lang == 'gl' %}Queres participar nos eventos?{% else %}¿Quieres participar en los eventos?{% endif %}</h2>
-    <p>{% if lang == 'gl' %}Fai parte do CCA e o teu negocio estará en todas as campañas{% else %}Forma parte del CCA y tu negocio estará en todas las campañas{% endif %}</p>
-    <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn btn--white">
-      {% if lang == 'gl' %}Únete ao CCA{% else %}Únete al CCA{% endif %}
-    </a>
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-handshake" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Únete{% else %}Únete{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="color:#fff;">
+      {% if lang == 'gl' %}Queres participar nos <span class="text-gradient-light">eventos?</span>{% else %}¿Quieres participar en los <span class="text-gradient-light">eventos?</span>{% endif %}
+    </h2>
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
+      {% if lang == 'gl' %}Fai parte do CCA e o teu negocio estará en todas as campañas{% else %}Forma parte del CCA y tu negocio estará en todas las campañas{% endif %}
+    </p>
+    <div class="ac-reveal ac-reveal--delay-3">
+      <a href="/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn-ac">
+        {% if lang == 'gl' %}Únete ao CCA{% else %}Únete al CCA{% endif %}
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
   </div>
 </section>
 

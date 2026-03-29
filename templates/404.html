@@ -5,43 +5,83 @@
 
 {% block content %}
 
-<div class="section">
-  <div class="container">
-    <div class="empty-state">
-      <div class="empty-state-icon" aria-hidden="true" style="font-size:5rem; color:var(--color-primary); opacity:.2;">
-        <i class="fas fa-map-signs"></i>
+{# ── HERO AURORA 404 ─────────────────────────────────────────── #}
+<section class="hero-aurora" style="min-height:85vh;" aria-labelledby="error-404-title">
+  <div class="hero-aurora-bg" aria-hidden="true">
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+  </div>
+  <div class="sparkle-container" data-sparkle-count="12" aria-hidden="true"></div>
+  <div class="hero-aurora-bottom-fade" aria-hidden="true"></div>
+  <div class="hero-aurora-content">
+    <div class="container" style="padding-top:4rem; padding-bottom:4rem; text-align:center;">
+      <div class="ac-reveal" aria-hidden="true">
+        <div style="font-size:8rem; color:rgba(255,255,255,0.15); font-weight:900; line-height:1; margin-bottom:1rem;">
+          <i class="fas fa-map-signs"></i>
+        </div>
       </div>
-
-      <p style="font-size:4rem; font-weight:900; color:var(--color-primary); opacity:.3; line-height:1; margin-bottom:1rem;" aria-hidden="true">404</p>
-
-      <h1 class="empty-state-title" style="font-size:1.75rem;">
+      <div class="ac-reveal ac-reveal--delay-1" aria-hidden="true">
+        <p style="font-size:5rem; font-weight:900; line-height:1; margin-bottom:1.5rem; background:linear-gradient(135deg, #74b9ff 0%, #a29bfe 50%, #00cec9 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">404</p>
+      </div>
+      <h1 class="ac-section-title ac-reveal ac-reveal--delay-2" id="error-404-title" style="color:#fff; margin-top:1rem; font-size:2.25rem;">
         {% if lang == 'gl' %}
           Páxina non atopada
         {% else %}
           Página no encontrada
         {% endif %}
       </h1>
-
-      <p class="empty-state-desc">
+      <p class="ac-reveal ac-reveal--delay-3" style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-top:1.25rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">
         {% if lang == 'gl' %}
           A páxina que buscas non existe ou foi movida. Podes volver ao inicio ou explorar os nosos comercios.
         {% else %}
           La página que buscas no existe o ha sido movida. Puedes volver al inicio o explorar nuestros comercios.
         {% endif %}
       </p>
-
-      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="{{ base_url }}/{{ lang }}/" class="btn btn--primary btn--lg">
+      <div class="ac-reveal ac-reveal--delay-4" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.5rem;">
+        <a href="/{{ lang }}/" class="btn-ac" style="font-size:1.0625rem; padding:0.875rem 2rem;">
           <i class="fas fa-home" aria-hidden="true"></i>
           {% if lang == 'gl' %}Ir ao inicio{% else %}Ir al inicio{% endif %}
         </a>
-        <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn btn--secondary btn--lg">
+        <a href="/{{ lang }}/comercios/" class="btn-ac btn-ac--outline" style="font-size:1.0625rem; padding:0.875rem 2rem;">
           <i class="fas fa-store" aria-hidden="true"></i>
           {% if lang == 'gl' %}Ver comercios{% else %}Ver comercios{% endif %}
         </a>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+{# ── SUGERENCIAS ─────────────────────────────────────────────── #}
+<section class="ac-section ac-section--alt">
+  <div class="container" style="max-width:900px;">
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-compass" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Explorar{% else %}Explorar{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Que tal se <span>exploras</span> isto?{% else %}¿Qué tal si <span>exploras</span> esto?{% endif %}
+    </h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.5rem; margin-top:2.5rem;">
+      <a href="/{{ lang }}/comercios/" class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-2" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:64px; height:64px; background:linear-gradient(135deg, var(--ac-primary), var(--ac-blue-mid)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-store" aria-hidden="true"></i></div>
+        <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary);">{% if lang == 'gl' %}Comercios{% else %}Comercios{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Descubre todos os comercios do barrio{% else %}Descubre todos los comercios del barrio{% endif %}</p>
+      </a>
+      <a href="/{{ lang }}/{% if lang == 'gl' %}eventos{% else %}eventos{% endif %}/" class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:64px; height:64px; background:linear-gradient(135deg, var(--ac-blue-mid), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-calendar-alt" aria-hidden="true"></i></div>
+        <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary);">{% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Todo o que pasa no barrio{% else %}Todo lo que pasa en el barrio{% endif %}</p>
+      </a>
+      <a href="/{{ lang }}/{% if lang == 'gl' %}sobre-nos{% else %}sobre-nosotros{% endif %}/" class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px; text-align:center; text-decoration:none; color:var(--color-text); display:flex; flex-direction:column; align-items:center; gap:0.75rem;">
+        <div style="width:64px; height:64px; background:linear-gradient(135deg, var(--ac-indigo), var(--ac-sky)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;"><i class="fas fa-info-circle" aria-hidden="true"></i></div>
+        <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary);">{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem;">{% if lang == 'gl' %}Quen somos e que facemos{% else %}Quiénes somos y qué hacemos{% endif %}</p>
+      </a>
+    </div>
+  </div>
+</section>
 
 {% endblock %}

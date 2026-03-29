@@ -8,7 +8,7 @@
   "name": "CCA Ferrol Comercio",
   "description": "{{ meta_description }}",
   "url": "{{ canonical_url }}",
-  "logo": "{{ base_url }}/assets/images/cca-logo-color.png",
+  "logo": "/assets/images/cca-logo-color.png",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Ferrol",
@@ -86,7 +86,7 @@
       {# Búsqueda Aceternity #}
       <div class="ac-reveal ac-reveal--delay-3">
         <form class="ac-search-wrap" id="search-form" role="search"
-              action="{{ base_url }}/{{ lang }}/comercios/" method="get">
+              action="/{{ lang }}/comercios/" method="get">
           <label for="hero-q" class="sr-only">
             {% if lang == 'gl' %}Buscar comercios{% else %}Buscar comercios{% endif %}
           </label>
@@ -107,7 +107,7 @@
       {# Chips de categorías populares #}
       <div class="hero-chips-ac ac-reveal ac-reveal--delay-4">
         {% for cat in categorias[:8] %}
-        <a href="{{ base_url }}/{{ lang }}/categoria/{{ cat.slug }}/" class="hero-chip-ac">
+        <a href="/{{ lang }}/categoria/{{ cat.slug }}/" class="hero-chip-ac">
           <i class="{{ cat.icon | default('fas fa-store') }}" aria-hidden="true"></i>
           {{ cat.nombre[lang] or cat.nombre.es }}
         </a>
@@ -172,7 +172,7 @@
       {% set bento_sizes = ['--wide --1', '--tall --big --2', '--med --3', '--sm --4', '--sm --5', '--wide --6', '--med --7', '--sm --8'] %}
       {% for cat in categorias_principales %}
       {% set size_class = bento_sizes[loop.index0 % 8] %}
-      <a href="{{ base_url }}/{{ lang }}/categoria/{{ cat.slug }}/"
+      <a href="/{{ lang }}/categoria/{{ cat.slug }}/"
          class="bento-cell bento-cell{{ size_class | replace('--big', '') }}"
          role="listitem"
          aria-label="{{ cat.nombre[lang] or cat.nombre.es }} — {{ cat.count }} {% if lang == 'gl' %}comercios{% else %}comercios{% endif %}">
@@ -222,7 +222,7 @@
   <div class="marquee-section ac-reveal ac-reveal--delay-3" aria-hidden="true">
     <div class="marquee-track">
       {% for comercio in comercios_destacados %}
-      <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/"
+      <a href="/{{ lang }}/comercio/{{ comercio.slug }}/"
          class="marquee-card"
          tabindex="-1">
         {% if comercio.imagen_destacada %}
@@ -231,10 +231,10 @@
              alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
              width="240" height="140"
              loading="lazy"
-             onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+             onerror="this.onerror=null;this.src='/assets/images/header-ferrolcomercio.png';">
         {% else %}
         <img class="marquee-card-img"
-             src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+             src="/assets/images/header-ferrolcomercio.png"
              alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
              width="240" height="140"
              loading="lazy">
@@ -269,9 +269,9 @@
                alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
                width="400" height="200"
                loading="lazy"
-               onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+               onerror="this.onerror=null;this.src='/assets/images/header-ferrolcomercio.png';">
           {% else %}
-          <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+          <img src="/assets/images/header-ferrolcomercio.png"
                alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
                width="400" height="200"
                loading="lazy">
@@ -290,7 +290,7 @@
           <p class="ac-comercio-card-cat">{{ comercio.categorias[0] | cat_nombre(categorias, lang) }}</p>
           {% endif %}
           <h3 class="ac-comercio-card-title" id="ac-card-{{ comercio.id }}">
-            <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/"
+            <a href="/{{ lang }}/comercio/{{ comercio.slug }}/"
                style="color:inherit; text-decoration:none;">
               {{ comercio.nombre[lang] or comercio.nombre.es }}
             </a>
@@ -322,7 +322,7 @@
     </div>
 
     <div style="text-align:center; margin-top:3rem;" class="ac-reveal">
-      <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn-ac">
+      <a href="/{{ lang }}/comercios/" class="btn-ac">
         {% if lang == 'gl' %}Ver todos os comercios{% else %}Ver todos los comercios{% endif %}
         <i class="fas fa-arrow-right" aria-hidden="true"></i>
       </a>
@@ -356,11 +356,11 @@
       {% endif %}
     </p>
     <div class="ac-reveal ac-reveal--delay-3" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn-ac">
+      <a href="/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn-ac">
         {% if lang == 'gl' %}Quero asociarme{% else %}Quiero asociarme{% endif %}
         <i class="fas fa-arrow-right" aria-hidden="true"></i>
       </a>
-      <a href="{{ base_url }}/{{ lang }}/sobre-nos/" class="btn-ac btn-ac--outline">
+      <a href="/{{ lang }}/sobre-nos/" class="btn-ac btn-ac--outline">
         {% if lang == 'gl' %}Saber máis{% else %}Saber más{% endif %}
       </a>
     </div>

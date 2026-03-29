@@ -13,14 +13,14 @@
   <div class="container">
     <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
       <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="{{ base_url }}/{{ lang }}/" itemprop="item">
+        <a href="/{{ lang }}/" itemprop="item">
           <span itemprop="name">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</span>
         </a>
         <meta itemprop="position" content="1">
       </li>
       {% if comercio.categorias %}
       <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="{{ base_url }}/{{ lang }}/categoria/{{ comercio.categorias[0] }}/" itemprop="item">
+        <a href="/{{ lang }}/categoria/{{ comercio.categorias[0] }}/" itemprop="item">
           <span itemprop="name">{{ cat_nombre }}</span>
         </a>
         <meta itemprop="position" content="2">
@@ -43,9 +43,9 @@
        width="1200" height="400"
        loading="eager"
        fetchpriority="high"
-       onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+       onerror="this.onerror=null;this.src='/assets/images/header-ferrolcomercio.png';">
   {% else %}
-  <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+  <img src="/assets/images/header-ferrolcomercio.png"
        alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
        width="1200" height="400"
        loading="eager"
@@ -60,7 +60,7 @@
     <div class="ficha-header-content">
       <div style="display:flex; gap:1rem; align-items:flex-start; flex:1;">
         {% if comercio.logo %}
-        <img src="{{ img_base_url }}/{{ comercio.logo }}"
+        <img src="/{{ comercio.logo }}"
              alt="{{ comercio.nombre[lang] or comercio.nombre.es }} — logo"
              class="ficha-logo"
              width="80" height="80"
@@ -68,7 +68,7 @@
         {% endif %}
         <div class="ficha-title-group">
           {% if comercio.categorias %}
-          <a href="{{ base_url }}/{{ lang }}/categoria/{{ comercio.categorias[0] }}/"
+          <a href="/{{ lang }}/categoria/{{ comercio.categorias[0] }}/"
              class="ficha-category-link">{{ cat_nombre }}</a>
           {% endif %}
           <h1 class="ficha-title">{{ comercio.nombre[lang] or comercio.nombre.es }}</h1>
@@ -148,7 +148,7 @@
           <div class="gallery-grid">
             {% for img in comercio.imagenes %}
             <div class="gallery-item">
-              <img src="{{ img_base_url }}/{{ img }}"
+              <img src="/{{ img }}"
                    alt="{{ comercio.nombre[lang] or comercio.nombre.es }} — {% if lang == 'gl' %}imaxe{% else %}imagen{% endif %} {{ loop.index }}"
                    width="300" height="300"
                    loading="lazy"

@@ -10,7 +10,7 @@
       "@type": "ListItem",
       "position": 1,
       "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}",
-      "item": "{{ base_url }}/{{ lang }}/"
+      "item": "/{{ lang }}/"
     },
     {
       "@type": "ListItem",
@@ -29,7 +29,7 @@
   <div class="container">
     <ol class="breadcrumb-list">
       <li class="breadcrumb-item">
-        <a href="{{ base_url }}/{{ lang }}/">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</a>
+        <a href="/{{ lang }}/">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</a>
       </li>
       <li class="breadcrumb-item" aria-current="page">
         {{ categoria.nombre[lang] or categoria.nombre.es }}
@@ -79,9 +79,9 @@
                    alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
                    width="400" height="200"
                    loading="lazy"
-                   onerror="this.onerror=null;this.src='{{ base_url }}/assets/images/header-ferrolcomercio.png';">
+                   onerror="this.onerror=null;this.src='/assets/images/header-ferrolcomercio.png';">
               {% else %}
-              <img src="{{ base_url }}/assets/images/header-ferrolcomercio.png"
+              <img src="/assets/images/header-ferrolcomercio.png"
                    alt="{{ comercio.nombre[lang] or comercio.nombre.es }}"
                    width="400" height="200"
                    loading="lazy">
@@ -95,7 +95,7 @@
             </div>
             <div class="ac-comercio-card-body">
               <h2 class="ac-comercio-card-title" id="cat-card-{{ comercio.id }}">
-                <a href="{{ base_url }}/{{ lang }}/comercio/{{ comercio.slug }}/"
+                <a href="/{{ lang }}/comercio/{{ comercio.slug }}/"
                    style="color:inherit; text-decoration:none;">
                   {{ comercio.nombre[lang] or comercio.nombre.es }}
                 </a>
@@ -139,7 +139,7 @@
           <p class="empty-state-desc">
             {% if lang == 'gl' %}Non hai comercios nesta categoría de momento.{% else %}No hay comercios en esta categoría de momento.{% endif %}
           </p>
-          <a href="{{ base_url }}/{{ lang }}/" class="btn btn--primary">
+          <a href="/{{ lang }}/" class="btn btn--primary">
             {% if lang == 'gl' %}Volver ao inicio{% else %}Volver al inicio{% endif %}
           </a>
         </div>
@@ -154,7 +154,7 @@
           <h2 class="filter-group-title">{% if lang == 'gl' %}Categorías{% else %}Categorías{% endif %}</h2>
           <div class="filter-group-body" style="max-height:320px; overflow-y:auto;">
             {% for cat in todas_categorias %}
-            <a href="{{ base_url }}/{{ lang }}/categoria/{{ cat.slug }}/"
+            <a href="/{{ lang }}/categoria/{{ cat.slug }}/"
                style="display:flex; justify-content:space-between; align-items:center; font-size:.875rem; color:var(--color-text); padding:.25rem 0; text-decoration:none; {% if cat.slug == categoria.slug %}font-weight:700; color:var(--color-primary);{% endif %}"
                {% if cat.slug == categoria.slug %}aria-current="page"{% endif %}>
               {{ cat.nombre[lang] or cat.nombre.es }}
@@ -203,7 +203,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mapCat);
 var catComerciosData = {{ comercios_geo | tojson }};
 catComerciosData.forEach(function(c) {
-  var popup = '<strong><a href="{{ base_url }}/{{ lang }}/comercio/' + c.slug + '/">' + c.nombre + '</a></strong>';
+  var popup = '<strong><a href="/{{ lang }}/comercio/' + c.slug + '/">' + c.nombre + '</a></strong>';
   if (c.direccion) popup += '<br><small>' + c.direccion + '</small>';
   L.marker([c.lat, c.lng]).addTo(mapCat).bindPopup(popup);
 });

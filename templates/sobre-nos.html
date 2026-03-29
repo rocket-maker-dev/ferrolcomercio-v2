@@ -5,11 +5,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "{{ base_url }}/{{ lang }}/sobre-nos/#organization",
+  "@id": "/{{ lang }}/sobre-nos/#organization",
   "name": "CCA Ferrol A Magdalena",
   "alternateName": "Centro Comercial Aberto Ferrol Comercio",
   "url": "https://ferrolcomercio.es",
-  "logo": "{{ base_url }}/assets/images/cca-logo-color.png",
+  "logo": "/assets/images/cca-logo-color.png",
   "foundingDate": "1990",
   "description": "{{ meta_description }}",
   "address": {
@@ -41,7 +41,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "/{{ lang }}/"},
     {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}"}
   ]
 }
@@ -50,26 +50,46 @@
 
 {% block content %}
 
-{# ── HERO ────────────────────────────────────────────────────── #}
-<section class="inst-hero" style="background-image:url('https://images.unsplash.com/photo-1583318432730-a19c89692612?w=1600&q=80')">
-  <div class="inst-hero__overlay"></div>
-  <div class="container inst-hero__content">
-    <h1 class="inst-hero__title">
-      {% if lang == 'gl' %}O corazón comercial de Ferrol dende 1990{% else %}El corazón comercial de Ferrol desde 1990{% endif %}
-    </h1>
-    <p class="inst-hero__subtitle">
-      {% if lang == 'gl' %}CCA Ferrol A Magdalena: a asociación que une o comercio local{% else %}CCA Ferrol A Magdalena: la asociación que une el comercio local{% endif %}
-    </p>
+{# ── HERO AURORA ──────────────────────────────────────────────── #}
+<section class="hero-aurora" style="min-height:70vh;" aria-labelledby="sobre-hero-title">
+  <div class="hero-aurora-bg" aria-hidden="true">
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+  </div>
+  <div class="sparkle-container" data-sparkle-count="18" aria-hidden="true"></div>
+  <div class="hero-aurora-bottom-fade" aria-hidden="true"></div>
+  <div class="hero-aurora-content">
+    <div class="container" style="padding-top:4rem; padding-bottom:4rem; text-align:center;">
+      <div class="ac-reveal">
+        <span class="ac-section-label" style="color:rgba(116,185,255,0.9); background:rgba(116,185,255,0.12); border-color:rgba(116,185,255,0.25);">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Quen somos{% else %}Quiénes somos{% endif %}
+        </span>
+      </div>
+      <h1 class="ac-section-title ac-reveal ac-reveal--delay-1" id="sobre-hero-title" style="color:#fff; margin-top:1rem;">
+        {% if lang == 'gl' %}O corazón comercial de Ferrol <span class="text-gradient-light">dende 1990</span>{% else %}El corazón comercial de Ferrol <span class="text-gradient-light">desde 1990</span>{% endif %}
+      </h1>
+      <p class="ac-reveal ac-reveal--delay-2" style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-top:1.25rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        {% if lang == 'gl' %}CCA Ferrol A Magdalena: a asociación que une o comercio local{% else %}CCA Ferrol A Magdalena: la asociación que une el comercio local{% endif %}
+      </p>
+    </div>
   </div>
 </section>
 
 {# ── MISIÓN ──────────────────────────────────────────────────── #}
-<section class="inst-section">
-  <div class="container" style="max-width:800px;text-align:center;">
-    <h2 class="inst-section__title">
-      {% if lang == 'gl' %}A nosa misión{% else %}Nuestra misión{% endif %}
+<section class="ac-section">
+  <div class="container" style="max-width:900px;text-align:center;">
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-bullseye" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Misión{% else %}Misión{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1">
+      {% if lang == 'gl' %}A nosa <span>misión</span>{% else %}Nuestra <span>misión</span>{% endif %}
     </h2>
-    <p class="inst-text--lead">
+    <p class="ac-reveal ac-reveal--delay-2" style="font-size:1.25rem; line-height:1.8; color:var(--color-text); margin-top:1.5rem;">
       {% if lang == 'gl' %}
         Somos unha asociación sen ánimo de lucro que defende e promove o comercio de proximidade no barrio histórico de A Magdalena, o maior centro comercial ao aire libre de Galicia nun entorno ilustrado único.
       {% else %}
@@ -80,182 +100,214 @@
 </section>
 
 {# ── STATS BAR ───────────────────────────────────────────────── #}
-<section class="inst-stats">
+<section class="ac-section ac-section--dark" style="padding:3rem 0;">
   <div class="container">
-    <div class="inst-stats__grid">
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">150+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</span>
+    <div class="hero-stats-ac" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:2rem; justify-items:center;">
+      <div class="ac-reveal" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;" data-counter="150">150+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">30+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Anos{% else %}Años{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-1" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;" data-counter="30">30+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Anos{% else %}Años{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">{{ total_comercios }}</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Comercios{% else %}Comercios{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-2" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;" data-counter="{{ total_comercios }}">{{ total_comercios }}</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Comercios{% else %}Comercios{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">1</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Barrio{% else %}Barrio{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-3" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;">1</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Barrio{% else %}Barrio{% endif %}</span>
       </div>
     </div>
   </div>
 </section>
 
 {# ── VALORES ─────────────────────────────────────────────────── #}
-<section class="inst-section inst-section--alt">
+<section class="ac-section ac-section--alt">
   <div class="container">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Os nosos valores{% else %}Nuestros valores{% endif %}
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-heart" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Valores{% else %}Valores{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Os nosos <span>valores</span>{% else %}Nuestros <span>valores</span>{% endif %}
     </h2>
-    <div class="inst-values">
-      <div class="inst-values__card">
-        <div class="inst-values__icon">🤝</div>
-        <h3>{% if lang == 'gl' %}Proximidade{% else %}Proximidad{% endif %}</h3>
-        <p>{% if lang == 'gl' %}O comercio de barrio crea vínculos. Coñecemos polo nome aos nosos clientes e coidamos cada detalle.{% else %}El comercio de barrio crea vínculos. Conocemos por su nombre a nuestros clientes y cuidamos cada detalle.{% endif %}</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem; margin-top:3rem;">
+      <div class="ac-glass ac-reveal ac-reveal--delay-2" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:1rem;" aria-hidden="true">🤝</div>
+        <h3 style="font-size:1.5rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Proximidade{% else %}Proximidad{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}O comercio de barrio crea vínculos. Coñecemos polo nome aos nosos clientes e coidamos cada detalle.{% else %}El comercio de barrio crea vínculos. Conocemos por su nombre a nuestros clientes y cuidamos cada detalle.{% endif %}</p>
       </div>
-      <div class="inst-values__card">
-        <div class="inst-values__icon">🌿</div>
-        <h3>{% if lang == 'gl' %}Sostibilidade{% else %}Sostenibilidad{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Comprar no barrio é comprar responsable. Menos transporte, menos impacto ambiental, máis economía local.{% else %}Comprar en el barrio es comprar responsable. Menos transporte, menos impacto ambiental, más economía local.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:1rem;" aria-hidden="true">🌿</div>
+        <h3 style="font-size:1.5rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Sostibilidade{% else %}Sostenibilidad{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Comprar no barrio é comprar responsable. Menos transporte, menos impacto ambiental, máis economía local.{% else %}Comprar en el barrio es comprar responsable. Menos transporte, menos impacto ambiental, más economía local.{% endif %}</p>
       </div>
-      <div class="inst-values__card">
-        <div class="inst-values__icon">❤️</div>
-        <h3>{% if lang == 'gl' %}Comunidade{% else %}Comunidad{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Non somos só tendas. Somos o tecido social dun barrio histórico que vibra con cada evento e campaña.{% else %}No somos solo tiendas. Somos el tejido social de un barrio histórico que vibra con cada evento y campaña.{% endif %}</p>
+      <div class="ac-glass ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:1rem;" aria-hidden="true">❤️</div>
+        <h3 style="font-size:1.5rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Comunidade{% else %}Comunidad{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Non somos só tendas. Somos o tecido social dun barrio histórico que vibra con cada evento e campaña.{% else %}No somos solo tiendas. Somos el tejido social de un barrio histórico que vibra con cada evento y campaña.{% endif %}</p>
       </div>
     </div>
   </div>
 </section>
 
 {# ── HISTORIA / TIMELINE ────────────────────────────────────── #}
-<section class="inst-section">
-  <div class="container" style="max-width:800px;">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}A nosa historia{% else %}Nuestra historia{% endif %}
+<section class="ac-section">
+  <div class="container" style="max-width:900px;">
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-history" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Historia{% else %}Historia{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}A nosa <span>historia</span>{% else %}Nuestra <span>historia</span>{% endif %}
     </h2>
-    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 3rem;">
       {% if lang == 'gl' %}
         Máis de tres décadas traballando pola dinamización comercial do barrio de A Magdalena en Ferrol.
       {% else %}
         Más de tres décadas trabajando por la dinamización comercial del barrio de A Magdalena en Ferrol.
       {% endif %}
     </p>
-    <div class="inst-timeline">
-      <div class="inst-timeline__item">
-        <div class="inst-timeline__year">1990</div>
-        <div class="inst-timeline__content">
-          <h3>{% if lang == 'gl' %}Fundación{% else %}Fundación{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Nace a CCA Ferrol A Magdalena como asociación de comerciantes para defender e promover o comercio local do barrio.{% else %}Nace la CCA Ferrol A Magdalena como asociación de comerciantes para defender y promover el comercio local del barrio.{% endif %}</p>
-        </div>
+    <div style="position:relative; padding-left:2rem; border-left:2px solid var(--ac-blue-light);">
+      <div class="ac-reveal ac-reveal--delay-3" style="position:relative; margin-bottom:2.5rem; padding-left:1.5rem;">
+        <div style="position:absolute; left:-2.5rem; top:0; width:3rem; height:3rem; background:linear-gradient(135deg, var(--ac-primary), var(--ac-blue-mid)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:0.875rem; box-shadow:0 4px 12px rgba(6,99,172,0.3);">90</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Fundación{% else %}Fundación{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Nace a CCA Ferrol A Magdalena como asociación de comerciantes para defender e promover o comercio local do barrio.{% else %}Nace la CCA Ferrol A Magdalena como asociación de comerciantes para defender y promover el comercio local del barrio.{% endif %}</p>
       </div>
-      <div class="inst-timeline__item">
-        <div class="inst-timeline__year">2005</div>
-        <div class="inst-timeline__content">
-          <h3>{% if lang == 'gl' %}Primeiras campañas{% else %}Primeras campañas{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Lanzamos as nosas primeiras grandes campañas comerciais: Nadal, San Valentín, e a icónica Fashion Night.{% else %}Lanzamos nuestras primeras grandes campañas comerciales: Navidad, San Valentín, y la icónica Fashion Night.{% endif %}</p>
-        </div>
+      <div class="ac-reveal ac-reveal--delay-4" style="position:relative; margin-bottom:2.5rem; padding-left:1.5rem;">
+        <div style="position:absolute; left:-2.5rem; top:0; width:3rem; height:3rem; background:linear-gradient(135deg, var(--ac-blue-mid), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:0.875rem; box-shadow:0 4px 12px rgba(9,132,227,0.3);">05</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Primeiras campañas{% else %}Primeras campañas{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Lanzamos as nosas primeiras grandes campañas comerciais: Nadal, San Valentín, e a icónica Fashion Night.{% else %}Lanzamos nuestras primeras grandes campañas comerciales: Navidad, San Valentín, y la icónica Fashion Night.{% endif %}</p>
       </div>
-      <div class="inst-timeline__item">
-        <div class="inst-timeline__year">2010</div>
-        <div class="inst-timeline__content">
-          <h3>{% if lang == 'gl' %}Presenza web{% else %}Presencia web{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Lanzamento de ferrolcomercio.es, levando o barrio ao mundo dixital e conectando cos clientes en liña.{% else %}Lanzamiento de ferrolcomercio.es, llevando el barrio al mundo digital y conectando con los clientes en línea.{% endif %}</p>
-        </div>
+      <div class="ac-reveal ac-reveal--delay-5" style="position:relative; margin-bottom:2.5rem; padding-left:1.5rem;">
+        <div style="position:absolute; left:-2.5rem; top:0; width:3rem; height:3rem; background:linear-gradient(135deg, var(--ac-indigo), var(--ac-sky)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:0.875rem; box-shadow:0 4px 12px rgba(76,110,245,0.3);">10</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Presenza web{% else %}Presencia web{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Lanzamento de ferrolcomercio.es, levando o barrio ao mundo dixital e conectando cos clientes en liña.{% else %}Lanzamiento de ferrolcomercio.es, llevando el barrio al mundo digital y conectando con los clientes en línea.{% endif %}</p>
       </div>
-      <div class="inst-timeline__item">
-        <div class="inst-timeline__year">2020</div>
-        <div class="inst-timeline__content">
-          <h3>{% if lang == 'gl' %}Resiliencia{% else %}Resiliencia{% endif %}</h3>
-          <p>{% if lang == 'gl' %}A pandemia reforzou o noso compromiso. Adaptámonos e demostramos que o comercio local é esencial.{% else %}La pandemia reforzó nuestro compromiso. Nos adaptamos y demostramos que el comercio local es esencial.{% endif %}</p>
-        </div>
+      <div class="ac-reveal ac-reveal--delay-6" style="position:relative; margin-bottom:2.5rem; padding-left:1.5rem;">
+        <div style="position:absolute; left:-2.5rem; top:0; width:3rem; height:3rem; background:linear-gradient(135deg, var(--ac-sky), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:0.875rem; box-shadow:0 4px 12px rgba(0,180,216,0.3);">20</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Resiliencia{% else %}Resiliencia{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}A pandemia reforzou o noso compromiso. Adaptámonos e demostramos que o comercio local é esencial.{% else %}La pandemia reforzó nuestro compromiso. Nos adaptamos y demostramos que el comercio local es esencial.{% endif %}</p>
       </div>
-      <div class="inst-timeline__item">
-        <div class="inst-timeline__year">2025</div>
-        <div class="inst-timeline__content">
-          <h3>{% if lang == 'gl' %}Directorio dixital{% else %}Directorio digital{% endif %}</h3>
-          <p>{% if lang == 'gl' %}Nova web con directorio completo, fichas de comercios, buscador intelixente e ferramentas para o socio.{% else %}Nueva web con directorio completo, fichas de comercios, buscador inteligente y herramientas para el socio.{% endif %}</p>
-        </div>
+      <div class="ac-reveal" style="position:relative; padding-left:1.5rem;">
+        <div style="position:absolute; left:-2.5rem; top:0; width:3rem; height:3rem; background:linear-gradient(135deg, var(--ac-primary), var(--ac-indigo)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:900; font-size:0.875rem; box-shadow:0 4px 12px rgba(6,99,172,0.4), 0 0 20px rgba(6,99,172,0.2);">25</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Directorio dixital{% else %}Directorio digital{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Nova web con directorio completo, fichas de comercios, buscador intelixente e ferramentas para o socio.{% else %}Nueva web con directorio completo, fichas de comercios, buscador inteligente y herramientas para el socio.{% endif %}</p>
       </div>
     </div>
   </div>
 </section>
 
 {# ── O BARRIO DA MAGDALENA ───────────────────────────────────── #}
-<section class="inst-section inst-section--alt">
+<section class="ac-section ac-section--alt">
   <div class="container">
-    <div class="inst-barrio">
-      <div class="inst-barrio__text">
-        <h2 class="inst-section__title">
-          {% if lang == 'gl' %}O Barrio da Magdalena{% else %}El Barrio de A Magdalena{% endif %}
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;">
+      <div class="ac-reveal">
+        <span class="ac-section-label">
+          <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+          {% if lang == 'gl' %}O noso barrio{% else %}Nuestro barrio{% endif %}
+        </span>
+        <h2 class="ac-section-title" style="margin-top:1rem;">
+          {% if lang == 'gl' %}O Barrio da <span>Magdalena</span>{% else %}El Barrio de A <span>Magdalena</span>{% endif %}
         </h2>
-        <p>
+        <p style="color:var(--color-text-muted); line-height:1.8; margin-top:1.25rem;">
           {% if lang == 'gl' %}
             A Magdalena é moito máis que un barrio: é o centro neurálxico de Ferrol, onde a historia e o comercio se entrelazan en rúas con séculos de vida. As súas fachadas ilustradas, as prazas con encanto e a variedade comercial converten a cada visita nunha experiencia única.
           {% else %}
             A Magdalena es mucho más que un barrio: es el centro neurálgico de Ferrol, donde la historia y el comercio se entrelazan en calles con siglos de vida. Sus fachadas ilustradas, las plazas con encanto y la variedad comercial convierten cada visita en una experiencia única.
           {% endif %}
         </p>
-        <p>
+        <p style="color:var(--color-text-muted); line-height:1.8; margin-top:1rem;">
           {% if lang == 'gl' %}
             Patrimonio arquitectónico e comercial único en Galicia. Pasear pola Magdalena é descubrir tendas con personalidade, restaurantes con alma e servizos de confianza, todo nun entorno que combina a tradición co dinamismo.
           {% else %}
             Patrimonio arquitectónico y comercial único en Galicia. Pasear por la Magdalena es descubrir tiendas con personalidad, restaurantes con alma y servicios de confianza, todo en un entorno que combina la tradición con el dinamismo.
           {% endif %}
         </p>
-        <a href="{{ base_url }}/{{ lang }}/comercios/" class="btn btn--primary" style="margin-top:var(--sp-6);">
+        <a href="/{{ lang }}/comercios/" class="btn-ac" style="margin-top:1.5rem; display:inline-flex;">
           {% if lang == 'gl' %}Explorar comercios{% else %}Explorar comercios{% endif %}
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
-      <div class="inst-barrio__image">
-        <img src="https://maps.googleapis.com/maps/api/streetview?size=800x500&location=A+Magdalena,+Ferrol,+Galicia,+Spain&fov=90&heading=45&pitch=0&key=AIzaSyAr_HTQJMRqnhdAF7VHj-KmM9nqy53eAAc" alt="{% if lang == 'gl' %}Rúas do barrio da Magdalena, Ferrol{% else %}Calles del barrio de A Magdalena, Ferrol{% endif %}" loading="lazy" style="width:100%;height:400px;object-fit:cover;border-radius:12px;">
+      <div class="ac-reveal ac-reveal--delay-2">
+        <img src="https://maps.googleapis.com/maps/api/streetview?size=800x500&location=A+Magdalena,+Ferrol,+Galicia,+Spain&fov=90&heading=45&pitch=0&key=AIzaSyAr_HTQJMRqnhdAF7VHj-KmM9nqy53eAAc" alt="{% if lang == 'gl' %}Rúas do barrio da Magdalena, Ferrol{% else %}Calles del barrio de A Magdalena, Ferrol{% endif %}" loading="lazy" style="width:100%;height:400px;object-fit:cover;border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,0.12);">
       </div>
     </div>
   </div>
 </section>
 
+@media (max-width: 768px) {
+  .ac-section .container > div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 {# ── DIRECTIVA ───────────────────────────────────────────────── #}
-<section class="inst-section">
-  <div class="container" style="max-width:800px;text-align:center;">
-    <h2 class="inst-section__title">
-      {% if lang == 'gl' %}A nosa directiva{% else %}Nuestra directiva{% endif %}
+<section class="ac-section">
+  <div class="container" style="max-width:900px;text-align:center;">
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-users" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Equipo{% else %}Equipo{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1">
+      {% if lang == 'gl' %}A nosa <span>directiva</span>{% else %}Nuestra <span>directiva</span>{% endif %}
     </h2>
-    <p style="color:var(--color-text-muted);margin-bottom:var(--sp-8);">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 3rem;">
       {% if lang == 'gl' %}
         Un equipo de comerciantes comprometidos co barrio que traballa voluntariamente para que A Magdalena siga sendo referente en Ferrol.
       {% else %}
         Un equipo de comerciantes comprometidos con el barrio que trabaja voluntariamente para que A Magdalena siga siendo referente en Ferrol.
       {% endif %}
     </p>
-    <div class="inst-team">
-      <div class="inst-team__card">
-        <div class="inst-team__avatar"><i class="fas fa-user-tie"></i></div>
-        <h3>{% if lang == 'gl' %}Presidencia{% else %}Presidencia{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Dirección estratéxica da asociación{% else %}Dirección estratégica de la asociación{% endif %}</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:2rem;">
+      <div class="spotlight-card ac-reveal ac-reveal--delay-3" style="padding:2rem; text-align:center; border-radius:16px;">
+        <div style="width:80px; height:80px; margin:0 auto 1.25rem; background:linear-gradient(135deg, var(--ac-primary), var(--ac-blue-mid)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:2rem;"><i class="fas fa-user-tie"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Presidencia{% else %}Presidencia{% endif %}</h3>
+        <p style="color:var(--color-text-muted); font-size:0.875rem;">{% if lang == 'gl' %}Dirección estratéxica da asociación{% else %}Dirección estratégica de la asociación{% endif %}</p>
       </div>
-      <div class="inst-team__card">
-        <div class="inst-team__avatar"><i class="fas fa-briefcase"></i></div>
-        <h3>{% if lang == 'gl' %}Secretaría{% else %}Secretaría{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Coordinación e administración{% else %}Coordinación y administración{% endif %}</p>
+      <div class="spotlight-card ac-reveal ac-reveal--delay-4" style="padding:2rem; text-align:center; border-radius:16px;">
+        <div style="width:80px; height:80px; margin:0 auto 1.25rem; background:linear-gradient(135deg, var(--ac-blue-mid), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:2rem;"><i class="fas fa-briefcase"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Secretaría{% else %}Secretaría{% endif %}</h3>
+        <p style="color:var(--color-text-muted); font-size:0.875rem;">{% if lang == 'gl' %}Coordinación e administración{% else %}Coordinación y administración{% endif %}</p>
       </div>
-      <div class="inst-team__card">
-        <div class="inst-team__avatar"><i class="fas fa-chart-line"></i></div>
-        <h3>{% if lang == 'gl' %}Tesouraría{% else %}Tesorería{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Xestión económica e financeira{% else %}Gestión económica y financiera{% endif %}</p>
+      <div class="spotlight-card ac-reveal ac-reveal--delay-5" style="padding:2rem; text-align:center; border-radius:16px;">
+        <div style="width:80px; height:80px; margin:0 auto 1.25rem; background:linear-gradient(135deg, var(--ac-indigo), var(--ac-sky)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:2rem;"><i class="fas fa-chart-line"></i></div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.5rem;">{% if lang == 'gl' %}Tesouraría{% else %}Tesorería{% endif %}</h3>
+        <p style="color:var(--color-text-muted); font-size:0.875rem;">{% if lang == 'gl' %}Xestión económica e financeira{% else %}Gestión económica y financiera{% endif %}</p>
       </div>
     </div>
   </div>
 </section>
 
 {# ── CTA ─────────────────────────────────────────────────────── #}
-<section class="inst-cta">
-  <div class="container" style="text-align:center;">
-    <h2>{% if lang == 'gl' %}Queres formar parte?{% else %}¿Quieres formar parte?{% endif %}</h2>
-    <p>{% if lang == 'gl' %}Únete aos 150+ comercios que xa confían na CCA Ferrol A Magdalena{% else %}Únete a los 150+ comercios que ya confían en la CCA Ferrol A Magdalena{% endif %}</p>
-    <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn btn--white">
-      {% if lang == 'gl' %}Únete ao CCA{% else %}Únete al CCA{% endif %}
-    </a>
+<section class="ac-section ac-section--dark" aria-labelledby="sobre-cta-title">
+  <div class="container" style="text-align:center; position:relative; z-index:1;">
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-handshake" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Únete{% else %}Únete{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" id="sobre-cta-title" style="color:#fff;">
+      {% if lang == 'gl' %}Queres formar parte?{% else %}¿Quieres formar parte?{% endif %}
+    </h2>
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
+      {% if lang == 'gl' %}Únete aos 150+ comercios que xa confían na CCA Ferrol A Magdalena{% else %}Únete a los 150+ comercios que ya confían en la CCA Ferrol A Magdalena{% endif %}
+    </p>
+    <div class="ac-reveal ac-reveal--delay-3">
+      <a href="/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" class="btn-ac">
+        {% if lang == 'gl' %}Únete ao CCA{% else %}Únete al CCA{% endif %}
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </div>
   </div>
 </section>
 

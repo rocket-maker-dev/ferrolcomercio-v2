@@ -11,7 +11,7 @@
   "isPartOf": {
     "@type": "WebSite",
     "name": "CCA Ferrol Comercio",
-    "url": "{{ base_url }}/{{ lang }}/"
+    "url": "/{{ lang }}/"
   },
   "publisher": {
     "@type": "Organization",
@@ -26,7 +26,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "/{{ lang }}/"},
     {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Fai parte{% else %}Hazte socio{% endif %}"}
   ]
 }
@@ -35,191 +35,197 @@
 
 {% block content %}
 
-{# ── HERO ────────────────────────────────────────────────────── #}
-<section class="inst-hero" style="background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80')">
-  <div class="inst-hero__overlay"></div>
-  <div class="container inst-hero__content">
-    <h1 class="inst-hero__title">
-      {% if lang == 'gl' %}Fai do teu negocio parte do mellor barrio comercial de Galicia{% else %}Haz de tu negocio parte del mejor barrio comercial de Galicia{% endif %}
-    </h1>
-    <p class="inst-hero__subtitle">
-      {% if lang == 'gl' %}Únete aos 150+ comercios que xa confían en CCA Ferrol A Magdalena{% else %}Únete a los 150+ comercios que ya confían en CCA Ferrol A Magdalena{% endif %}
-    </p>
-    <a href="#contacto-socio" class="btn btn--white" style="margin-top:var(--sp-6);font-size:var(--text-md);">
-      {% if lang == 'gl' %}Solicitar información{% else %}Solicitar información{% endif %}
-    </a>
+{# ── HERO AURORA ──────────────────────────────────────────────── #}
+<section class="hero-aurora" style="min-height:70vh;" aria-labelledby="fai-hero-title">
+  <div class="hero-aurora-bg" aria-hidden="true">
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+  </div>
+  <div class="sparkle-container" data-sparkle-count="20" aria-hidden="true"></div>
+  <div class="hero-aurora-bottom-fade" aria-hidden="true"></div>
+  <div class="hero-aurora-content">
+    <div class="container" style="padding-top:4rem; padding-bottom:4rem; text-align:center;">
+      <div class="ac-reveal">
+        <span class="ac-section-label" style="color:rgba(116,185,255,0.9); background:rgba(116,185,255,0.12); border-color:rgba(116,185,255,0.25);">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Únete{% else %}Únete{% endif %}
+        </span>
+      </div>
+      <h1 class="ac-section-title ac-reveal ac-reveal--delay-1" id="fai-hero-title" style="color:#fff; margin-top:1rem;">
+        {% if lang == 'gl' %}Fai do teu negocio parte do <span class="text-gradient-light">mellor barrio comercial</span> de Galicia{% else %}Haz de tu negocio parte del <span class="text-gradient-light">mejor barrio comercial</span> de Galicia{% endif %}
+      </h1>
+      <p class="ac-reveal ac-reveal--delay-2" style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-top:1.25rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        {% if lang == 'gl' %}Únete aos 150+ comercios que xa confían en CCA Ferrol A Magdalena{% else %}Únete a los 150+ comercios que ya confían en CCA Ferrol A Magdalena{% endif %}
+      </p>
+      <div class="ac-reveal ac-reveal--delay-3" style="margin-top:2rem;">
+        <a href="#contacto-socio" class="btn-ac" style="font-size:1.125rem; padding:1rem 2rem;">
+          {% if lang == 'gl' %}Solicitar información{% else %}Solicitar información{% endif %}
+          <i class="fas fa-arrow-down" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 {# ── BENEFICIOS ──────────────────────────────────────────────── #}
-<section class="inst-section">
+<section class="ac-section">
   <div class="container">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Por que unirte ao CCA?{% else %}¿Por qué unirte al CCA?{% endif %}
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-star" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Vantaxes{% else %}Ventajas{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Por que unirte ao <span>CCA?</span>{% else %}¿Por qué unirte al <span>CCA?</span>{% endif %}
     </h2>
-    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);max-width:600px;margin-left:auto;margin-right:auto;">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 3rem;">
       {% if lang == 'gl' %}Formar parte da CCA ofrece vantaxes reais para o teu negocio{% else %}Formar parte de la CCA ofrece ventajas reales para tu negocio{% endif %}
     </p>
-    <div class="inst-benefits">
-      <div class="inst-benefit-card">
-        <div class="inst-benefit-card__icon">🌐</div>
-        <h3>{% if lang == 'gl' %}Visibilidade dixital{% else %}Visibilidad digital{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Ficha completa en ferrolcomercio.es con fotos, horarios, contacto e localización. Presenza en redes sociais da CCA.{% else %}Ficha completa en ferrolcomercio.es con fotos, horarios, contacto y localización. Presencia en redes sociales de la CCA.{% endif %}</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem;">
+      <div class="spotlight-card ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px;">
+        <div style="font-size:3rem; margin-bottom:1rem; color:var(--ac-primary);" aria-hidden="true">🌐</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Visibilidade dixital{% else %}Visibilidad digital{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Ficha completa en ferrolcomercio.es con fotos, horarios, contacto e localización. Presenza en redes sociais da CCA.{% else %}Ficha completa en ferrolcomercio.es con fotos, horarios, contacto y localización. Presencia en redes sociales de la CCA.{% endif %}</p>
       </div>
-      <div class="inst-benefit-card">
-        <div class="inst-benefit-card__icon">📅</div>
-        <h3>{% if lang == 'gl' %}Campañas e eventos{% else %}Campañas y eventos{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Participación en Fashion Night, Nadal, San Valentín, Black Friday, Semana Santa e máis campañas ao longo do ano.{% else %}Participación en Fashion Night, Navidad, San Valentín, Black Friday, Semana Santa y más campañas a lo largo del año.{% endif %}</p>
+      <div class="spotlight-card ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px;">
+        <div style="font-size:3rem; margin-bottom:1rem; color:var(--ac-primary);" aria-hidden="true">📅</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Campañas e eventos{% else %}Campañas y eventos{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Participación en Fashion Night, Nadal, San Valentín, Black Friday, Semana Santa e máis campañas ao longo do ano.{% else %}Participación en Fashion Night, Navidad, San Valentín, Black Friday, Semana Santa y más campañas a lo largo del año.{% endif %}</p>
       </div>
-      <div class="inst-benefit-card">
-        <div class="inst-benefit-card__icon">🅿️</div>
-        <h3>{% if lang == 'gl' %}Parking gratuíto{% else %}Parking gratuito{% endif %}</h3>
-        <p>{% if lang == 'gl' %}1 hora de parking gratis para os teus clientes en 3 parkings: Cantón, Plaza de España e Mercado.{% else %}1 hora de parking gratis para tus clientes en 3 parkings: Cantón, Plaza de España y Mercado.{% endif %}</p>
+      <div class="spotlight-card ac-reveal ac-reveal--delay-5" style="padding:2rem; border-radius:16px;">
+        <div style="font-size:3rem; margin-bottom:1rem; color:var(--ac-primary);" aria-hidden="true">🅿️</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Parking gratuíto{% else %}Parking gratuito{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}1 hora de parking gratis para os teus clientes en 3 parkings: Cantón, Plaza de España e Mercado.{% else %}1 hora de parking gratis para tus clientes en 3 parkings: Cantón, Plaza de España y Mercado.{% endif %}</p>
       </div>
-      <div class="inst-benefit-card">
-        <div class="inst-benefit-card__icon">🏦</div>
-        <h3>{% if lang == 'gl' %}Convenio ABANCA{% else %}Convenio ABANCA{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Condicións especiais: TPV, Servizo Aplazos, programa Cero Comisiones e máis vantaxes financeiras exclusivas.{% else %}Condiciones especiales: TPV, Servicio Aplazos, programa Cero Comisiones y más ventajas financieras exclusivas.{% endif %}</p>
+      <div class="spotlight-card ac-reveal" style="padding:2rem; border-radius:16px;">
+        <div style="font-size:3rem; margin-bottom:1rem; color:var(--ac-primary);" aria-hidden="true">🏦</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Convenio ABANCA{% else %}Convenio ABANCA{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Condicións especiais: TPV, Servizo Aplazos, programa Cero Comisiones e máis vantaxes financeiras exclusivas.{% else %}Condiciones especiales: TPV, Servicio Aplazos, programa Cero Comisiones y más ventajas financieras exclusivas.{% endif %}</p>
       </div>
-      <div class="inst-benefit-card">
-        <div class="inst-benefit-card__icon">📋</div>
-        <h3>{% if lang == 'gl' %}Asesoramento{% else %}Asesoramiento{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Información sobre subvencións, axudas, normativa e formación. Sempre ao teu lado para axudarte a crecer.{% else %}Información sobre subvenciones, ayudas, normativa y formación. Siempre a tu lado para ayudarte a crecer.{% endif %}</p>
+      <div class="spotlight-card ac-reveal ac-reveal--delay-1" style="padding:2rem; border-radius:16px;">
+        <div style="font-size:3rem; margin-bottom:1rem; color:var(--ac-primary);" aria-hidden="true">📋</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Asesoramento{% else %}Asesoramiento{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Información sobre subvencións, axudas, normativa e formación. Sempre ao teu lado para axudarte a crecer.{% else %}Información sobre subvenciones, ayudas, normativa y formación. Siempre a tu lado para ayudarte a crecer.{% endif %}</p>
       </div>
-      <div class="inst-benefit-card">
-        <div class="inst-benefit-card__icon">🏛️</div>
-        <h3>{% if lang == 'gl' %}Representación{% else %}Representación{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Voz ante Concello, Xunta e Mesa Local do Comercio. Defendemos os intereses do pequeno comercio unindo forzas.{% else %}Voz ante Ayuntamiento, Xunta y Mesa Local del Comercio. Defendemos los intereses del pequeño comercio uniendo fuerzas.{% endif %}</p>
+      <div class="spotlight-card ac-reveal ac-reveal--delay-2" style="padding:2rem; border-radius:16px;">
+        <div style="font-size:3rem; margin-bottom:1rem; color:var(--ac-primary);" aria-hidden="true">🏛️</div>
+        <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Representación{% else %}Representación{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Voz ante Concello, Xunta e Mesa Local do Comercio. Defendemos os intereses do pequeno comercio unindo forzas.{% else %}Voz ante Ayuntamiento, Xunta y Mesa Local del Comercio. Defendemos los intereses del pequeño comercio uniendo fuerzas.{% endif %}</p>
       </div>
     </div>
   </div>
 </section>
 
 {# ── STATS BAR ───────────────────────────────────────────────── #}
-<section class="inst-stats">
+<section class="ac-section ac-section--dark" style="padding:3rem 0;">
   <div class="container">
-    <div class="inst-stats__grid">
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">150+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</span>
+    <div class="hero-stats-ac" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:2rem; justify-items:center;">
+      <div class="ac-reveal" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;" data-counter="150">150+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">3</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Parkings{% else %}Parkings{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-1" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;">3</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Parkings{% else %}Parkings{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">8+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Campañas/ano{% else %}Campañas/año{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-2" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;">8+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Campañas/ano{% else %}Campañas/año{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">30+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Anos{% else %}Años{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-3" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;">30+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Anos{% else %}Años{% endif %}</span>
       </div>
     </div>
   </div>
 </section>
 
 {# ── FAQ ─────────────────────────────────────────────────────── #}
-<section class="inst-section inst-section--alt">
+<section class="ac-section ac-section--alt">
   <div class="container" style="max-width:800px;">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Preguntas frecuentes{% else %}Preguntas frecuentes{% endif %}
-    </h2>
-    <div class="inst-faq">
-      <details class="inst-faq__item">
-        <summary>{% if lang == 'gl' %}Como me asocio?{% else %}¿Cómo me asocio?{% endif %}</summary>
-        <p>{% if lang == 'gl' %}Moi sinxelo: cubre o formulario de contacto nesta páxina ou visítanos na oficina da CCA en C/ Sol 143-145, 1º Izq. Tamén podes chamarnos ao 981 36 40 36.{% else %}Muy sencillo: rellena el formulario de contacto en esta página o visítanos en la oficina de la CCA en C/ Sol 143-145, 1º Izq. También puedes llamarnos al 981 36 40 36.{% endif %}</p>
-      </details>
-      <details class="inst-faq__item">
-        <summary>{% if lang == 'gl' %}Canto custa ser socio?{% else %}¿Cuánto cuesta ser socio?{% endif %}</summary>
-        <p>{% if lang == 'gl' %}As cotas son accesibles e varían segundo o tipo de negocio. Contacta connosco para recibir toda a información sen compromiso.{% else %}Las cuotas son accesibles y varían según el tipo de negocio. Contacta con nosotros para recibir toda la información sin compromiso.{% endif %}</p>
-      </details>
-      <details class="inst-faq__item">
-        <summary>{% if lang == 'gl' %}Que compromisos implica?{% else %}¿Qué compromisos implica?{% endif %}</summary>
-        <p>{% if lang == 'gl' %}Ningunha burocracia complicada. Asociarse é sinxelo e os beneficios son inmediatos. Participar nas campañas é voluntario pero moi recomendable.{% else %}Ninguna burocracia complicada. Asociarse es sencillo y los beneficios son inmediatos. Participar en las campañas es voluntario pero muy recomendable.{% endif %}</p>
-      </details>
-      <details class="inst-faq__item">
-        <summary>{% if lang == 'gl' %}Xa teño web propia, necesito isto?{% else %}Ya tengo web propia, ¿necesito esto?{% endif %}</summary>
-        <p>{% if lang == 'gl' %}Totalmente complementario. A túa ficha na CCA dáche visibilidade adicional, posicionamento SEO local e presencia en campañas e eventos do barrio.{% else %}Totalmente complementario. Tu ficha en la CCA te da visibilidad adicional, posicionamiento SEO local y presencia en campañas y eventos del barrio.{% endif %}</p>
-      </details>
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-question-circle" aria-hidden="true"></i>
+        FAQ
+      </span>
     </div>
-  </div>
-</section>
-
-{# ── TESTIMONIOS ─────────────────────────────────────────────── #}
-<section class="inst-section">
-  <div class="container">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}O que din os nosos socios{% else %}Lo que dicen nuestros socios{% endif %}
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Preguntas <span>frecuentes</span>{% else %}Preguntas <span>frecuentes</span>{% endif %}
     </h2>
-    <div class="inst-testimonials">
-      <div class="inst-testimonial">
-        <div class="inst-testimonial__quote">
-          <i class="fas fa-quote-left" aria-hidden="true"></i>
-          <p>{% if lang == 'gl' %}Desde que me asociei ao CCA, a miña tenda aparece en todos os eventos do barrio. A visibilidade multiplicouse.{% else %}Desde que me asocié al CCA, mi tienda aparece en todos los eventos del barrio. La visibilidad se ha multiplicado.{% endif %}</p>
-        </div>
-        <div class="inst-testimonial__author">
-          <strong>Óptica Rey</strong>
-          <span>{% if lang == 'gl' %}Asociado dende 2012{% else %}Asociado desde 2012{% endif %}</span>
-        </div>
-      </div>
-      <div class="inst-testimonial">
-        <div class="inst-testimonial__quote">
-          <i class="fas fa-quote-left" aria-hidden="true"></i>
-          <p>{% if lang == 'gl' %}O parking gratuíto para clientes marcou a diferenza. Os clientes agradéceno e repiten.{% else %}El parking gratuito para clientes marcó la diferencia. Los clientes lo agradecen y repiten.{% endif %}</p>
-        </div>
-        <div class="inst-testimonial__author">
-          <strong>Viajes Paco</strong>
-          <span>{% if lang == 'gl' %}Asociado dende 2005{% else %}Asociado desde 2005{% endif %}</span>
-        </div>
-      </div>
-      <div class="inst-testimonial">
-        <div class="inst-testimonial__quote">
-          <i class="fas fa-quote-left" aria-hidden="true"></i>
-          <p>{% if lang == 'gl' %}As campañas de Nadal e a Fashion Night tráennos moitos clientes novos. É un impulso enorme para o negocio.{% else %}Las campañas de Navidad y la Fashion Night nos traen muchos clientes nuevos. Es un impulso enorme para el negocio.{% endif %}</p>
-        </div>
-        <div class="inst-testimonial__author">
-          <strong>Joyería Ferrer</strong>
-          <span>{% if lang == 'gl' %}Asociado dende 1998{% else %}Asociado desde 1998{% endif %}</span>
-        </div>
-      </div>
+    <div style="margin-top:3rem;">
+      <details class="ac-glass ac-reveal ac-reveal--delay-2" style="padding:1.5rem; border-radius:12px; margin-bottom:1rem; cursor:pointer;">
+        <summary style="font-weight:700; color:var(--ac-primary); font-size:1.125rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          {% if lang == 'gl' %}Como me asocio?{% else %}¿Cómo me asocio?{% endif %}
+          <i class="fas fa-chevron-down" style="transition:transform 0.3s ease;" aria-hidden="true"></i>
+        </summary>
+        <p style="margin-top:1rem; color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Moi sinxelo: cubre o formulario de contacto nesta páxina ou visítanos na oficina da CCA en C/ Sol 143-145, 1º Izq. Tamén podes chamarnos ao 981 36 40 36.{% else %}Muy sencillo: rellena el formulario de contacto en esta página o visítanos en la oficina de la CCA en C/ Sol 143-145, 1º Izq. También puedes llamarnos al 981 36 40 36.{% endif %}</p>
+      </details>
+      <details class="ac-glass ac-reveal ac-reveal--delay-3" style="padding:1.5rem; border-radius:12px; margin-bottom:1rem; cursor:pointer;">
+        <summary style="font-weight:700; color:var(--ac-primary); font-size:1.125rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          {% if lang == 'gl' %}Canto custa ser socio?{% else %}¿Cuánto cuesta ser socio?{% endif %}
+          <i class="fas fa-chevron-down" style="transition:transform 0.3s ease;" aria-hidden="true"></i>
+        </summary>
+        <p style="margin-top:1rem; color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}As cotas son accesibles e varían segundo o tipo de negocio. Contacta connosco para recibir toda a información sen compromiso.{% else %}Las cuotas son accesibles y varían según el tipo de negocio. Contacta con nosotros para recibir toda la información sin compromiso.{% endif %}</p>
+      </details>
+      <details class="ac-glass ac-reveal ac-reveal--delay-4" style="padding:1.5rem; border-radius:12px; margin-bottom:1rem; cursor:pointer;">
+        <summary style="font-weight:700; color:var(--ac-primary); font-size:1.125rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          {% if lang == 'gl' %}Que compromisos implica?{% else %}¿Qué compromisos implica?{% endif %}
+          <i class="fas fa-chevron-down" style="transition:transform 0.3s ease;" aria-hidden="true"></i>
+        </summary>
+        <p style="margin-top:1rem; color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Ningunha burocracia complicada. Asociarse é sinxelo e os beneficios son inmediatos. Participar nas campañas é voluntario pero moi recomendable.{% else %}Ninguna burocracia complicada. Asociarse es sencillo y los beneficios son inmediatos. Participar en las campañas es voluntario pero muy recomendable.{% endif %}</p>
+      </details>
+      <details class="ac-glass ac-reveal ac-reveal--delay-5" style="padding:1.5rem; border-radius:12px; cursor:pointer;">
+        <summary style="font-weight:700; color:var(--ac-primary); font-size:1.125rem; list-style:none; display:flex; justify-content:space-between; align-items:center;">
+          {% if lang == 'gl' %}Xa teño web propia, necesito isto?{% else %}Ya tengo web propia, ¿necesito esto?{% endif %}
+          <i class="fas fa-chevron-down" style="transition:transform 0.3s ease;" aria-hidden="true"></i>
+        </summary>
+        <p style="margin-top:1rem; color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Totalmente complementario. A túa ficha na CCA dáche visibilidade adicional, posicionamento SEO local e presencia en campañas e eventos do barrio.{% else %}Totalmente complementario. Tu ficha en la CCA te da visibilidad adicional, posicionamiento SEO local y presencia en campañas y eventos del barrio.{% endif %}</p>
+      </details>
     </div>
   </div>
 </section>
 
 {# ── FORMULARIO ──────────────────────────────────────────────── #}
-<section class="inst-section inst-section--alt" id="contacto-socio">
+<section class="ac-section" id="contacto-socio">
   <div class="container" style="max-width:700px;">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Quero saber máis{% else %}Quiero saber más{% endif %}
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Quero saber <span>máis</span>{% else %}Quiero saber <span>más</span>{% endif %}
     </h2>
-    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-8);">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
       {% if lang == 'gl' %}Cubre o formulario e poñerémonos en contacto contigo sen ningún compromiso.{% else %}Rellena el formulario y nos pondremos en contacto contigo sin ningún compromiso.{% endif %}
     </p>
-    <form class="inst-form" action="mailto:cca@ferrolcomercio.es" method="post" enctype="text/plain">
-      <div class="inst-form__row">
-        <div class="inst-form__group">
-          <label for="fp-negocio">{% if lang == 'gl' %}Nome do negocio{% else %}Nombre del negocio{% endif %} *</label>
-          <input type="text" id="fp-negocio" name="negocio" required placeholder="{% if lang == 'gl' %}O teu negocio{% else %}Tu negocio{% endif %}">
+    <form class="ac-glass ac-reveal ac-reveal--delay-3" style="padding:2.5rem; border-radius:16px;" action="mailto:cca@ferrolcomercio.es" method="post" enctype="text/plain">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+        <div>
+          <label for="fp-negocio" style="display:block; font-weight:600; margin-bottom:0.5rem; color:var(--color-text);">{% if lang == 'gl' %}Nome do negocio{% else %}Nombre del negocio{% endif %} *</label>
+          <input type="text" id="fp-negocio" name="negocio" required placeholder="{% if lang == 'gl' %}O teu negocio{% else %}Tu negocio{% endif %}" style="width:100%; padding:0.875rem; border:1px solid var(--color-border); border-radius:8px; font-size:1rem;">
         </div>
-        <div class="inst-form__group">
-          <label for="fp-contacto">{% if lang == 'gl' %}Persoa de contacto{% else %}Persona de contacto{% endif %} *</label>
-          <input type="text" id="fp-contacto" name="contacto" required placeholder="{% if lang == 'gl' %}Nome e apelidos{% else %}Nombre y apellidos{% endif %}">
-        </div>
-      </div>
-      <div class="inst-form__row">
-        <div class="inst-form__group">
-          <label for="fp-tel">{% if lang == 'gl' %}Teléfono{% else %}Teléfono{% endif %} *</label>
-          <input type="tel" id="fp-tel" name="telefono" required placeholder="981 XX XX XX">
-        </div>
-        <div class="inst-form__group">
-          <label for="fp-email">Email *</label>
-          <input type="email" id="fp-email" name="email" required placeholder="email@exemplo.com">
+        <div>
+          <label for="fp-contacto" style="display:block; font-weight:600; margin-bottom:0.5rem; color:var(--color-text);">{% if lang == 'gl' %}Persoa de contacto{% else %}Persona de contacto{% endif %} *</label>
+          <input type="text" id="fp-contacto" name="contacto" required placeholder="{% if lang == 'gl' %}Nome e apelidos{% else %}Nombre y apellidos{% endif %}" style="width:100%; padding:0.875rem; border:1px solid var(--color-border); border-radius:8px; font-size:1rem;">
         </div>
       </div>
-      <div class="inst-form__group">
-        <label for="fp-tipo">{% if lang == 'gl' %}Tipo de negocio{% else %}Tipo de negocio{% endif %}</label>
-        <select id="fp-tipo" name="tipo">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+        <div>
+          <label for="fp-tel" style="display:block; font-weight:600; margin-bottom:0.5rem; color:var(--color-text);">{% if lang == 'gl' %}Teléfono{% else %}Teléfono{% endif %} *</label>
+          <input type="tel" id="fp-tel" name="telefono" required placeholder="981 XX XX XX" style="width:100%; padding:0.875rem; border:1px solid var(--color-border); border-radius:8px; font-size:1rem;">
+        </div>
+        <div>
+          <label for="fp-email" style="display:block; font-weight:600; margin-bottom:0.5rem; color:var(--color-text);">Email *</label>
+          <input type="email" id="fp-email" name="email" required placeholder="email@exemplo.com" style="width:100%; padding:0.875rem; border:1px solid var(--color-border); border-radius:8px; font-size:1rem;">
+        </div>
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <label for="fp-tipo" style="display:block; font-weight:600; margin-bottom:0.5rem; color:var(--color-text);">{% if lang == 'gl' %}Tipo de negocio{% else %}Tipo de negocio{% endif %}</label>
+        <select id="fp-tipo" name="tipo" style="width:100%; padding:0.875rem; border:1px solid var(--color-border); border-radius:8px; font-size:1rem; background:#fff;">
           <option value="">{% if lang == 'gl' %}Selecciona unha opción{% else %}Selecciona una opción{% endif %}</option>
           <option value="moda">{% if lang == 'gl' %}Moda e Téxtil{% else %}Moda y Textil{% endif %}</option>
           <option value="restauracion">{% if lang == 'gl' %}Restauración{% else %}Restauración{% endif %}</option>
@@ -232,31 +238,48 @@
           <option value="outro">{% if lang == 'gl' %}Outro{% else %}Otro{% endif %}</option>
         </select>
       </div>
-      <div class="inst-form__group">
-        <label for="fp-mensaxe">{% if lang == 'gl' %}Mensaxe{% else %}Mensaje{% endif %}</label>
-        <textarea id="fp-mensaxe" name="mensaxe" rows="4" placeholder="{% if lang == 'gl' %}Cóntanos sobre o teu negocio...{% else %}Cuéntanos sobre tu negocio...{% endif %}"></textarea>
+      <div style="margin-bottom:1.5rem;">
+        <label for="fp-mensaxe" style="display:block; font-weight:600; margin-bottom:0.5rem; color:var(--color-text);">{% if lang == 'gl' %}Mensaxe{% else %}Mensaje{% endif %}</label>
+        <textarea id="fp-mensaxe" name="mensaxe" rows="4" placeholder="{% if lang == 'gl' %}Cóntanos sobre o teu negocio...{% else %}Cuéntanos sobre tu negocio...{% endif %}" style="width:100%; padding:0.875rem; border:1px solid var(--color-border); border-radius:8px; font-size:1rem; resize:vertical;"></textarea>
       </div>
-      <button type="submit" class="btn btn--primary btn--lg" style="width:100%;">
+      <button type="submit" class="btn-ac" style="width:100%; font-size:1.125rem; justify-content:center;">
         {% if lang == 'gl' %}Quero saber máis{% else %}Quiero saber más{% endif %}
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
       </button>
     </form>
   </div>
 </section>
 
 {# ── CTA FINAL ───────────────────────────────────────────────── #}
-<section class="inst-cta">
+<section class="ac-section ac-section--dark">
   <div class="container" style="text-align:center;">
-    <h2>{% if lang == 'gl' %}Aínda tes dúbidas?{% else %}¿Aún tienes dudas?{% endif %}</h2>
-    <p>{% if lang == 'gl' %}Chámanos ao 981 36 40 36 ou escríbenos a cca@ferrolcomercio.es{% else %}Llámanos al 981 36 40 36 o escríbenos a cca@ferrolcomercio.es{% endif %}</p>
-    <div style="display:flex;gap:var(--sp-4);justify-content:center;flex-wrap:wrap;margin-top:var(--sp-6);">
-      <a href="tel:+34981364036" class="btn btn--white">
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-phone" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Contacto directo{% else %}Contacto directo{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="color:#fff;">
+      {% if lang == 'gl' %}Aínda tes <span class="text-gradient-light">dúbidas?</span>{% else %}¿Aún tienes <span class="text-gradient-light">dudas?</span>{% endif %}
+    </h2>
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
+      {% if lang == 'gl' %}Chámanos ao 981 36 40 36 ou escríbenos a cca@ferrolcomercio.es{% else %}Llámanos al 981 36 40 36 o escríbenos a cca@ferrolcomercio.es{% endif %}
+    </p>
+    <div class="ac-reveal ac-reveal--delay-3" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:+34981364036" class="btn-ac">
         <i class="fas fa-phone" aria-hidden="true"></i> 981 36 40 36
       </a>
-      <a href="mailto:cca@ferrolcomercio.es" class="btn btn--white">
+      <a href="mailto:cca@ferrolcomercio.es" class="btn-ac btn-ac--outline">
         <i class="fas fa-envelope" aria-hidden="true"></i> cca@ferrolcomercio.es
       </a>
     </div>
   </div>
 </section>
+
+<style>
+details[open] summary i.fa-chevron-down {
+  transform: rotate(180deg);
+}
+</style>
 
 {% endblock %}

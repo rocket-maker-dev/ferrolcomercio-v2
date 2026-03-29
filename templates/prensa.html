@@ -11,7 +11,7 @@
   "isPartOf": {
     "@type": "WebSite",
     "name": "CCA Ferrol Comercio",
-    "url": "{{ base_url }}/{{ lang }}/"
+    "url": "/{{ lang }}/"
   }
 }
 </script>
@@ -20,7 +20,7 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "{{ base_url }}/{{ lang }}/"},
+    {"@type": "ListItem", "position": 1, "name": "{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}", "item": "/{{ lang }}/"},
     {"@type": "ListItem", "position": 2, "name": "{% if lang == 'gl' %}Sala de Prensa{% else %}Sala de Prensa{% endif %}"}
   ]
 }
@@ -29,122 +29,148 @@
 
 {% block content %}
 
-{# ── HERO ────────────────────────────────────────────────────── #}
-<section class="inst-hero inst-hero--compact" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=1600&q=80')">
-  <div class="inst-hero__overlay" style="background:rgba(0,0,0,0.6)"></div>
-  <div class="container inst-hero__content">
-    <h1 class="inst-hero__title">
-      {% if lang == 'gl' %}Sala de Prensa{% else %}Sala de Prensa{% endif %}
-    </h1>
-    <p class="inst-hero__subtitle">
-      {% if lang == 'gl' %}Información para medios e notas de prensa{% else %}Información para medios y notas de prensa{% endif %}
-    </p>
+{# ── HERO AURORA ──────────────────────────────────────────────── #}
+<section class="hero-aurora" style="min-height:70vh;" aria-labelledby="prensa-hero-title">
+  <div class="hero-aurora-bg" aria-hidden="true">
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+    <div class="aurora-layer"></div>
+  </div>
+  <div class="sparkle-container" data-sparkle-count="14" aria-hidden="true"></div>
+  <div class="hero-aurora-bottom-fade" aria-hidden="true"></div>
+  <div class="hero-aurora-content">
+    <div class="container" style="padding-top:4rem; padding-bottom:4rem; text-align:center;">
+      <div class="ac-reveal">
+        <span class="ac-section-label" style="color:rgba(116,185,255,0.9); background:rgba(116,185,255,0.12); border-color:rgba(116,185,255,0.25);">
+          <i class="fas fa-newspaper" aria-hidden="true"></i>
+          {% if lang == 'gl' %}Prensa{% else %}Prensa{% endif %}
+        </span>
+      </div>
+      <h1 class="ac-section-title ac-reveal ac-reveal--delay-1" id="prensa-hero-title" style="color:#fff; margin-top:1rem;">
+        {% if lang == 'gl' %}Sala de <span class="text-gradient-light">Prensa</span>{% else %}Sala de <span class="text-gradient-light">Prensa</span>{% endif %}
+      </h1>
+      <p class="ac-reveal ac-reveal--delay-2" style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-top:1.25rem; max-width:600px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        {% if lang == 'gl' %}Información para medios e notas de prensa{% else %}Información para medios y notas de prensa{% endif %}
+      </p>
+    </div>
   </div>
 </section>
 
 {# ── KIT DE PRENSA ───────────────────────────────────────────── #}
-<section class="inst-section">
+<section class="ac-section">
   <div class="container">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Kit de prensa{% else %}Kit de prensa{% endif %}
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-download" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Recursos{% else %}Recursos{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Kit de <span>prensa</span>{% else %}Kit de <span>prensa</span>{% endif %}
     </h2>
-    <p style="text-align:center;color:var(--color-text-muted);margin-bottom:var(--sp-10);max-width:600px;margin-left:auto;margin-right:auto;">
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 3rem;">
       {% if lang == 'gl' %}Recursos gráficos e información institucional para medios de comunicación{% else %}Recursos gráficos e información institucional para medios de comunicación{% endif %}
     </p>
-    <div class="inst-press-grid">
-      <div class="inst-press-card">
-        <div class="inst-press-card__icon">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:2rem;">
+      <div class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-3" style="padding:2rem; border-radius:16px;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-primary), var(--ac-blue-mid)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;">
           <i class="fas fa-palette" aria-hidden="true"></i>
         </div>
-        <h3>{% if lang == 'gl' %}Logo en cor{% else %}Logo en color{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Logo oficial da CCA Ferrol A Magdalena en formato PNG con fondo transparente.{% else %}Logo oficial de la CCA Ferrol A Magdalena en formato PNG con fondo transparente.{% endif %}</p>
-        <a href="{{ base_url }}/assets/images/cca-logo-color.png" download class="btn btn--outline btn--sm">
+        <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem; text-align:center;">{% if lang == 'gl' %}Logo en cor{% else %}Logo en color{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem; text-align:center; margin-bottom:1.5rem;">{% if lang == 'gl' %}Logo oficial da CCA Ferrol A Magdalena en formato PNG con fondo transparente.{% else %}Logo oficial de la CCA Ferrol A Magdalena en formato PNG con fondo transparente.{% endif %}</p>
+        <a href="/assets/images/cca-logo-color.png" download class="btn-ac btn-ac--sm" style="width:100%; justify-content:center;">
           <i class="fas fa-download" aria-hidden="true"></i> {% if lang == 'gl' %}Descargar{% else %}Descargar{% endif %}
         </a>
       </div>
-      <div class="inst-press-card">
-        <div class="inst-press-card__icon">
+      <div class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-4" style="padding:2rem; border-radius:16px;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-blue-mid), var(--ac-blue-light)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;">
           <i class="fas fa-moon" aria-hidden="true"></i>
         </div>
-        <h3>{% if lang == 'gl' %}Logo en branco{% else %}Logo en blanco{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Versión en branco para uso sobre fondos escuros ou imaxes.{% else %}Versión en blanco para uso sobre fondos oscuros o imágenes.{% endif %}</p>
-        <a href="{{ base_url }}/assets/images/cca-logo-blanco.png" download class="btn btn--outline btn--sm">
+        <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem; text-align:center;">{% if lang == 'gl' %}Logo en branco{% else %}Logo en blanco{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem; text-align:center; margin-bottom:1.5rem;">{% if lang == 'gl' %}Versión en branco para uso sobre fondos escuros ou imaxes.{% else %}Versión en blanco para uso sobre fondos oscuros o imágenes.{% endif %}</p>
+        <a href="/assets/images/cca-logo-blanco.png" download class="btn-ac btn-ac--sm" style="width:100%; justify-content:center;">
           <i class="fas fa-download" aria-hidden="true"></i> {% if lang == 'gl' %}Descargar{% else %}Descargar{% endif %}
         </a>
       </div>
-      <div class="inst-press-card">
-        <div class="inst-press-card__icon">
+      <div class="spotlight-card spotlight-card--border ac-reveal ac-reveal--delay-5" style="padding:2rem; border-radius:16px; position:relative;">
+        <div style="width:64px; height:64px; margin:0 auto 1rem; background:linear-gradient(135deg, var(--ac-indigo), var(--ac-sky)); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.75rem;">
           <i class="fas fa-file-alt" aria-hidden="true"></i>
         </div>
-        <h3>{% if lang == 'gl' %}Dossier CCA{% else %}Dossier CCA{% endif %}</h3>
-        <p>{% if lang == 'gl' %}Información institucional, datos da asociación, historia e cifras clave.{% else %}Información institucional, datos de la asociación, historia y cifras clave.{% endif %}</p>
-        <span class="inst-press-card__badge">{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</span>
+        <h3 style="font-family:var(--font-heading); font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem; text-align:center;">{% if lang == 'gl' %}Dossier CCA{% else %}Dossier CCA{% endif %}</h3>
+        <p style="color:var(--color-text-muted); line-height:1.7; font-size:0.9375rem; text-align:center; margin-bottom:1.5rem;">{% if lang == 'gl' %}Información institucional, datos da asociación, historia e cifras clave.{% else %}Información institucional, datos de la asociación, historia y cifras clave.{% endif %}</p>
+        <span style="display:block; padding:0.5rem 1rem; background:var(--ac-primary-soft); color:var(--ac-primary); border-radius:999px; font-size:0.8125rem; font-weight:700; text-transform:uppercase; text-align:center; letter-spacing:0.05em;">{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</span>
       </div>
     </div>
   </div>
 </section>
 
 {# ── DATOS RÁPIDOS ───────────────────────────────────────────── #}
-<section class="inst-stats">
+<section class="ac-section ac-section--dark" style="padding:3rem 0;">
   <div class="container">
-    <div class="inst-stats__grid">
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">150+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Comercios asociados{% else %}Comercios asociados{% endif %}</span>
+    <div class="hero-stats-ac" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:2rem; justify-items:center;">
+      <div class="ac-reveal" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;" data-counter="150">150+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Comercios asociados{% else %}Comercios asociados{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">1990</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Ano de fundación{% else %}Año de fundación{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-1" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;" data-counter="1990">1990</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Ano de fundación{% else %}Año de fundación{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">8+</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Campañas anuais{% else %}Campañas anuales{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-2" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;">8+</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Campañas anuais{% else %}Campañas anuales{% endif %}</span>
       </div>
-      <div class="inst-stats__item">
-        <span class="inst-stats__number">1</span>
-        <span class="inst-stats__label">{% if lang == 'gl' %}Barrio histórico{% else %}Barrio histórico{% endif %}</span>
+      <div class="ac-reveal ac-reveal--delay-3" style="text-align:center;">
+        <strong style="display:block; font-size:3rem; font-weight:900; color:#fff; line-height:1; margin-bottom:0.5rem;">1</strong>
+        <span style="font-size:0.875rem; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.05em; font-weight:600;">{% if lang == 'gl' %}Barrio histórico{% else %}Barrio histórico{% endif %}</span>
       </div>
     </div>
   </div>
 </section>
 
 {# ── QUIÉN ES LA CCA (para periodistas) ──────────────────────── #}
-<section class="inst-section inst-section--alt">
-  <div class="container" style="max-width:800px;">
-    <h2 class="inst-section__title" style="text-align:center;">
-      {% if lang == 'gl' %}Sobre a CCA Ferrol A Magdalena{% else %}Sobre la CCA Ferrol A Magdalena{% endif %}
+<section class="ac-section ac-section--alt">
+  <div class="container" style="max-width:900px;">
+    <div class="ac-reveal" style="text-align:center;">
+      <span class="ac-section-label">
+        <i class="fas fa-info-circle" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Quen somos{% else %}Quiénes somos{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="text-align:center;">
+      {% if lang == 'gl' %}Sobre a CCA <span>Ferrol A Magdalena</span>{% else %}Sobre la CCA <span>Ferrol A Magdalena</span>{% endif %}
     </h2>
-    <div class="inst-press-about">
-      <p>
+    <div class="ac-glass ac-reveal ac-reveal--delay-2" style="padding:2.5rem; border-radius:16px; margin-top:2.5rem;">
+      <p style="color:var(--color-text); line-height:1.8; font-size:1.0625rem; margin-bottom:1.5rem;">
         {% if lang == 'gl' %}
           O <strong>Centro Comercial Aberto (CCA) Ferrol A Magdalena</strong> é unha asociación sen ánimo de lucro fundada en 1990 que agrupa a máis de 150 comercios do barrio histórico de A Magdalena en Ferrol (A Coruña).
         {% else %}
           El <strong>Centro Comercial Abierto (CCA) Ferrol A Magdalena</strong> es una asociación sin ánimo de lucro fundada en 1990 que agrupa a más de 150 comercios del barrio histórico de A Magdalena en Ferrol (A Coruña).
         {% endif %}
       </p>
-      <p>
+      <p style="color:var(--color-text); line-height:1.8; font-size:1.0625rem; margin-bottom:2rem;">
         {% if lang == 'gl' %}
           A Magdalena é considerada o maior centro comercial ao aire libre de Galicia, nun entorno ilustrado único. A CCA traballa pola dinamización do comercio de proximidade, organizando campañas comerciais, representando aos comerciantes ante as administracións e promovendo o barrio como destino de compras.
         {% else %}
           A Magdalena es considerada el mayor centro comercial al aire libre de Galicia, en un entorno ilustrado único. La CCA trabaja por la dinamización del comercio de proximidad, organizando campañas comerciales, representando a los comerciantes ante las administraciones y promoviendo el barrio como destino de compras.
         {% endif %}
       </p>
-      <div class="inst-press-contact-info">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.25rem; padding-top:1.5rem; border-top:1px solid var(--color-border);">
         <div>
-          <strong>{% if lang == 'gl' %}Dirección:{% else %}Dirección:{% endif %}</strong>
-          <span>C/ Sol 143-145, 1º Izq., 15401 Ferrol (A Coruña)</span>
+          <strong style="display:block; font-weight:700; color:var(--ac-primary); margin-bottom:0.375rem;">{% if lang == 'gl' %}Dirección:{% else %}Dirección:{% endif %}</strong>
+          <span style="color:var(--color-text-muted); font-size:0.9375rem; line-height:1.6;">C/ Sol 143-145, 1º Izq., 15401 Ferrol (A Coruña)</span>
         </div>
         <div>
-          <strong>{% if lang == 'gl' %}Teléfono:{% else %}Teléfono:{% endif %}</strong>
-          <a href="tel:+34981364036">981 36 40 36</a>
+          <strong style="display:block; font-weight:700; color:var(--ac-primary); margin-bottom:0.375rem;">{% if lang == 'gl' %}Teléfono:{% else %}Teléfono:{% endif %}</strong>
+          <a href="tel:+34981364036" style="color:var(--ac-primary); text-decoration:none; font-weight:600;">981 36 40 36</a>
         </div>
         <div>
-          <strong>Email:</strong>
-          <a href="mailto:cca@ferrolcomercio.es">cca@ferrolcomercio.es</a>
+          <strong style="display:block; font-weight:700; color:var(--ac-primary); margin-bottom:0.375rem;">Email:</strong>
+          <a href="mailto:cca@ferrolcomercio.es" style="color:var(--ac-primary); text-decoration:none; font-weight:600;">cca@ferrolcomercio.es</a>
         </div>
         <div>
-          <strong>Web:</strong>
-          <a href="https://ferrolcomercio.es" target="_blank" rel="noopener">ferrolcomercio.es</a>
+          <strong style="display:block; font-weight:700; color:var(--ac-primary); margin-bottom:0.375rem;">Web:</strong>
+          <a href="https://ferrolcomercio.es" target="_blank" rel="noopener" style="color:var(--ac-primary); text-decoration:none; font-weight:600;">ferrolcomercio.es</a>
         </div>
       </div>
     </div>
@@ -152,43 +178,65 @@
 </section>
 
 {# ── NOTAS DE PRENSA ─────────────────────────────────────────── #}
-<section class="inst-section">
+<section class="ac-section">
   <div class="container" style="max-width:800px;text-align:center;">
-    <h2 class="inst-section__title">
-      {% if lang == 'gl' %}Notas de prensa{% else %}Notas de prensa{% endif %}
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-file-alt" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Notas{% else %}Notas{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1">
+      {% if lang == 'gl' %}Notas de <span>prensa</span>{% else %}Notas de <span>prensa</span>{% endif %}
     </h2>
-    <div class="inst-empty-state">
-      <i class="fas fa-newspaper" aria-hidden="true"></i>
-      <h3>{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</h3>
-      <p>{% if lang == 'gl' %}Estamos preparando a nosa sección de notas de prensa. Para solicitar información de prensa, contacta connosco.{% else %}Estamos preparando nuestra sección de notas de prensa. Para solicitar información de prensa, contacta con nosotros.{% endif %}</p>
+    <div class="ac-glass ac-reveal ac-reveal--delay-2" style="padding:3rem; border-radius:16px; margin-top:2rem;">
+      <i class="fas fa-newspaper" aria-hidden="true" style="font-size:3rem; color:var(--ac-primary); opacity:0.3; margin-bottom:1rem;"></i>
+      <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</h3>
+      <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Estamos preparando a nosa sección de notas de prensa. Para solicitar información de prensa, contacta connosco.{% else %}Estamos preparando nuestra sección de notas de prensa. Para solicitar información de prensa, contacta con nosotros.{% endif %}</p>
     </div>
   </div>
 </section>
 
 {# ── APARICIONES EN MEDIOS ───────────────────────────────────── #}
-<section class="inst-section inst-section--alt">
+<section class="ac-section ac-section--alt">
   <div class="container" style="max-width:800px;text-align:center;">
-    <h2 class="inst-section__title">
-      {% if lang == 'gl' %}Aparicións en medios{% else %}Apariciones en medios{% endif %}
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-tv" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Medios{% else %}Medios{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1">
+      {% if lang == 'gl' %}Aparicións en <span>medios</span>{% else %}Apariciones en <span>medios</span>{% endif %}
     </h2>
-    <div class="inst-empty-state">
-      <i class="fas fa-tv" aria-hidden="true"></i>
-      <h3>{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</h3>
-      <p>{% if lang == 'gl' %}Recopilando as nosas aparicións en prensa, radio e televisión.{% else %}Recopilando nuestras apariciones en prensa, radio y televisión.{% endif %}</p>
+    <div class="ac-glass ac-reveal ac-reveal--delay-2" style="padding:3rem; border-radius:16px; margin-top:2rem;">
+      <i class="fas fa-tv" aria-hidden="true" style="font-size:3rem; color:var(--ac-primary); opacity:0.3; margin-bottom:1rem;"></i>
+      <h3 style="font-size:1.25rem; font-weight:700; color:var(--ac-primary); margin-bottom:0.75rem;">{% if lang == 'gl' %}Próximamente{% else %}Próximamente{% endif %}</h3>
+      <p style="color:var(--color-text-muted); line-height:1.7;">{% if lang == 'gl' %}Recopilando as nosas aparicións en prensa, radio e televisión.{% else %}Recopilando nuestras apariciones en prensa, radio y televisión.{% endif %}</p>
     </div>
   </div>
 </section>
 
 {# ── CTA ─────────────────────────────────────────────────────── #}
-<section class="inst-cta">
+<section class="ac-section ac-section--dark">
   <div class="container" style="text-align:center;">
-    <h2>{% if lang == 'gl' %}Contacto de prensa{% else %}Contacto de prensa{% endif %}</h2>
-    <p>{% if lang == 'gl' %}Para solicitar información, entrevistas ou material gráfico{% else %}Para solicitar información, entrevistas o material gráfico{% endif %}</p>
-    <div style="display:flex;gap:var(--sp-4);justify-content:center;flex-wrap:wrap;margin-top:var(--sp-6);">
-      <a href="mailto:cca@ferrolcomercio.es" class="btn btn--white">
+    <div class="ac-reveal">
+      <span class="ac-section-label">
+        <i class="fas fa-phone" aria-hidden="true"></i>
+        {% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}
+      </span>
+    </div>
+    <h2 class="ac-section-title ac-reveal ac-reveal--delay-1" style="color:#fff;">
+      {% if lang == 'gl' %}Contacto de <span class="text-gradient-light">prensa</span>{% else %}Contacto de <span class="text-gradient-light">prensa</span>{% endif %}
+    </h2>
+    <p class="ac-section-desc ac-reveal ac-reveal--delay-2" style="margin:0 auto 2.5rem;">
+      {% if lang == 'gl' %}Para solicitar información, entrevistas ou material gráfico{% else %}Para solicitar información, entrevistas o material gráfico{% endif %}
+    </p>
+    <div class="ac-reveal ac-reveal--delay-3" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="mailto:cca@ferrolcomercio.es" class="btn-ac">
         <i class="fas fa-envelope" aria-hidden="true"></i> cca@ferrolcomercio.es
       </a>
-      <a href="tel:+34981364036" class="btn btn--white">
+      <a href="tel:+34981364036" class="btn-ac btn-ac--outline">
         <i class="fas fa-phone" aria-hidden="true"></i> 981 36 40 36
       </a>
     </div>

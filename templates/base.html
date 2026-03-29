@@ -13,18 +13,18 @@
   <link rel="alternate" hreflang="x-default" href="{{ url_gl }}">
 
   {# API base for reviews etc #}
-  <meta name="api-base" content="{{ base_url }}/api">
-  <meta name="site-base" content="{{ base_url }}">
+  <meta name="api-base" content="/api">
+  <meta name="site-base" content="">
 
   {# Favicon #}
-  <link rel="icon" type="image/svg+xml" href="{{ base_url }}/assets/images/favicon.svg">
-  <link rel="alternate icon" type="image/png" href="{{ base_url }}/assets/images/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="/assets/images/favicon.png">
 
   {# Open Graph #}
   <meta property="og:title" content="{{ meta_title }}">
   <meta property="og:description" content="{{ meta_description }}">
   <meta property="og:url" content="{{ canonical_url }}">
-  <meta property="og:image" content="{{ og_image | default(base_url + '/assets/images/cca-logo-color.png') }}">
+  <meta property="og:image" content="{{ og_image | default("/assets/images/cca-logo-color.png") }}">
   <meta property="og:type" content="{{ og_type | default('website') }}">
   <meta property="og:site_name" content="CCA Ferrol Comercio">
   <meta property="og:locale" content="{{ 'gl_ES' if lang == 'gl' else 'es_ES' }}">
@@ -33,7 +33,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ meta_title }}">
   <meta name="twitter:description" content="{{ meta_description }}">
-  <meta name="twitter:image" content="{{ og_image | default(base_url + '/assets/images/cca-logo-color.png') }}">
+  <meta name="twitter:image" content="{{ og_image | default("/assets/images/cca-logo-color.png") }}">
 
   {# Preconnect #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,24 +56,19 @@
   </style>
 
   {# CSS principal #}
-  <link rel="preload" href="{{ base_url }}/assets/css/ferrolcomercio.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ base_url }}/assets/css/ferrolcomercio.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/ferrolcomercio.css">
 
   {# CSS institucional #}
-  <link rel="preload" href="{{ base_url }}/assets/css/institucional.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ base_url }}/assets/css/institucional.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/institucional.css">
 
   {# CSS Aceternity — efectos visuales Fase 3 #}
-  <link rel="preload" href="{{ base_url }}/assets/css/aceternity.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ base_url }}/assets/css/aceternity.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/aceternity.css">
 
   {# Google Fonts: Raleway + Open Sans + Dancing Script #}
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@600&display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Dancing+Script:wght@600&display=swap">
 
   {# Font Awesome #}
-  <link rel="preload" as="style" href="{{ base_url }}/assets/css/all.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ base_url }}/assets/css/all.css"></noscript>
+  <link rel="stylesheet" href="/assets/css/all.css">
 
   {# Schema.org #}
   {% block schema %}{% endblock %}
@@ -92,29 +87,29 @@
   <header class="site-header" role="banner">
     <div class="container">
 
-      <a href="{{ base_url }}/{{ lang }}/" class="site-logo" aria-label="CCA Ferrol Comercio — Inicio">
-        <img src="{{ base_url }}/assets/images/cca-logo-color.svg" alt="CCA Ferrol Comercio" width="140" height="59">
+      <a href="/{{ lang }}/" class="site-logo" aria-label="CCA Ferrol Comercio — Inicio">
+        <img src="/assets/images/cca-logo-color.svg" alt="CCA Ferrol Comercio" width="140" height="59">
       </a>
 
       <nav class="site-nav" aria-label="{% if lang == 'gl' %}Navegación principal{% else %}Navegación principal{% endif %}">
-        <a href="{{ base_url }}/{{ lang }}/comercios/" {% if current_page == 'comercios' %}aria-current="page"{% endif %}>
+        <a href="/{{ lang }}/comercios/" {% if current_page == 'comercios' %}aria-current="page"{% endif %}>
           {% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}
         </a>
-        <a href="{{ base_url }}/{{ lang }}/eventos/" {% if current_page == 'eventos' %}aria-current="page"{% endif %}>
+        <a href="/{{ lang }}/eventos/" {% if current_page == 'eventos' %}aria-current="page"{% endif %}>
           {% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}
         </a>
-        <a href="{{ base_url }}/{{ lang }}/sobre-nos/" {% if current_page == 'sobre-nos' %}aria-current="page"{% endif %}>
+        <a href="/{{ lang }}/sobre-nos/" {% if current_page == 'sobre-nos' %}aria-current="page"{% endif %}>
           {% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}
         </a>
-        <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" {% if current_page == 'fai-parte' %}aria-current="page"{% endif %}>
+        <a href="/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/" {% if current_page == 'fai-parte' %}aria-current="page"{% endif %}>
           {% if lang == 'gl' %}Únete{% else %}Únete{% endif %}
         </a>
-        <a href="{{ base_url }}/{{ lang }}/contacto/" {% if current_page == 'contacto' %}aria-current="page"{% endif %}>
+        <a href="/{{ lang }}/contacto/" {% if current_page == 'contacto' %}aria-current="page"{% endif %}>
           {% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}
         </a>
       </nav>
 
-      <img src="{{ base_url }}/assets/images/firma-magdalena-azul.svg"
+      <img src="/assets/images/firma-magdalena-azul.svg"
            alt="" aria-hidden="true"
            class="firma-magdalena"
            width="120" height="32">
@@ -141,12 +136,12 @@
   <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
     <div class="mobile-nav-panel">
       <button class="mobile-nav-close" aria-label="{% if lang == 'gl' %}Pechar menú{% else %}Cerrar menú{% endif %}">&times;</button>
-      <a href="{{ base_url }}/{{ lang }}/">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</a>
-      <a href="{{ base_url }}/{{ lang }}/comercios/">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</a>
-      <a href="{{ base_url }}/{{ lang }}/eventos/">{% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}</a>
-      <a href="{{ base_url }}/{{ lang }}/sobre-nos/">{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}</a>
-      <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/">{% if lang == 'gl' %}Únete{% else %}Únete{% endif %}</a>
-      <a href="{{ base_url }}/{{ lang }}/contacto/">{% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}</a>
+      <a href="/{{ lang }}/">{% if lang == 'gl' %}Inicio{% else %}Inicio{% endif %}</a>
+      <a href="/{{ lang }}/comercios/">{% if lang == 'gl' %}Asociados{% else %}Asociados{% endif %}</a>
+      <a href="/{{ lang }}/eventos/">{% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}</a>
+      <a href="/{{ lang }}/sobre-nos/">{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}</a>
+      <a href="/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/">{% if lang == 'gl' %}Únete{% else %}Únete{% endif %}</a>
+      <a href="/{{ lang }}/contacto/">{% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}</a>
     </div>
   </div>
 
@@ -161,7 +156,7 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
-          <img src="{{ base_url }}/assets/images/cca-logo-blanco.png" alt="CCA Ferrol Comercio" class="footer-logo" width="160" height="57" loading="lazy">
+          <img src="/assets/images/cca-logo-blanco.png" alt="CCA Ferrol Comercio" class="footer-logo" width="160" height="57" loading="lazy">
           <p class="footer-desc">
             {% if lang == 'gl' %}
               Centro Comercial Aberto do Barrio de A Magdalena. Descobre os mellores comercios de Ferrol.
@@ -180,23 +175,23 @@
         <div>
           <h3 class="footer-section-title">{% if lang == 'gl' %}Categorías{% else %}Categorías{% endif %}</h3>
           <nav class="footer-links" aria-label="{% if lang == 'gl' %}Categorías principais{% else %}Categorías principales{% endif %}">
-            <a href="{{ base_url }}/{{ lang }}/categoria/moda/">{% if lang == 'gl' %}Moda{% else %}Moda{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/categoria/resturantes/">{% if lang == 'gl' %}Restaurantes{% else %}Restaurantes{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/categoria/bares/">{% if lang == 'gl' %}Bares{% else %}Bares{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/categoria/peluquerias/">{% if lang == 'gl' %}Peiteados{% else %}Peluquerías{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/categoria/farmacias/">{% if lang == 'gl' %}Farmacias{% else %}Farmacias{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/comercios/">{% if lang == 'gl' %}Todos os comercios{% else %}Todos los comercios{% endif %}</a>
+            <a href="/{{ lang }}/categoria/moda/">{% if lang == 'gl' %}Moda{% else %}Moda{% endif %}</a>
+            <a href="/{{ lang }}/categoria/resturantes/">{% if lang == 'gl' %}Restaurantes{% else %}Restaurantes{% endif %}</a>
+            <a href="/{{ lang }}/categoria/bares/">{% if lang == 'gl' %}Bares{% else %}Bares{% endif %}</a>
+            <a href="/{{ lang }}/categoria/peluquerias/">{% if lang == 'gl' %}Peiteados{% else %}Peluquerías{% endif %}</a>
+            <a href="/{{ lang }}/categoria/farmacias/">{% if lang == 'gl' %}Farmacias{% else %}Farmacias{% endif %}</a>
+            <a href="/{{ lang }}/comercios/">{% if lang == 'gl' %}Todos os comercios{% else %}Todos los comercios{% endif %}</a>
           </nav>
         </div>
 
         <div>
           <h3 class="footer-section-title">{% if lang == 'gl' %}Información{% else %}Información{% endif %}</h3>
           <nav class="footer-links" aria-label="{% if lang == 'gl' %}Páxinas do sitio{% else %}Páginas del sitio{% endif %}">
-            <a href="{{ base_url }}/{{ lang }}/sobre-nos/">{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/">{% if lang == 'gl' %}Únete{% else %}Únete{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/eventos/">{% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/prensa/">{% if lang == 'gl' %}Prensa{% else %}Prensa{% endif %}</a>
-            <a href="{{ base_url }}/{{ lang }}/contacto/">{% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}</a>
+            <a href="/{{ lang }}/sobre-nos/">{% if lang == 'gl' %}Sobre nós{% else %}Sobre nosotros{% endif %}</a>
+            <a href="/{{ lang }}/{% if lang == 'gl' %}fai-parte{% else %}hazte-socio{% endif %}/">{% if lang == 'gl' %}Únete{% else %}Únete{% endif %}</a>
+            <a href="/{{ lang }}/eventos/">{% if lang == 'gl' %}Eventos{% else %}Eventos{% endif %}</a>
+            <a href="/{{ lang }}/prensa/">{% if lang == 'gl' %}Prensa{% else %}Prensa{% endif %}</a>
+            <a href="/{{ lang }}/contacto/">{% if lang == 'gl' %}Contacto{% else %}Contacto{% endif %}</a>
           </nav>
         </div>
 
@@ -213,15 +208,15 @@
 
       </div>
 
-      <img src="{{ base_url }}/assets/images/firma-magdalena.svg"
+      <img src="/assets/images/firma-magdalena.svg"
            alt="" aria-hidden="true"
            class="footer-magdalena">
 
       <div class="footer-bottom">
         <span>© {{ year }} CCA Ferrol Comercio. {% if lang == 'gl' %}Todos os dereitos reservados.{% else %}Todos los derechos reservados.{% endif %}</span>
         <span>
-          <a href="{{ base_url }}/gl/" lang="gl" hreflang="gl">Galego</a> ·
-          <a href="{{ base_url }}/es/" lang="es" hreflang="es">Español</a>
+          <a href="/gl/" lang="gl" hreflang="gl">Galego</a> ·
+          <a href="/es/" lang="es" hreflang="es">Español</a>
         </span>
       </div>
     </div>
@@ -269,7 +264,7 @@
   {# Buscador: ahora gestionado por ferrol-ai.js con IA #}
 
   {# Aceternity JS — efectos Fase 3 #}
-  <script defer src="{{ base_url }}/assets/js/aceternity.js"></script>
+  <script defer src="/assets/js/aceternity.js"></script>
 
   {# Scroll progress bar (ficha) #}
   {% if page_type == 'ficha' %}
@@ -375,7 +370,7 @@
     .ai-results-grid{grid-template-columns:1fr}
   }
   </style>
-  <script defer src="{{ base_url }}/assets/js/ferrol-ai.js"></script>
+  <script defer src="/assets/js/ferrol-ai.js"></script>
 
   {# Typing effect en el hero (solo home) #}
   {% if page_type == 'home' %}
@@ -404,7 +399,7 @@
 
   {# Google Reviews (solo en fichas) #}
   {% if page_type == 'ficha' %}
-  <script defer src="{{ base_url }}/assets/js/ferrol-reviews.js"></script>
+  <script defer src="/assets/js/ferrol-reviews.js"></script>
   {% endif %}
 
 </body>
